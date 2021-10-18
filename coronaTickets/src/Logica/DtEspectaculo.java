@@ -21,11 +21,12 @@ public class DtEspectaculo {
     private int duracion;
     private String descripcion;
     private String imagen;
+    private String video;
     
     public DtEspectaculo(){
     }
     
-    public DtEspectaculo(String nombre, Date fecha, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String imagen){
+    public DtEspectaculo(String nombre, Date fecha, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String imagen, String video){
         this.nombre = nombre;
         this.fecha_registro = fecha;
         this.costo = costo;
@@ -35,6 +36,7 @@ public class DtEspectaculo {
         this.duracion = duracion;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.video = video;
         
     }
     
@@ -73,4 +75,8 @@ public class DtEspectaculo {
      public String GetImagen(){
         return this.imagen;
     }
+    
+     public String GetVideo(){
+         return this.video;
+     }
 }

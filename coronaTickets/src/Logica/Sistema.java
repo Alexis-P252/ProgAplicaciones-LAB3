@@ -44,7 +44,7 @@ public class Sistema implements ISistema {
     //  ** LO PERSISTE A NIVEL DE LA BASE DE DATOS
     //  ** ASOCIA EL ESPECTACULO CON LA PLATAFORMA EN DONDE SE CREO
     //  ** ASOCIA EL ESPECTACULO CON EL ARTISTA QUE ORGANIZO EL MISMO
-    public void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen){
+    public void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen, String video){
         
         em.getTransaction().begin();
         
@@ -59,7 +59,7 @@ public class Sistema implements ISistema {
         }
         
       
-        Espectaculo e = new Espectaculo(nombre,fecha_registro,costo,url,cant_max_espec,cant_min_espec,duracion,descripcion, Plataforma, Listacategorias,estado, imagen);
+        Espectaculo e = new Espectaculo(nombre,fecha_registro,costo,url,cant_max_espec,cant_min_espec,duracion,descripcion, Plataforma, Listacategorias,estado, imagen, video);
         em.persist(e);
         p.agregarEspectaculo(e);
         a.asociarEspectaculo(e);
