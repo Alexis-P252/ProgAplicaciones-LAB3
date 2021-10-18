@@ -26,12 +26,16 @@ public class Espectador extends Usuario {
     private Map<String,Registro> registros;
     @OneToMany
     private Map<String,Paquete> paquetes;
+    @OneToMany
+    private List<Premio> premios;
+    private List<Puntaje> puntajes;
     
     public Espectador(String nombre, String apellido, String email, String nickname, Date fecha_nac, String password, String imagen){
     
         super(nombre, apellido, email, nickname, fecha_nac, password, imagen);
         this.registros = new HashMap();
         this.paquetes = new HashMap();
+        this.premios = new ArrayList();
       
     }
     
@@ -51,6 +55,5 @@ public class Espectador extends Usuario {
     public void comprarPaquete(Paquete p){
         this.paquetes.put(p.getNombre(), p);
     }
-    
     
 }
