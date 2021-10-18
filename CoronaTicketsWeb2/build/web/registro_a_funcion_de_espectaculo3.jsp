@@ -11,6 +11,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    if(session.getAttribute("tipo") == null){
+        %> <jsp:include page="error_identidad.jsp"/> <%
+    }
+    else if(session.getAttribute("tipo").equals("Artista")){
+        %> <jsp:include page="error_identidad.jsp"/> <%
+    }
+    else{ %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -165,3 +173,4 @@
             });
         </script>
 </html>
+<% } %>

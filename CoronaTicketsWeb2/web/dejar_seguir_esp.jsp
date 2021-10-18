@@ -16,6 +16,13 @@
 
 <body>
     <%
+    if(session.getAttribute("tipo") == null){
+        %> <jsp:include page="error_identidad.jsp"/> <%
+    }
+    else if(session.getAttribute("tipo").equals("Artista")){
+        %> <jsp:include page="error_identidad.jsp"/> <%
+    }
+    else{           
     // INICIALIZAMOS EL SISTEMA
     ISistema sis;
     SistemaFactory fabrica = SistemaFactory.getInstance();
@@ -99,3 +106,4 @@
 </body>
 
 </html>
+<% } %>

@@ -13,7 +13,14 @@
 </head>
 
 <body>
-    <%  
+    <%
+         if(session.getAttribute("tipo") == null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else if(session.getAttribute("tipo").equals("Espectador")){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else{
         
         ISistema sis;
         SistemaFactory fabrica = SistemaFactory.getInstance();
@@ -57,6 +64,8 @@
             <div class="col-4">
             </div>
     </div>
+    
 </body>
     
 </html>
+<% } %>

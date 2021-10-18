@@ -19,22 +19,28 @@
 
 <body>
     <%  
-        
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
-        
-        String paquete = (String) request.getParameter("selector");
-        String nickname = (String) session.getAttribute("user");
-        
-        if(sis.espectadorComproPaquete(nickname, paquete) == true){
-            out.println("ERROR: Ya compraste este paquete antes");
+        if(session.getAttribute("tipo") == null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
         }
-        else{
-            out.println("Paquete de espectaculos comprado correctamente");
-            sis.comprarPaquete(nickname, paquete);
+        else if(session.getAttribute("tipo").equals("Artista")){
+            %> <jsp:include page="error_identidad.jsp"/> <%
         }
-        
+        else{     
+            ISistema sis;
+            SistemaFactory fabrica = SistemaFactory.getInstance();
+            sis = fabrica.getISistema();
+
+            String paquete = (String) request.getParameter("selector");
+            String nickname = (String) session.getAttribute("user");
+
+            if(sis.espectadorComproPaquete(nickname, paquete) == true){
+                out.println("ERROR: Ya compraste este paquete antes");
+            }
+            else{
+                out.println("Paquete de espectaculos comprado correctamente");
+                sis.comprarPaquete(nickname, paquete);
+            }
+
 
     %>
     <div class="row mt-6">
@@ -50,6 +56,9 @@
             <div class="col-4">
             </div>
     </div>
+  
 </body>
     
 </html>
+
+  <% } %>
