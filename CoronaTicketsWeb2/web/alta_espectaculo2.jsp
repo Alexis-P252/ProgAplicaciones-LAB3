@@ -28,6 +28,7 @@
         String descripcion = (String) request.getParameter("descripcion");
         String duracion = (String) request.getParameter("duracion");
         String imagen = (String) request.getParameter("imagen");
+        String video = (String) request.getParameter("video");
         String URL = (String) request.getParameter("URL");
         String esp_min = (String) request.getParameter("esp_min");
         String esp_max = (String) request.getParameter("esp_max");
@@ -140,7 +141,7 @@
 
     
             %> <h4> Espectaculo agregado correctamente, pendiente de aceptacion por parte de un administrador </h4> <%
-            sis.crearEspectaculo(plataforma,nombre,alta,costonum, URL, espMax,espMin,duracion_num,descripcion, artista, listacategorias, 0, imagen);
+            sis.crearEspectaculo(plataforma,nombre,alta,costonum, URL, espMax,espMin,duracion_num,descripcion, artista, listacategorias, 0, imagen, video);
         }
 
     %>

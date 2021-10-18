@@ -206,6 +206,8 @@ public class main extends javax.swing.JFrame {
         jScrollPane18 = new javax.swing.JScrollPane();
         jTableCategoria5 = new javax.swing.JTable();
         LabelCosto4 = new javax.swing.JLabel();
+        FieldVideo4 = new javax.swing.JTextField();
+        LabelImagen5 = new javax.swing.JLabel();
         FieldImagen4 = new javax.swing.JTextField();
         FrameConsultaEspectaculo = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
@@ -1240,9 +1242,9 @@ public class main extends javax.swing.JFrame {
 
         LabelImagen4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelImagen4.setForeground(new java.awt.Color(255, 255, 255));
-        LabelImagen4.setText("Imagen (link)");
+        LabelImagen4.setText("Video (link)");
         jPanel5.add(LabelImagen4);
-        LabelImagen4.setBounds(290, 350, 130, 15);
+        LabelImagen4.setBounds(290, 400, 130, 15);
 
         FieldDuracion4.setBackground(new java.awt.Color(204, 204, 204));
         FieldDuracion4.addActionListener(new java.awt.event.ActionListener() {
@@ -1325,6 +1327,21 @@ public class main extends javax.swing.JFrame {
         LabelCosto4.setText("Costo");
         jPanel5.add(LabelCosto4);
         LabelCosto4.setBounds(290, 300, 130, 15);
+
+        FieldVideo4.setBackground(new java.awt.Color(204, 204, 204));
+        FieldVideo4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldVideo4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(FieldVideo4);
+        FieldVideo4.setBounds(440, 400, 160, 30);
+
+        LabelImagen5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelImagen5.setForeground(new java.awt.Color(255, 255, 255));
+        LabelImagen5.setText("Imagen (link)");
+        jPanel5.add(LabelImagen5);
+        LabelImagen5.setBounds(290, 350, 130, 15);
 
         FieldImagen4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.add(FieldImagen4);
@@ -3728,7 +3745,7 @@ public class main extends javax.swing.JFrame {
         this.FieldEspMin4.setText("");
         this.FieldEspMax4.setText("");
         this.FieldCosto4.setText("");
-        this.FieldImagen4.setText("");
+        this.FieldVideo4.setText("");
     }//GEN-LAST:event_ButtonCancelar4ActionPerformed
 
     private void ButtonConfirmar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfirmar4ActionPerformed
@@ -3738,7 +3755,8 @@ public class main extends javax.swing.JFrame {
         String nombre = this.FieldNombre4.getText();
         String url = this.FieldURL4.getText();
         String descripcion = this.FieldDescripcion4.getText();
-        String imagen = this.FieldImagen4.getText();
+        String imagen = this.FieldVideo4.getText();
+        String video = this.FieldVideo4.getText();
         if(imagen.equals("")){
             imagen = "https://www.logolynx.com/images/logolynx/e2/e2b8ce1d51e62a370d7f91fef04f8e17.png";
         }
@@ -3849,7 +3867,7 @@ public class main extends javax.swing.JFrame {
             
             
             // FINALMENTE TRAS COMPROBAR QUE NO HAY ERRORES, CREAMOS EL ESPECTACULO
-            sis.crearEspectaculo(Plataforma, nombre ,fecha_registro,costo,url,espMax,espMin,duracion,descripcion, artista,categoriasSeleccionadas,1, imagen);
+            sis.crearEspectaculo(Plataforma, nombre ,fecha_registro,costo,url,espMax,espMin,duracion,descripcion, artista,categoriasSeleccionadas,1, imagen, video);
             JOptionPane.showMessageDialog(this,"Espectaculo creado correctamente","Alta Espectaculo",JOptionPane.INFORMATION_MESSAGE);
             
             this.FrameAltaEspectaculo.setVisible(false);
@@ -3860,7 +3878,7 @@ public class main extends javax.swing.JFrame {
             this.FieldEspMin4.setText("");
             this.FieldEspMax4.setText("");
             this.FieldCosto4.setText("");
-            this.FieldImagen4.setText("");
+            this.FieldVideo4.setText("");
             
         }
     }//GEN-LAST:event_ButtonConfirmar4ActionPerformed
@@ -4957,6 +4975,10 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldImagen6ActionPerformed
 
+    private void FieldVideo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldVideo4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldVideo4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5200,6 +5222,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField FieldURL4;
     private javax.swing.JTextField FieldURL5;
     private javax.swing.JTextField FieldURL6;
+    private javax.swing.JTextField FieldVideo4;
     private javax.swing.JInternalFrame FrameAceptarEspectaculo;
     private javax.swing.JInternalFrame FrameAddEspectaculo;
     private javax.swing.JInternalFrame FrameAltaCategoria;
@@ -5269,6 +5292,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel LabelFecha_Nac;
     private javax.swing.JLabel LabelImagen06;
     private javax.swing.JLabel LabelImagen4;
+    private javax.swing.JLabel LabelImagen5;
     private javax.swing.JLabel LabelIngreseDatos8;
     private javax.swing.JLabel LabelLink2;
     private javax.swing.JLabel LabelLink3;

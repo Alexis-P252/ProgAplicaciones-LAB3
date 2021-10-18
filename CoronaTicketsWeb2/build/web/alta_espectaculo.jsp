@@ -197,6 +197,15 @@
                                 <input class="form-control" type="text" name="imagen" placeholder="">
                             </div>
                         </div>
+                             
+                         <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Video (link)</h4>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="video" placeholder="">
+                            </div>
+                        </div>     
 
                 <br>
                 <br>

@@ -8,7 +8,7 @@ import javax.persistence.metamodel.MapAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-09T12:28:50")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-18T10:39:51")
 @StaticMetamodel(Espectaculo.class)
 public class Espectaculo_ { 
 
@@ -21,6 +21,7 @@ public class Espectaculo_ {
     public static volatile SingularAttribute<Espectaculo, String> nombre;
     public static volatile SingularAttribute<Espectaculo, String> url;
     public static volatile SingularAttribute<Espectaculo, Integer> cant_max_espec;
+    public static volatile SingularAttribute<Espectaculo, String> URL_video;
     public static volatile SingularAttribute<Espectaculo, Date> fecha_registro;
     public static volatile SingularAttribute<Espectaculo, Integer> cant_min_espec;
     public static volatile SingularAttribute<Espectaculo, String> plataforma;

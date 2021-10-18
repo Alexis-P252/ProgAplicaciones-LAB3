@@ -83,6 +83,7 @@
             String duracion = ""+dtEsp.GetDuracion();
             String costo = ""+dtEsp.GetCosto();
             String imagen = dtEsp.GetImagen();
+            String video = dtEsp.GetVideo();
 
             String[] categorias = sis.listarCategoriasxEspectaculo(espectaculo);
             String[] funciones = sis.listarFuncionesxEspectaculo(espectaculo);
@@ -161,6 +162,19 @@
             </div>
             <div class="col-6">
                 <img src="<% out.println(imagen); %>" alt="Este espectaculo no tiene ninguna imagen asociada o hubo un error al procesarla" width="200" height="200"> 
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col-6">
+                <h4>Video</h4>
+            </div>
+            <div class="col-6">
+                <% if(video.equals("")){ %>
+                    <h4> Este espectaculo no tiene ningun video asociado </h4> <%
+                }else{ %>
+                    <iframe src="<% out.println(video); %>" width="560" height="315">  </iframe> <%
+                }%>
             </div>
         </div>
             

@@ -32,6 +32,7 @@ public class Espectaculo {
     private String descripcion;
     private int estado;
     private String imagen;
+    private String URL_video;
     @OneToMany
     private Map<String,Funcion> Funciones;
     @OneToMany 
@@ -40,7 +41,7 @@ public class Espectaculo {
     public Espectaculo (){
     }
 
-    public Espectaculo(String nombre, Date fecha_registro, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String Plataforma, List categorias, int estado, String imagen) {
+    public Espectaculo(String nombre, Date fecha_registro, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String Plataforma, List categorias, int estado, String imagen, String video) {
         this.nombre = nombre;
         this.fecha_registro = fecha_registro;
         this.costo = costo;
@@ -52,6 +53,7 @@ public class Espectaculo {
         this.plataforma = Plataforma;
         this.estado = estado;
         this.imagen = imagen;
+        this.URL_video = video;
         this.Funciones = new HashMap();
         
         this.categorias = new HashMap();
@@ -77,6 +79,11 @@ public class Espectaculo {
     public void setUrl(String url) {
         this.url = url;
     }
+    
+    public void SetURL_video (String URL_video){
+        this.URL_video = URL_video;
+    }
+            
 
     public void setCant_max_espec(int cant_max_espec) {
         this.cant_max_espec = cant_max_espec;
@@ -138,8 +145,12 @@ public class Espectaculo {
         return imagen;
     }
     
+    public String getURL_video(){
+        return URL_video;
+    }
+    
     public DtEspectaculo crearDtEspectaculo (){
-        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen);
+        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen, this.URL_video);
         return dt;   
     }
     
