@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/10/2021, 11:41:32 AM
+    Author     : User
+*/
+
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+  }
+
+  #form p {
+    text-align: center;
+  }
+
+  #form label {
+    font-size: 20px;
+
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  label {
+    color: grey;
+    font-size: xx-large;
+  }
+
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+  }
+
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+
+  .estrellas{
+      margin-left: 0px;
+      width: 134px;
+  }

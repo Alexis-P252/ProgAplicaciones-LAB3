@@ -17,7 +17,9 @@ import Logica.DtUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -36,7 +38,7 @@ public class Sistema implements ISistema {
       
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("coronaTicketsPU");
         this.em = emf.createEntityManager();
- 
+  
     }
    
     
@@ -928,6 +930,61 @@ public class Sistema implements ISistema {
         }
     }
     
+    
+    
+    
+    
+    // LISTA TODAS LAS FUNCIONES QUE YA FUERON REALIZADAS A LAS CUALES SE REGISTRO UN ESPECTADOR EN CONCRETO.
+    public List listarfuncionesRealizadasxEspectador(String nickname){
+        
+        Query q = em.createQuery("SELECT e.registros FROM Espectador e WHERE e.nickname = :nickname");
+        q.setParameter("nickname", nickname);
+        
+        try{
+            List registros = q.getResultList();
+            List res = new ArrayList();
+            Date actual = new Date();
+            
+            for(Object object: registros){
+                Registro r = (Registro) object;
+                if(actual.after(r.funcion.getFecha_hora())){
+                    res.add(r.funcion.getNombre());
+
+                }
+                
+            }
+            return res;
+            
+        }catch(Exception e ){
+            return new ArrayList();
+        }
+    }
+    
+    
+    public List listaEspectaculosSegunFunciones(List funciones){
+        
+        if(funciones.size() == 0){
+            return new ArrayList();
+        }
+        else{
+            List res = new ArrayList();
+            for(Object x: funciones){
+                String s = (String) x;
+                Query q = em.createQuery("SELECT f.espectaculo FROM Funcion f WHERE f.nombre = :funcion");
+                q.setParameter("funcion",s );
+                String esp = (String) q.getSingleResult();
+                res.add(esp);
+            }
+            // ELIMINAMOS POSIBLES REPETIDOS
+            Set<String> set = new HashSet<>(res);
+            res.clear();
+            res.addAll(set);
+            return res;
+        }
+    }
+    
+    
+    
     public boolean ExisteCategoria(String nombre){
         
         if( em.find(Categoria.class, nombre) == null){
@@ -1423,6 +1480,41 @@ public class Sistema implements ISistema {
             }
         }
         return res;
+    }
+    
+    
+    // RETORNA EL PUNTAJE PROMEDIO DE UN ESPECTACULO, FIJANDOSE EN TODAS LAS VALORACIONES DADAS POR LOS ESPECTADORES
+    public float PuntajePromedioEspectaculo(String espectaculo){
+        Query q = em.createNativeQuery("SELECT AVG(pun.puntaje) FROM puntaje pun WHERE pun.espectaculo_nombre = '"+espectaculo+"' GROUP BY pun.espectaculo_nombre;");
+        try{
+            float res = (float) q.getSingleResult();
+            return res;
+            
+        }catch(Exception e){
+            return 0;
+        }
+        
+    }
+    
+    
+    // VERIFICA SI EL ESPECTADOR CON DICHO NICKNAME YA VALORO EL ESPECTACULO CON DICHO NOMBRE
+    public boolean EspectadorValoroEspectaculo(String nickname, String espectaculo){
+        Query q = em.createQuery("SELECT e.puntajes FROM Espectador e WHERE e.nickname = :nickname");
+        q.setParameter("nickname", nickname);
+        try{
+            List lista = q.getResultList();
+            for(Object x: lista){
+                Puntaje p = (Puntaje) x;
+                if(p.getEspectaculo().getNombre().equals(espectaculo)){
+                    return true;
+                }
+            }
+            return false; 
+            
+        }catch(Exception e){
+            return false;
+        }
+        
     }
     
     

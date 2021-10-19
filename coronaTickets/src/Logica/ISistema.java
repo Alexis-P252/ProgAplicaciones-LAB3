@@ -15,6 +15,8 @@ public interface ISistema {
     // FUNCIONES DE LISTAR
     
     public abstract String[] listarfuncionesxEspectador(String nickname);
+    public abstract List listarfuncionesRealizadasxEspectador(String nickname);
+    public abstract List listaEspectaculosSegunFunciones(List funciones);
     public abstract String[] listarFuncionesxEspectaculo(String espectaculo);
     public abstract String[] listarEspectadores();
     public abstract String[] listarEspectaculosxPaq(String paquete);
@@ -78,6 +80,7 @@ public interface ISistema {
     public abstract List FiltrarEspectaculoxCat(List espectaculos, String[] categorias);
     public abstract List FiltrarPaquetexCat(List paquetes, String[] categorias);
     public abstract boolean Pertenecea(String[] arreglo, String s);
+    public abstract boolean EspectadorValoroEspectaculo(String nickname, String espectaculo);
     
     // MOSTRAR DATOS
     
@@ -86,6 +89,7 @@ public interface ISistema {
     public abstract DtPaquete mostrarPaquete(String paquete);
     public abstract DtFuncion MostrarFuncion (String funcion);
     public abstract float darPrecioEspectaculo(String espectaculo);
+    public abstract float PuntajePromedioEspectaculo(String espectaculo);
     
     // MODIFICAR DATOS
    

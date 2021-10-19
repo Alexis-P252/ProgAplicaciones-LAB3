@@ -22,7 +22,7 @@
     if(session.getAttribute("tipo") == null){
         %> <jsp:include page="error_identidad.jsp"/> <%
     }
-    else if(session.getAttribute("tipo").equals("Espectador")){
+    else if(session.getAttribute("tipo").equals("Artista")){
         %> <jsp:include page="error_identidad.jsp"/> <%
     }
     else{       %>
