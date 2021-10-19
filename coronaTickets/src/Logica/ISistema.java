@@ -46,6 +46,7 @@ public interface ISistema {
     public abstract List listarEspectaculosAceptadosxPlataformaWeb(String n);
     public abstract List BuscadorEspectaculo(String texto, int orden);
     public abstract List BuscadorPaquete(String texto, int orden);
+    public abstract int[] CantEstrellasEspectaculo(String espectaculo);
     
     // INGRESAR DATOS
     
@@ -59,6 +60,7 @@ public interface ISistema {
     public abstract void AgregarCategoria(String categoria);
     public abstract void AddSeguidor(String usuario1, String usuario2);
     public abstract void comprarPaquete(String nickname, String paquete);
+    public abstract void AgregarPuntaje(String nickname, String espectaculo, int puntaje);
     
     // CONTROL DE INFORMACION
     
@@ -90,6 +92,7 @@ public interface ISistema {
     public abstract DtFuncion MostrarFuncion (String funcion);
     public abstract float darPrecioEspectaculo(String espectaculo);
     public abstract float PuntajePromedioEspectaculo(String espectaculo);
+    public abstract int PuntajedeEspectador(String nickname, String espectaculo);
     
     // MODIFICAR DATOS
    

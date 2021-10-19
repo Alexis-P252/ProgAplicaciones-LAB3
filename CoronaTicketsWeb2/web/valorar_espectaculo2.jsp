@@ -73,6 +73,7 @@
             String descripcion = dtEsp.GetDescripcion();
             String imagen = dtEsp.GetImagen();
             float puntaje_prom = sis.PuntajePromedioEspectaculo(espectaculo);
+            int[] cant_estrellas = sis.CantEstrellasEspectaculo(espectaculo);
             
     
         %>
@@ -115,13 +116,15 @@
         </div>
         
         <%
-        if(sis.EspectadorValoroEspectaculo(nickname, espectaculo)){ %>
+        if(sis.EspectadorValoroEspectaculo(nickname, espectaculo)){
+            int miPuntaje = sis.PuntajedeEspectador(nickname, espectaculo);
+        %>
             <div class="row mt-3">
                 <div class="col-6">
                     <h4>Tu puntaje</h4>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="text" readonly placeholder="<% out.println(puntaje_prom); %>">
+                    <input class="form-control" type="text" readonly placeholder="<% out.println(miPuntaje); %>">
                 </div>
             </div> <%
         } 

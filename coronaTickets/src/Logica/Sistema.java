@@ -38,7 +38,7 @@ public class Sistema implements ISistema {
       
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("coronaTicketsPU");
         this.em = emf.createEntityManager();
-  
+
     }
    
     
@@ -1485,15 +1485,52 @@ public class Sistema implements ISistema {
     
     // RETORNA EL PUNTAJE PROMEDIO DE UN ESPECTACULO, FIJANDOSE EN TODAS LAS VALORACIONES DADAS POR LOS ESPECTADORES
     public float PuntajePromedioEspectaculo(String espectaculo){
-        Query q = em.createNativeQuery("SELECT AVG(pun.puntaje) FROM puntaje pun WHERE pun.espectaculo_nombre = '"+espectaculo+"' GROUP BY pun.espectaculo_nombre;");
+        Query q = em.createNativeQuery("SELECT pun.puntaje FROM puntaje pun WHERE pun.espectaculo_nombre = '"+espectaculo+"';");
         try{
-            float res = (float) q.getSingleResult();
-            return res;
+            List lista = q.getResultList();
+            float res = 0;
+            int i = 0; 
+            for(Object x: lista){
+                int valor = (int) x;
+                res = res + valor;
+                i++;
+                
+            }
+            if(i>0){
+                res = res/i;
+                return res;
+            }else{
+                return 0;
+            }
+            
             
         }catch(Exception e){
             return 0;
         }
+    }
+    
+    
+    public int[] CantEstrellasEspectaculo(String espectaculo){
+        int[] res = new int[5];
         
+        //INICIALIZACION
+        for(int i=0; i<5;i++ ){
+            res[i] = 0;
+        }
+        
+        Query q = em.createNativeQuery("SELECT pun.puntaje FROM puntaje pun WHERE pun.espectaculo_nombre = '"+espectaculo+"';");
+        try{
+            List lista = q.getResultList();
+            for(Object x: lista){
+                
+                int valor = (int) x;
+                res[valor-1]++; 
+            }
+            return res;
+            
+        }catch(Exception e){
+            return res;
+        }
     }
     
     
@@ -1515,6 +1552,44 @@ public class Sistema implements ISistema {
             return false;
         }
         
+    }
+    
+    
+    // OBTIENE EL PUNTAJE QUE LE DIO EL ESPECTADOR AL ESPECTACULO
+    public int PuntajedeEspectador(String nickname, String espectaculo){
+        Query q = em.createQuery("SELECT e.puntajes FROM Espectador e WHERE e.nickname = :nickname");
+        q.setParameter("nickname", nickname);
+        try{
+            List lista = q.getResultList();
+            for(Object x: lista){
+                Puntaje p = (Puntaje) x;
+                if(p.getEspectaculo().getNombre().equals(espectaculo)){
+                    return p.getPuntaje();
+                }
+            }
+            return 0; 
+            
+        }catch(Exception e){
+            return 0;
+        }
+        
+    }
+    
+    
+    // CREA UN NUEVO PUNTAJE QUE EL ESPECTADOR CON DICHO NICKNAME HIZO AL ESPECTACULO CON DICHO NOMBRE
+    public void AgregarPuntaje(String nickname, String espectaculo, int puntaje){
+        
+        em.getTransaction().begin();
+        
+        Espectador e = em.find(Espectador.class, nickname);
+        Espectaculo esp = em.find(Espectaculo.class,espectaculo);
+        
+        Puntaje p = new Puntaje(puntaje, esp);
+        e.AgregarPuntaje(p);
+        em.persist(p);
+        
+        
+        em.getTransaction().commit();
     }
     
     

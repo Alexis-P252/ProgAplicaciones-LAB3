@@ -9,7 +9,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.MapAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-19T11:31:23")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-19T17:31:38")
 @StaticMetamodel(Espectador.class)
 public class Espectador_ extends Usuario_ {
 

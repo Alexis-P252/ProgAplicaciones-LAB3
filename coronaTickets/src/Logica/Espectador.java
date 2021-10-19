@@ -36,6 +36,7 @@ public class Espectador extends Usuario {
         this.registros = new HashMap();
         this.paquetes = new HashMap();
         this.premios = new ArrayList();
+        this.puntajes = new ArrayList();
       
     }
     
@@ -54,6 +55,12 @@ public class Espectador extends Usuario {
     
     public void comprarPaquete(Paquete p){
         this.paquetes.put(p.getNombre(), p);
+    }
+    
+    public void AgregarPuntaje(Puntaje p){
+        
+        this.puntajes.add(p);
+        
     }
     
 }
