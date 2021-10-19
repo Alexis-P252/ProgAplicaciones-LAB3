@@ -11,7 +11,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <link rel="stylesheet" href="css/estrellas.css">
+        <link rel="stylesheet" href="css/estrellas.css">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/x-icon" href="assets/img/virus.png" />
         <title>CoronaTickets</title>
@@ -74,6 +76,10 @@
             String imagen = dtEsp.GetImagen();
             float puntaje_prom = sis.PuntajePromedioEspectaculo(espectaculo);
             int[] cant_estrellas = sis.CantEstrellasEspectaculo(espectaculo);
+            int total_estrellas = 0;
+            for(int i = 0; i < cant_estrellas.length;i++){
+                total_estrellas = total_estrellas + cant_estrellas[i];
+            }
             
     
         %>
@@ -111,7 +117,70 @@
                 <h4>Puntaje promedio</h4>
             </div>
             <div class="col-6">
-                <input class="form-control" type="text" readonly placeholder="<% out.println(puntaje_prom); %>">
+               <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                <script language="JavaScript">
+                $(document).ready(function() {  
+                   var chart = {
+                      type: 'bar'
+                   };
+                   var title = {
+                      text: 'Calificaciones'   
+                   };
+                   var subtitle = {
+                      text: ''  
+                   };
+                   var xAxis = {
+                      categories: ['5 estrellas', '4 estrellas', '3 estrellas', '2 estrellas', '1 estrellas'],
+                      title: {
+                         text: null
+                      }
+                   };
+                   var yAxis = {
+                      min: 0,
+                      title: {
+                         text: 'Cantidad de calificaciones ',
+                         align: 'high'
+                      },
+                      labels: {
+                         overflow: 'justify'
+                      }
+                   };
+                   var tooltip = {
+                      valueSuffix: ' Calificaciones'
+                   };
+                   var plotOptions = {
+                      bar: {
+                         dataLabels: {
+                            enabled: true
+                         }
+                      },
+                          series: {
+                             stacking: 'normal'
+                          }
+                   };
+                   var credits = {
+                      enabled: false
+                   };
+                   var series= [{
+                         name: '',
+                            data: [<% out.println(cant_estrellas[4]); %>, <% out.println(cant_estrellas[3]); %>, <% out.println(cant_estrellas[2]); %>, <% out.println(cant_estrellas[1]); %>, <% out.println(cant_estrellas[0]); %>]
+                        }
+                   ];     
+
+                   var json = {};   
+                   json.chart = chart; 
+                   json.title = title;   
+                   json.subtitle = subtitle; 
+                   //   json.tooltip = tooltip;
+                   json.xAxis = xAxis;
+                   json.yAxis = yAxis;  
+                   json.series = series;
+                   json.plotOptions = plotOptions;
+                   json.credits = credits;
+                   $('#container').highcharts(json);
+
+                });
+                </script>
             </div>
         </div>
         
