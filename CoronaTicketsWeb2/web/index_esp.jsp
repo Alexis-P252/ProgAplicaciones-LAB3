@@ -17,7 +17,13 @@
 
 <body>
     <%  
-        
+        if(session.getAttribute("tipo") == null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else if(session.getAttribute("tipo").equals("Artista")){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else{       
         ISistema sis;
         SistemaFactory fabrica = SistemaFactory.getInstance();
         sis = fabrica.getISistema();
@@ -67,6 +73,7 @@
                     <a class="list-group-item list-group-item-action" href="registro_a_funcion_de_espectaculo.jsp">Registro a Funcion de Espectaculo</a>
                     <a class="list-group-item list-group-item-action" href="seguir_usuario_esp.jsp">Seguir a un Usuario</a>
                     <a class="list-group-item list-group-item-action" href="dejar_seguir_esp.jsp">Dejar de seguir a un Usuario</a>
+                    <a class="list-group-item list-group-item-action" href="valorar_espectaculo.jsp">Valorar un espectaculo</a>
                 </div>
             </div>
     
@@ -82,3 +89,4 @@
 </body>
 
 </html>
+<% } %>

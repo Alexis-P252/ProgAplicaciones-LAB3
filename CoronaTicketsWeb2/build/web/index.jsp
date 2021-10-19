@@ -17,7 +17,10 @@
 
 <body>
     <%  
-        
+        if(session.getAttribute("tipo") != null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else{       
         ISistema sis;
         SistemaFactory fabrica = SistemaFactory.getInstance();
         sis = fabrica.getISistema();
@@ -206,3 +209,4 @@
 
 </script>
 </html>
+<% } %>

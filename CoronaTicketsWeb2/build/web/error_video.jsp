@@ -1,179 +1,162 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Error video</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=1;" />
-<style type="text/css">
-* {
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  text-decoration: none;
-  border: none;
-  list-style: none;
-  outline: none;
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Recurso no encontrado</title>
+
+<style id="" media="all">/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_aZA3gTD_u50.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
-body,html {height: 100%;}
-body {
-  background: #ffffff;
-  color: #4c4c4c;
-  font: 13px/140% "Helvetica Neue", Helvetica, Arial, sans-serif;
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_aZA3g3D_u50.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
-a {
-  color: #0cbadf;
-  text-decoration: none;
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_aZA3gbD_u50.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
-h1 {
-  font-size: 17px;
-  font-weight: bold;
-  margin: 10px 0;
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_aZA3gfD_u50.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-h2 {
-  font-size: 15px;
-  font-weight: normal;
-  margin: 10px 0;
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_aZA3gnD_g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-#container {
-  height: 230px;
-  margin: -165px auto 0;
-  position: relative;
-  text-align: center;
-  top: 50%;
-  width: 32em;
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
-.logomark {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  bottom: 20px;
-  display: block;
-  left: 50%;
-  margin: 0 auto;
-  margin-left: -30px;
-  position: absolute;
-  z-index: 2;
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
-.wordmark {
-  display: block;
-  margin: 0 auto;
-  width: 250px;
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
-.formStyle {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: inset rgba(0,0,0,.1) 0 0 3px;
-  -webkit-box-shadow: inset rgba(0,0,0,.1) 0 0 3px;
-  box-shadow: inset rgba(0,0,0,.1) 0 0 3px;
-  background: #fcfcfc;
-  border: 1px solid #d9d9d9;
-  color: #4c4c4c;
-  font-family: inherit;
-  font-size: 13px;
-  margin: 0 10px 10px 0;
-  outline: none;
-  padding: 7px;
-  width: 220px;
-  -moz-transition-duration: .33s;
-  -moz-transition-property: background, border, color, opacity, box-shadow;
-  -webkit-transition-duration: .33s;
-  -webkit-transition-property: background, border, color, opacity, box-shadow;
-  transition-duration: .33s;
-  transition-property: background, border, color, opacity, box-shadow;
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-.formStyle:hover {border: 1px solid #bbb;}
-.formStyle:focus {
-  background: #fefefe;
-  border: 1px solid #b3b3b3;
-  color: #333;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.greenButton {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background: #A7E300;
-  background: -webkit-gradient(linear, left top, left bottom, from(#A7E300), to(#99D100));
-  background: -moz-linear-gradient(top,  #A7E300,  #99D100);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A7E300', endColorstr='#99D100');
-  border: 1px solid #87b800;
-  color: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: bold;
-  height: 30px;
-  line-height: 28px;
-  padding: 0 10px;
-  text-align: center;
-  text-shadow: rgba(0,0,0,.1) 0 -1px 0;
-  text-transform: uppercase;
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3gTD_u50.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
-.greenButton:hover {
-  background: #b2eb14;
-  background: -webkit-gradient(linear, left top, left bottom, from(#b2eb14), to(#a4da14));
-  background: -moz-linear-gradient(top,  #b2eb14,  #a4da14);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b2eb14', endColorstr='#a4da14');
+/* cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3g3D_u50.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
-.greenButton:active {
-  background: #99D100;
-  background: -webkit-gradient(linear, left top, left bottom, from(#99D100), to(#A7E300));
-  background: -moz-linear-gradient(top,  #99D100,  #A7E300);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99D100', endColorstr='#A7E300');
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3gbD_u50.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
-@-webkit-keyframes fadeInDown{
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0, -25px, 0);
-    transform:translate3d(0, -25px, 0)
-  }
-  100%{
-    opacity:1;
-    -webkit-transform:none;transform:none
-  }
+/* latin-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3gfD_u50.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-@keyframes fadeInDown{
-  0%{
-    opacity:0;
-    -webkit-transform:translate3d(0, -25px, 0);
-    -ms-transform:translate3d(0, -25px, 0);
-    transform:translate3d(0, -25px, 0)
-  }
-  100%{
-    opacity:1;
-    -webkit-transform:none;
-    -ms-transform:none;
-    transform:none
-  }
-}
-@media screen and (max-width: 340px) {
-  #container {
-    height: auto !important;
-    margin: 40px auto 0 !important;
-    top: 0 !important;
-    width: 22em !important;
-  }
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 </style>
+
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+
+<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+<meta name="robots" content="noindex, follow">
 </head>
 <body>
-  <div id="container">
-    <img class="wordmark" src="/wordmark.png" />
-    <h1>Hubo un error al procesar el video</h1>
-  </div>
-  <img class="logomark" width="40" src="/logomark.png">
-  <script src="https://www.google-analytics.com/ga.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    try {
-      var pageTracker = _gat._getTracker('UA-2322480-5');
-      pageTracker._trackPageview('/404');
-    } catch(err) {}
-  </script>
+<div id="notfound">
+<div class="notfound">
+<div class="notfound-404">
+<h1>Oops!</h1>
+<h2>El recurso no pudo ser encontrado</h2>
+</div>
+</div>
+</div>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"6a0496d9f87bd815","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.9.0","si":100}'></script>
 </body>
 </html>
