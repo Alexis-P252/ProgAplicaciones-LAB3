@@ -27,6 +27,14 @@
     }
     else{       %>
     
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="index_esp.jsp">CoronaTickets.uy</a> 
+            </div>
+        </div>
+    </nav>
+    
      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -47,48 +55,82 @@
         String nickname = (String) session.getAttribute("user");
         String espectaculo = (String) request.getParameter("selector");
         
-        if(){
-            
-        }
-        else{
-            
-        }
-        
-        
-        if(estrellas == null){ %>
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                <div>
-                    ERROR: DEBES SELECCIONAR UN NUMERO DE ESTRELLAS
+        DtEspectaculo dtEsp = sis.mostrarEspectaculo(espectaculo);
+        String nombre = dtEsp.GetNombre();
+        String descripcion = dtEsp.GetDescripcion();
+        String imagen = dtEsp.GetImagen(); %>
+        <form action="marcar_desmarcar_fav3.jsp">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-6">
+                    <h4>Nombre</h4>
                 </div>
-            </div> <%        
-        }
-        else{
-            int stars = Integer.parseInt(estrellas);
-            sis.AgregarPuntaje(nickname, espectaculo, stars); %>
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                    <div>
-                        Has calificado correctamente el espectaculo
+                <div class="col-6">
+                    <input class="form-control" type="text" name="espectaculo" value="<% out.println(nombre); %>" readonly placeholder="<% out.println(nombre); %>">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <h4>Descripcion</h4>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" readonly placeholder="<% out.println(descripcion); %>">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <h4>Imagen</h4>
+                </div>
+                <div class="col-6">
+                    <img src="<% out.println(imagen); %>" alt="Este espectaculo no tiene ninguna imagen asociada o hubo un error al procesarla" width="200" height="200"> 
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <%
+        
+        if(sis.TieneFavorito(nickname, espectaculo)){ // EL ESPECTADOR YA TIENE COMO FAVORITO AL ESPECTACULO %>
+            <h3 class="text-center"> Tienes este espectaculo marcado como favorito</h3> 
+                 <div class="row"> 
+                    <div class="mt-2 col d-flex justify-content-center">
+                       
+                           <button type="submit" name="marcar" value="no" class="btn btn-secondary btn-lg btn-block">Desmarcar como favorito</button>
+                       </form>
                     </div>
-                </div>
+                 </div>
+            
             <%
         }
-       
- 
-    %>
-    <div class="row mt-6">
+        else{ // EL ESPECTADOR NO TIENE COMO FAVORITO AL ESPECTACULO %>
+            <h3 class="text-center"> No tienes este espectaculo marcado como favorito</h3> 
             
-            <div class="col-5">
-            </div>
-            <div class="col-4">
-                <form action="bienvenida.jsp">
+            <div class="row"> 
+                 <div class="mt-2 col d-flex justify-content-center">
+                   
+                        <button type="submit" name="marcar" value="si" class="btn btn-secondary btn-lg btn-block">Marcar como favorito</button>
+                    </form>
+                 </div>
+             </div>
+            
+            <%
+        } %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row mt-6">
+        <div class="row"> 
+             <div class="mt-2 col d-flex justify-content-center">
+                 <form action="bienvenida.jsp">
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Volver</button>
                 </form>
-            </div>
-    
-            <div class="col-4">
-            </div>
+             </div>
+         </div>
     </div>
 </body>
     

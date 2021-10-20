@@ -1633,10 +1633,14 @@ public class Sistema implements ISistema {
     // AGREGA A LA LISTA DE FAVORITOS DEL ESPECTADOR AL ESPECTACULO
     public void AgregarFavorito(String nickname, String espectaculo){
         
+        em.getTransaction().begin();
+        
         Espectador e = em.find(Espectador.class, nickname);
         Espectaculo esp = em.find(Espectaculo.class, espectaculo);
         
         e.addFav(esp);
+        
+        em.getTransaction().commit();
     }
     
     
