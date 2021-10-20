@@ -181,6 +181,8 @@
 
                 });
                 </script>
+                <h5>Total de calificaciones: <% out.println(total_estrellas); %></h5>
+                <h5>Puntaje Promedio: <% out.println(puntaje_prom); %> </h5>
             </div>
         </div>
         
@@ -193,7 +195,7 @@
                     <h4>Tu puntaje</h4>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="text" readonly placeholder="<% out.println(miPuntaje); %>">
+                    <h5> <% out.println(miPuntaje); %> </h5>
                 </div>
             </div> <%
         } 

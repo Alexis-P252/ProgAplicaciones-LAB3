@@ -29,6 +29,7 @@ public class Espectador extends Usuario {
     @OneToMany
     private List<Premio> premios;
     private List<Puntaje> puntajes;
+    private List<Espectaculo> favoritos;
     
     public Espectador(String nombre, String apellido, String email, String nickname, Date fecha_nac, String password, String imagen){
     
@@ -37,6 +38,7 @@ public class Espectador extends Usuario {
         this.paquetes = new HashMap();
         this.premios = new ArrayList();
         this.puntajes = new ArrayList();
+        this.favoritos = new ArrayList();
       
     }
     
@@ -61,6 +63,14 @@ public class Espectador extends Usuario {
         
         this.puntajes.add(p);
         
+    }
+    
+    public void addFav(Espectaculo esp){
+        this.favoritos.add(esp);
+    }
+    
+    public void deleteFav(Espectaculo esp){
+        this.favoritos.remove(esp);
     }
     
 }

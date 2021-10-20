@@ -42,11 +42,13 @@ public interface ISistema {
     public abstract String[] listarSeguidores(String nickname);
     public abstract String[] listarSeguidos(String nickname);
     public abstract String [] listarEspectaculosSinAceptar();
+    public abstract String[] listarEspectaculosAceptados();
     public abstract String[] listarEspectaculosAceptadosxPlataforma(String n);
     public abstract List listarEspectaculosAceptadosxPlataformaWeb(String n);
     public abstract List BuscadorEspectaculo(String texto, int orden);
     public abstract List BuscadorPaquete(String texto, int orden);
     public abstract int[] CantEstrellasEspectaculo(String espectaculo);
+    public abstract String[] listarEspectaculosFavoritos(String nickname);
     
     // INGRESAR DATOS
     
@@ -83,6 +85,7 @@ public interface ISistema {
     public abstract List FiltrarPaquetexCat(List paquetes, String[] categorias);
     public abstract boolean Pertenecea(String[] arreglo, String s);
     public abstract boolean EspectadorValoroEspectaculo(String nickname, String espectaculo);
+    public abstract boolean TieneFavorito(String nickname, String espectaculo);
     
     // MOSTRAR DATOS
     
@@ -101,6 +104,8 @@ public interface ISistema {
     public abstract void CanjeoRegistros(List RegistrosSeleccionados, String espectador);
     public abstract void CambiarEstadoEspectaculo(String espectaculo, int estado);
     public abstract void DejardeSeguir(String usuario1, String usuario2);
+    public abstract void AgregarFavorito(String nickname, String espectaculo);
+    public abstract void EliminarFavorito(String nickname, String espectaculo);
     
 }
 

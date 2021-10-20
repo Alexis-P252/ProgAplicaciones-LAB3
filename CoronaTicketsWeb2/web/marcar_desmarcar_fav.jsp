@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <html lang="en">
     
 <head>
@@ -46,7 +44,7 @@
                 </form>
             </div>
             <div class="d-flex">
-                 <h3 class="me-5">Valorar un  Espectaculo</h3>
+                 <h3 class="me-5">Marcar/Desmarcar Espectaculo como Favorito</h3>
                 <h2> Bienvenido: <% out.println(session.getAttribute("user")); %></h2>
                 <form action="cerrarSesion.jsp">
                     <button class="btn btn-outline-dark me-2" type="submit" data-bs-toggle="modal" data-bs-target="#modalRegistro">
@@ -66,43 +64,30 @@
     <div class="row mt-5">
         <div class="col-10">
             <!--Div contenido principal-->
-            <%
-            String nickname = (String) session.getAttribute("user");
-            List funciones = sis.listarfuncionesRealizadasxEspectador(nickname);
-            List espectaculos = sis.listaEspectaculosSegunFunciones(funciones);
-            
-            if(espectaculos.size() == 0){ %>
-            <h3>No puedes valorar ningun espectaculo</h3>
-            <%}
-            else{ %>
+            <div class="div-lista ml-2">
+                <form action="marcar_desmarcar_fav2.jsp">
+                <select name= "selector"id="listaEspectaculos" class="form-select w-25" aria-label="Default select example">
+                    <option selected>Seleccione un espectaculo</option>
+                    <% // CARGAMOS LA LISTA DE ESPECTACULOS EN EL SELECT
+                    String[] lista = sis.listarEspectaculosAceptados();    
+                    int i = 1;    
+                    for(String s: lista){
+                    %>
+                    <option  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option>
+                    <%
+                    i++; 
+                    }
+                     %>
+
+                     
+                </select>
+                     <button type="submit" id="btn_elegir" class="mt-2 btn btn-secondary btn-lg btn-block"> Elegir Espectaculo </button>
+                </form>  
                 
-                <div class="div-lista ml-2">
-                    <form action="valorar_espectaculo2.jsp">
-                        <select name= "selector"id="listaEspectaculos" class="form-select w-25" aria-label="Default select example">
-                            <option selected>Seleccione un espectaculo </option>
-                            <% // CARGAMOS LA LISTA DE ESPECTACULOS EN EL SELECT
-                            int i = 1;    
-                            for(Object x: espectaculos){
-                                String s = (String) x;
-                            %>
-                            <option  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option>
-                            <%
-                            i++; 
-                            }
-                             %>
-
-                        </select>
-                         <% if(i>1){ %>
-                            <button type="submit" id="btn_elegir" class="mt-2 btn btn-secondary btn-lg btn-block"> Elegir Espectaculo </button> <%
-                         } %>
-                         
-                    </form>  
-
-
-                </div>
+                
+            </div>
 
         </div>
-        <%}%>             
         <div class="col-2">
                 <a class="list-group-item list-group-item-action" href="modificar_datos_esp.jsp">Modificar mis datos</a>
                 <a class="list-group-item list-group-item-action" href="consulta_usuario_esp.jsp">Consulta usuario</a>
@@ -118,6 +103,8 @@
         </div>
     </div>
 
+
+  
 </body>
 <script>
             var btn_elegir = document.getElementById('btn_elegir');

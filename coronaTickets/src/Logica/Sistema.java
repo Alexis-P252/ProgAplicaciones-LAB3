@@ -1136,6 +1136,28 @@ public class Sistema implements ISistema {
         }
     }
     
+    
+    public String[] listarEspectaculosAceptados(){
+        Query q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1");
+  
+        try{
+            List espectaculos = q.getResultList();
+            String[] res = new String[espectaculos.size()];
+            int i = 0;
+
+            for(Object object: espectaculos){
+                Espectaculo esp = (Espectaculo) object;
+                em.refresh(esp);
+                res[i] = esp.getNombre();
+                i++;   
+            }
+            return res;
+            
+        }catch(Exception e){
+            return new String[1];
+        }
+    }
+    
     public List listarEspectaculosAceptadosxPlataformaWeb(String n){
         Query q = em.createQuery("SELECT pe.Espectaculos FROM Plataforma pe WHERE pe.nombre = :plataforma");
         q.setParameter("plataforma", n);
@@ -1592,6 +1614,78 @@ public class Sistema implements ISistema {
         em.getTransaction().commit();
     }
     
+    
+    // VERIFICA SI EL ESPECTADOR TIENE COMO FAVORITO AL ESPECTACULO, DEVUELVE TRUE EN ESE CASO, FALSE EN EL CASO CONTRARIO.
+    public boolean TieneFavorito(String nickname, String espectaculo){
+         Query q = em.createNativeQuery("SELECT COUNT(*) FROM espectador_espectaculo ee WHERE ee.espectador_nickname = '" + nickname +"' AND ee.favoritos_nombre = '"+espectaculo+"'");
+        
+        long cant = (long) q.getSingleResult();
+        
+        if(cant == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    
+    // AGREGA A LA LISTA DE FAVORITOS DEL ESPECTADOR AL ESPECTACULO
+    public void AgregarFavorito(String nickname, String espectaculo){
+        
+        Espectador e = em.find(Espectador.class, nickname);
+        Espectaculo esp = em.find(Espectaculo.class, espectaculo);
+        
+        e.addFav(esp);
+    }
+    
+    
+    // ELIMINA DE LA LISTA DE FAVORITOS DEL ESPECTADOR AL ESPECTACULO
+    public void EliminarFavorito(String nickname, String espectaculo){
+        
+       em.getTransaction().begin();
+       
+      Espectador e = em.find(Espectador.class, nickname);
+      Espectaculo esp = em.find(Espectaculo.class, espectaculo);
+       
+       Query q = em.createNativeQuery("DELETE FROM espectador_espectaculo WHERE espectador_nickname = '"+nickname+"' AND favoritos_nombre = '"+espectaculo+"';");
+       
+       q.executeUpdate();
+      
+       try{
+           e.deleteFav(esp); 
+       }
+       catch(Exception exception){
+           
+       }
+       em.refresh(e);
+       em.getTransaction().commit(); 
+    }
+    
+    
+    
+    // LISTA TODOS LOS ESPECTACULOS FAVORITOS DE UN ESPECTADOR
+    public String[] listarEspectaculosFavoritos(String nickname){
+        Query q = em.createQuery("SELECT es.favoritos FROM Espectador es WHERE es.nombre = :nickname");
+        q.setParameter("nickname", nickname);
+
+        try{
+            List espectaculos = q.getResultList();
+            String[] res = new String[espectaculos.size()];
+            int i = 0;
+            for(Object object: espectaculos){
+                Espectaculo esp = (Espectaculo) object;
+                  if(esp.getEstado() == 1){
+                   res[i] = esp.getNombre();
+                    i++; 
+                }
+            }
+            return res;
+
+        }catch(Exception e){
+            return new String[1];
+        }
+    }
     
     
     

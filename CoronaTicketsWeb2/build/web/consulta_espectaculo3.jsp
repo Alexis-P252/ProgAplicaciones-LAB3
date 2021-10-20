@@ -354,6 +354,8 @@
 
                 });
                 </script>
+                <h5>Total de calificaciones: <% out.println(total_estrellas); %></h5>
+                <h5>Puntaje Promedio: <% out.println(puntaje_prom); %> </h5>
             </div>
         </div>        
                     
