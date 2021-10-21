@@ -8,7 +8,7 @@ import javax.persistence.metamodel.MapAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-20T11:39:36")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-21T10:09:39")
 @StaticMetamodel(Espectaculo.class)
 public class Espectaculo_ { 
 

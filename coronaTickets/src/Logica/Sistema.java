@@ -1704,6 +1704,15 @@ public class Sistema implements ISistema {
     }
     
     
+    
+    public long CantFavxEspectaculo(String espectaculo){
+        Query q = em.createNativeQuery("SELECT COUNT(*) FROM espectador_espectaculo ee WHERE ee.favoritos_nombre = '"+espectaculo+"'");
+        long cant = (long) q.getSingleResult();
+        return cant;
+        
+    }
+    
+    
         
        
 }

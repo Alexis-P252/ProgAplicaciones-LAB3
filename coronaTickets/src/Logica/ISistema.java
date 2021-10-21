@@ -96,6 +96,7 @@ public interface ISistema {
     public abstract float darPrecioEspectaculo(String espectaculo);
     public abstract float PuntajePromedioEspectaculo(String espectaculo);
     public abstract int PuntajedeEspectador(String nickname, String espectaculo);
+    public abstract long CantFavxEspectaculo(String espectaculo);
     
     // MODIFICAR DATOS
    

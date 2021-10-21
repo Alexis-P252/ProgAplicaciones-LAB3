@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/estrellas.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -94,12 +95,32 @@
                 total_estrellas = total_estrellas + cant_estrellas[i];
             }
 
+            long cant_favs = sis.CantFavxEspectaculo(espectaculo);
+
             String[] categorias = sis.listarCategoriasxEspectaculo(espectaculo);
             String[] funciones = sis.listarFuncionesxEspectaculo(espectaculo);
-            String[] paquetes = sis.listarPaquetesdeEsp(espectaculo);
-        %>
+            String[] paquetes = sis.listarPaquetesdeEsp(espectaculo); %>
+
+            
         
-        <div class="container">
+        <div class="container"> <%
+            if(session.getAttribute("tipo") != null){
+                if(session.getAttribute("tipo").equals("Espectador")){
+                    String nick = (String) session.getAttribute("user");
+                    if(sis.TieneFavorito(nick, espectaculo)){ %>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Marcado como favorito</h4>
+                            </div>
+                            <div class="col-6">
+                            </div>
+                        </div>
+
+                    
+                <%}
+                }
+            }
+        %>
         <div class="row mt-3">
             <div class="col-6">
                 <h4>Nombre</h4>
@@ -164,6 +185,15 @@
                 <input class="h-700 form-control" type="text" readonly placeholder="<% out.println(costo); %>">
             </div>
         </div>
+            
+        <div class="row mt-3">
+            <div class="col-6">
+                <h4>Cantidad de Favoritos</h4>
+            </div>
+            <div class="col-6">
+                <input class="h-700 form-control" type="text" readonly placeholder="<% out.println(cant_favs); %>">
+            </div>
+        </div>    
             
          <div class="row mt-3">
             <div class="col-6">
