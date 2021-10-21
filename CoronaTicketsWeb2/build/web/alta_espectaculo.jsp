@@ -196,6 +196,25 @@
                                 <input class="form-control" type="text" name="costo"  placeholder="">
                             </div>
                         </div>
+                         
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Descripcion del premio</h4>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="desc_premio"  placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Cantidad de premios</h4>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="cant_premios"  placeholder="">
+                            </div>
+                        </div>     
+                             
 
                          <div class="row mt-3">
                             <div class="col-6">

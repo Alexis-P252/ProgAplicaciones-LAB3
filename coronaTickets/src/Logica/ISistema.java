@@ -54,7 +54,7 @@ public interface ISistema {
     
     public abstract void ingresarEspectador(String nombre, String apellido, String correo, String nickname, Date fecha_nac, String password, String imagen);
     public abstract void ingresarArtista(String nombre, String apellido, String correo, String nickname, Date fecha_nac,String password, String descripcion, String biografia, String link, String imagen);
-    public abstract void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen, String video);
+    public abstract void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen, String video, String desc_premio, int cant_premios);
     public abstract void AgregarPaquete(String nombre, String descripcion, float descuento, Date fecha_alta, Date fecha_fin, Date fecha_ini, String imagen);
     public abstract void AgregarFuncion(String nombre, Date fecha_hora, Date fecha_registro, String espectaculo, List artistas, String imagen);
     public abstract void AddEspectaculoaPaquete(String paquete, String espectaculo);
