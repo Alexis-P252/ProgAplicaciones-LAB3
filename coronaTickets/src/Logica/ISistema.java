@@ -107,6 +107,7 @@ public interface ISistema {
     public abstract void DejardeSeguir(String usuario1, String usuario2);
     public abstract void AgregarFavorito(String nickname, String espectaculo);
     public abstract void EliminarFavorito(String nickname, String espectaculo);
+    public abstract void FinalizarEspectaculo(String espectaculo);
     
 }
 

@@ -35,6 +35,7 @@ public class Espectaculo {
     private String URL_video;
     private String desc_premio;
     private int cant_premios;
+    private boolean finalizado;
     @OneToMany
     private Map<String,Funcion> Funciones;
     @OneToMany 
@@ -58,6 +59,7 @@ public class Espectaculo {
         this.URL_video = video;
         this.desc_premio = desc_premio;
         this.cant_premios = cant_premios;
+        this.finalizado = false;
         this.Funciones = new HashMap();
         
         this.categorias = new HashMap();
@@ -103,6 +105,10 @@ public class Espectaculo {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public void FinalizarEspectaculo(){
+        this.finalizado = true;
     }
 
     public String getNombre() {
@@ -159,6 +165,10 @@ public class Espectaculo {
     
     public int getCant_premios(){
         return this.cant_premios;
+    }
+    
+    public boolean getFinalizado(){
+        return this.finalizado;
     }
     
     public DtEspectaculo crearDtEspectaculo (){

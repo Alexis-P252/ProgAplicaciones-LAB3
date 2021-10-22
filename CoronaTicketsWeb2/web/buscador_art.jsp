@@ -263,6 +263,7 @@
                 <a class="list-group-item list-group-item-action" href="agregar_espectaculo.jsp">Agregar Espectaculo a Paquete</a>
                 <a class="list-group-item list-group-item-action" href="seguir_usuario_art.jsp">Seguir a un Usuario</a>
                 <a class="list-group-item list-group-item-action" href="dejar_seguir_art.jsp">Dejar de seguir a un Usuario</a>
+                <a class="list-group-item list-group-item-action" href="finalizar_espectaculo.jsp">Finalizar espectaculo</a>
         </div>
     </div>
 
@@ -283,12 +284,12 @@
 
     listaEspectaculos.addEventListener('change', function(){
         console.log('entra');
-      btn_espectaculo.style.display = 'inline';
+        btn_espectaculo.style.display = 'inline';
     });
     
     listaPaquetes.addEventListener('change', function(){
         console.log('entra');
-      btn_paquete.style.display = 'inline';
+        btn_paquete.style.display = 'inline';
     });
 
 </script>

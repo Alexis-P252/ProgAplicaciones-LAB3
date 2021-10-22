@@ -297,8 +297,11 @@ public class Sistema implements ISistema {
 
             for(Object object: espectaculos){
                 Espectaculo esp = (Espectaculo) object;
-                res[i] = esp.getNombre();
-                i++;
+                if(esp.getFinalizado() == false){
+                    res[i] = esp.getNombre();
+                    i++;
+                }
+                
             }
             return res;
             
@@ -334,8 +337,11 @@ public class Sistema implements ISistema {
            
             for (Object object: espectaculos){
                 Espectaculo e = (Espectaculo) object;
-                res[i] = e.getNombre();
-                i++;
+                if(e.getFinalizado() == false){
+                    res[i] = e.getNombre();
+                    i++; 
+                }
+                
             }
             return res;
             
@@ -358,7 +364,7 @@ public class Sistema implements ISistema {
            
             for (Object object: espectaculos){
                 Espectaculo e = (Espectaculo) object;
-                if(e.getEstado() == 1){
+                if(e.getEstado() == 1 && e.getFinalizado() == false){
                     res[i] = e.getNombre();
                     i++;
                 }
@@ -1124,7 +1130,7 @@ public class Sistema implements ISistema {
             for(Object object: espectaculos){
                 Espectaculo esp = (Espectaculo) object;
                 em.refresh(esp);
-                if(esp.getEstado() == 1){
+                if(esp.getEstado() == 1 && esp.getFinalizado() == false){
                    res[i] = esp.getNombre();
                     i++; 
                 }
@@ -1138,7 +1144,7 @@ public class Sistema implements ISistema {
     
     
     public String[] listarEspectaculosAceptados(){
-        Query q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1");
+        Query q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false");
   
         try{
             List espectaculos = q.getResultList();
@@ -1362,10 +1368,10 @@ public class Sistema implements ISistema {
         
         Query q;
         if(orden == 0){
-            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 ORDER BY e.nombre ASC");
+            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false ORDER BY e.nombre ASC");
         }
         else{
-            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 ORDER BY e.fecha_registro DESC");
+            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false ORDER BY e.fecha_registro DESC");
         }
         
         try{
@@ -1704,11 +1710,23 @@ public class Sistema implements ISistema {
     }
     
     
-    
+    // DEVUELVE LA CANTIDAD DE FAVORITOS QUE TIENE UN ESPECTACULO, ES DECIR, ESPECTADORES QUE MARCARON COMO FAVORITO AL MISMO
     public long CantFavxEspectaculo(String espectaculo){
         Query q = em.createNativeQuery("SELECT COUNT(*) FROM espectador_espectaculo ee WHERE ee.favoritos_nombre = '"+espectaculo+"'");
         long cant = (long) q.getSingleResult();
         return cant;
+        
+    }
+    
+    
+    // FINALIZA EL ESPECTACULO CON NOMBRE IGUAL AL PASADO POR PARAMETRO
+    public void FinalizarEspectaculo(String espectaculo){
+        
+        em.getTransaction().begin();
+        Espectaculo e = em.find(Espectaculo.class, espectaculo);
+        e.FinalizarEspectaculo();
+        em.refresh(e);
+        em.getTransaction().commit();
         
     }
     
