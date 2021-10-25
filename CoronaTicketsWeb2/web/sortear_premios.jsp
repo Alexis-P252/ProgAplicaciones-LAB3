@@ -18,21 +18,24 @@
 
 <body>
     <%
-    
-    
     if(session.getAttribute("tipo") == null){
         %> <jsp:include page="error_identidad.jsp"/> <%
     }
     else if(session.getAttribute("tipo").equals("Espectador")){
         %> <jsp:include page="error_identidad.jsp"/> <%
     }
-    else{
-        
-       
+    else{    
     // INICIALIZAMOS EL SISTEMA
     ISistema sis;
     SistemaFactory fabrica = SistemaFactory.getInstance();
     sis = fabrica.getISistema();
+    
+    String artista = (String) session.getAttribute("user");
+    
+    List listaespectaculos = sis.listarespectaculosAceptadosXArtistaWeb(artista);
+
+    
+    
     %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -49,7 +52,7 @@
                 </form>
             </div>
             <div class="d-flex">
-                 <h3 class="me-5">Agregar Espectaculo a Paquete</h3>
+                 <h3 class="me-5">Sortear Premios de una Funcion</h3>
                 <h2> Bienvenido: <% out.println(session.getAttribute("user")); %></h2>
                 <form action="cerrarSesion.jsp">
                     <button class="btn btn-outline-dark me-2" type="submit" data-bs-toggle="modal" data-bs-target="#modalRegistro">
@@ -69,26 +72,57 @@
     <div class="row mt-5">
         <div class="col-10">
             <!--Div contenido principal-->
- 
             <div class="div-lista ml-2">
-                <form action="agregar_espectaculo2.jsp">
-                <select name= "selector"id="listaPlataforma" class="form-select w-25" aria-label="Default select example">
-                    <option selected>Seleccione una plataforma</option>
-                    <% // CARGAMOS LA LISTA DE NICKNAMES EN EL SELECT
-                    String[] lista = sis.listarPlataformas();    
-                    int i = 1;    
-                    for(String s: lista){
+                <form action="sortear_premios2.jsp">
+                    <div class="container">
+       
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Seleccione un espectaculo</h4>
+                            </div>
+                            <div class="col-6">
+                                <select name= "selector" id="listaEspectaculos" class="form-select" multiple aria-label="multiple select example" >
+                                    <% // CARGAMOS LA LISTA DE ESPECTACULOS DEL ARTISTA EN EL SELECT
+                                        int i = 1;
+                                        for(Object x: listaespectaculos){
+                                            Espectaculo e = (Espectaculo) x;
+                                            if(e != null){
+                                                if(e.getEstado() == 1 && e.getFinalizado() == false){
+                                                   %>
+                                                   <option  id="<% out.print(i); %>" value="<% out.print(e.getNombre()); %>"  > <% out.print(e.getNombre()); %></option>
+                                                   <%
+                                                   i++; 
+                                               }  
+                                            }
+                                           else{
+                                               %>
+                                               <option  id="MensajeError"  >No hay ningun espectaculo</option>
+                                               <% break;
+                                           }
+                                       }
+                                         
+                                    
+                                     %>
+                                </select>
 
-                    %>
-                    <option  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option>
-                    <%
-                    i++; 
-                    }
-                     %>
+                            </div>
+                        </div>
 
-                     
-                </select>
-                     <button id="btn_elejir_plataforma"type="submit"  class="mt-2 btn btn-secondary btn-lg btn-block"> Elegir Plataforma </button>
+                <br>
+                <br>
+
+                    </div>
+                    <div class="row mt-6">
+            
+                        <div class="col-5">
+                        </div>
+                        <div class="col-4">
+                                <button type="submit" id="elegir_espectaculo" class="btn btn-secondary btn-lg btn-block">Elegir Espectaculo</button>
+                        </div>
+                        <div class="col-4">
+                        </div>
+                    </div>
+                    <br> <br>
                 </form>  
                 
                 
@@ -114,18 +148,18 @@
     </div>
 
 
-   
+    
 </body>
 <script>
-     var listaPlataforma = document.getElementById("listaPlataforma");
-     var btn_elejir_plataforma = document.getElementById("btn_elejir_plataforma");
-     btn_elejir_plataforma.style.display = 'none';
+     var listaEspectaculos = document.getElementById("listaEspectaculos");
+     var elegir_espectaculo = document.getElementById("elegir_espectaculo");
+     elegir_espectaculo.style.display = 'none';
                          
-     listaPlataforma.addEventListener('change',function(){
-     btn_elejir_plataforma.style.display = 'inline';
+     listaEspectaculos.addEventListener('change',function(){
+     elegir_espectaculo.style.display = 'inline';
      })
                          
 </script>
-
 </html>
- <% } %>
+
+<% } %>

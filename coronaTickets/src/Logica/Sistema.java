@@ -38,7 +38,8 @@ public class Sistema implements ISistema {
       
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("coronaTicketsPU");
         this.em = emf.createEntityManager();
-
+        
+ 
     }
    
     
@@ -1731,6 +1732,68 @@ public class Sistema implements ISistema {
         em.refresh(e);
         em.getTransaction().commit();
         
+    }
+    
+    
+    // RECIBE UN ARREGLO CON ESPECTADORES Y UNA CANTIDAD DE PREMIOS A SORTEAR, DEVUELVE UN NUEVO ARREGLO CON LOS ESPECTADORES GANADORES DEL SORTEO.
+    public String [] SortearPremios(String[] espectadores,int premios){
+        
+        if(espectadores.length <= premios){
+            return espectadores;
+        }
+        else{
+            int[] num = new int [premios] ;
+            String [] ret = new String [premios];
+            for (int j=0;j<premios;j++){
+                ret[j] = "";
+                num[j]=-1;
+            }
+            boolean ok;
+            for (int i=0;i<premios;i++){
+                ok = true;
+                int numero = (int)(Math.random()*premios);
+                for (int k=0;k<premios;i++){
+                    if (num[k] == numero){
+                        i--;
+                        ok=false;
+                        break;
+                    }
+                    if(ok){
+                        ret[i]=espectadores[numero];
+                    }
+                }
+            }
+            return ret;
+        }
+    }
+    
+    public String [] listarEspectadoresxFuncion(String funcion){
+
+        Query q = em.createNativeQuery("SELECT er.espectador_nickname FROM espectador_registro er WHERE er.registros_key = '"+funcion+"';");
+        try{
+            List espectaculos = q.getResultList();
+            String res[] = new String[espectaculos.size()];
+            int i = 0;
+
+            for(Object object: espectaculos){
+                String s = (String) object;
+                res[i] = s;
+                i++;
+            }
+            if(i == 0){
+                String[] vacio = new String[1];
+                vacio[0] = "vacio";
+                return vacio;
+            }
+            else{
+                return res;
+            }
+        }
+        catch(Exception e){
+            String[] vacio = new String[1];
+            vacio[0] = "vacio";
+            return vacio;
+        }
     }
     
     
