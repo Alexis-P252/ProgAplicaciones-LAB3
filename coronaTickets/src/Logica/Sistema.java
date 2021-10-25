@@ -46,7 +46,7 @@ public class Sistema implements ISistema {
     //  ** LO PERSISTE A NIVEL DE LA BASE DE DATOS
     //  ** ASOCIA EL ESPECTACULO CON LA PLATAFORMA EN DONDE SE CREO
     //  ** ASOCIA EL ESPECTACULO CON EL ARTISTA QUE ORGANIZO EL MISMO
-    public void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen, String video){
+    public void crearEspectaculo(String Plataforma,String nombre,Date fecha_registro,float costo, String url,int cant_max_espec,int cant_min_espec,int duracion,String descripcion, String artista, List categorias, int estado, String imagen, String video, String desc_premio, int cant_premios){
         
         em.getTransaction().begin();
         
@@ -61,7 +61,7 @@ public class Sistema implements ISistema {
         }
         
       
-        Espectaculo e = new Espectaculo(nombre,fecha_registro,costo,url,cant_max_espec,cant_min_espec,duracion,descripcion, Plataforma, Listacategorias,estado, imagen, video);
+        Espectaculo e = new Espectaculo(nombre,fecha_registro,costo,url,cant_max_espec,cant_min_espec,duracion,descripcion, Plataforma, Listacategorias,estado, imagen, video, desc_premio, cant_premios);
         em.persist(e);
         p.agregarEspectaculo(e);
         a.asociarEspectaculo(e);
@@ -297,8 +297,11 @@ public class Sistema implements ISistema {
 
             for(Object object: espectaculos){
                 Espectaculo esp = (Espectaculo) object;
-                res[i] = esp.getNombre();
-                i++;
+                if(esp.getFinalizado() == false){
+                    res[i] = esp.getNombre();
+                    i++;
+                }
+                
             }
             return res;
             
@@ -334,8 +337,11 @@ public class Sistema implements ISistema {
            
             for (Object object: espectaculos){
                 Espectaculo e = (Espectaculo) object;
-                res[i] = e.getNombre();
-                i++;
+                if(e.getFinalizado() == false){
+                    res[i] = e.getNombre();
+                    i++; 
+                }
+                
             }
             return res;
             
@@ -358,7 +364,7 @@ public class Sistema implements ISistema {
            
             for (Object object: espectaculos){
                 Espectaculo e = (Espectaculo) object;
-                if(e.getEstado() == 1){
+                if(e.getEstado() == 1 && e.getFinalizado() == false){
                     res[i] = e.getNombre();
                     i++;
                 }
@@ -1124,7 +1130,7 @@ public class Sistema implements ISistema {
             for(Object object: espectaculos){
                 Espectaculo esp = (Espectaculo) object;
                 em.refresh(esp);
-                if(esp.getEstado() == 1){
+                if(esp.getEstado() == 1 && esp.getFinalizado() == false){
                    res[i] = esp.getNombre();
                     i++; 
                 }
@@ -1138,7 +1144,7 @@ public class Sistema implements ISistema {
     
     
     public String[] listarEspectaculosAceptados(){
-        Query q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1");
+        Query q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false");
   
         try{
             List espectaculos = q.getResultList();
@@ -1362,10 +1368,10 @@ public class Sistema implements ISistema {
         
         Query q;
         if(orden == 0){
-            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 ORDER BY e.nombre ASC");
+            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false ORDER BY e.nombre ASC");
         }
         else{
-            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 ORDER BY e.fecha_registro DESC");
+            q = em.createQuery("SELECT e FROM Espectaculo e WHERE e.estado = 1 AND e.finalizado = false ORDER BY e.fecha_registro DESC");
         }
         
         try{
@@ -1704,11 +1710,26 @@ public class Sistema implements ISistema {
     }
     
     
-    
+    // DEVUELVE LA CANTIDAD DE FAVORITOS QUE TIENE UN ESPECTACULO, ES DECIR, ESPECTADORES QUE MARCARON COMO FAVORITO AL MISMO
     public long CantFavxEspectaculo(String espectaculo){
         Query q = em.createNativeQuery("SELECT COUNT(*) FROM espectador_espectaculo ee WHERE ee.favoritos_nombre = '"+espectaculo+"'");
         long cant = (long) q.getSingleResult();
         return cant;
+        
+    }
+    
+    
+    // FINALIZA EL ESPECTACULO CON NOMBRE IGUAL AL PASADO POR PARAMETRO
+    public void FinalizarEspectaculo(String espectaculo){
+        
+        em.getTransaction().begin();
+        Espectaculo e = em.find(Espectaculo.class, espectaculo);
+        Query q = em.createQuery("UPDATE Espectaculo e SET e.finalizado = true WHERE e.nombre = :espectaculo");
+        q.setParameter("espectaculo", espectaculo);
+        q.executeUpdate();
+        e.FinalizarEspectaculo();
+        em.refresh(e);
+        em.getTransaction().commit();
         
     }
     

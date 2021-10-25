@@ -40,6 +40,8 @@
         String esp_min = (String) request.getParameter("esp_min");
         String esp_max = (String) request.getParameter("esp_max");
         String costo = (String) request.getParameter("costo");
+        String desc_premio = (String) request.getParameter("desc_premio");
+        String S_cant_premios = (String) request.getParameter("cant_premios");
         String plataforma = (String) request.getParameter("selector");
         String[] categorias = (String[]) request.getParameterValues("categorias");
         String artista = (String) session.getAttribute("user");
@@ -51,13 +53,13 @@
             imagen = "https://www.logolynx.com/images/logolynx/e2/e2b8ce1d51e62a370d7f91fef04f8e17.png";
         }
         
-        int espMin = 0,espMax = 0,duracion_num = 0;
+        int espMin = 0,espMax = 0,duracion_num = 0, cant_premios = 0;
         float costonum = 0;
         
         
         // VERIFICAMOS QUE EN NINGUN CAMPO NO SE HAYA INTRODUCIDO NINGUN CARACTER, EN CASO DE QUE ASI SEA, SE DA UN MENSAJE DE ERROR.
         if(nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || URL.isEmpty() ||
-            esp_min.isEmpty() || esp_max.isEmpty() || costo.isEmpty()){
+            esp_min.isEmpty() || esp_max.isEmpty() || costo.isEmpty() || desc_premio.isEmpty() ){
                 %><p>ERROR: Debe rellenar todos los campos</p><%   
                 ok = true;
         }
@@ -73,11 +75,21 @@
             ok = true; 
         }
         
+        // VERIFICAMOS QUE EL VALOR INTRODUCIDO EN EL CAMPO CANTIDAD DE PREMIOS SEA UN NUMERO
+        try{
+            cant_premios =  Integer.parseInt(S_cant_premios);
+        }
+        catch(Exception e){
+             %><p>ERROR: Cantidad de premios debe ser un valor numerico mayor a 0 </p><%
+                ok = true;
+        }
+        
+        // VERIFICAMOS QUE EL VALOR INTRODUCIDO EN EL CAMPO COSTO SEA UN NUMERO
         try{
             costonum =  Float.parseFloat(costo);
         }
         catch(Exception e){
-                %><p>ERROR: Costo debe ser un mayor numerico mayor a 0 </p><%
+                %><p>ERROR: Costo debe ser un valor numerico mayor a 0 </p><%
                 ok = true;
         }
 
@@ -107,7 +119,13 @@
             %><p>ERROR: Duracion debe ser un valor numerico mayor a 0 </p><%
             ok = true; 
         }
-
+        
+         // VERIFICAMOS QUE EL NUMERO INTRODUCIDO EN CANTIDAD DE PREMIOS SEA MAYOR A 0
+        if(cant_premios <= 0){
+            %><p>ERROR: Cantidad de premios debe ser mayor a 0 </p><%
+            ok = true; 
+            }
+        
         // VERIFICAMOS QUE EL NUMERO INTRODUCIDO EN COSTO SEA MAYOR A 0
         if(costonum <= 0){
             %><p>ERROR: Costo debe ser mayor a 0 </p><%
@@ -148,7 +166,7 @@
 
     
             %> <h4> Espectaculo agregado correctamente, pendiente de aceptacion por parte de un administrador </h4> <%
-            sis.crearEspectaculo(plataforma,nombre,alta,costonum, URL, espMax,espMin,duracion_num,descripcion, artista, listacategorias, 0, imagen, video);
+            sis.crearEspectaculo(plataforma,nombre,alta,costonum, URL, espMax,espMin,duracion_num,descripcion, artista, listacategorias, 0, imagen, video, desc_premio, cant_premios);
         }
 
     %>

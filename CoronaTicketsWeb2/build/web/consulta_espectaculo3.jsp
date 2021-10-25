@@ -87,6 +87,8 @@
             String costo = ""+dtEsp.GetCosto();
             String imagen = dtEsp.GetImagen();
             String video = dtEsp.GetVideo();
+            String desc_premio = dtEsp.getDesc_premio();
+            String cant_premios = ""+dtEsp.getCant_premios();
 
             float puntaje_prom = sis.PuntajePromedioEspectaculo(espectaculo);
             int[] cant_estrellas = sis.CantEstrellasEspectaculo(espectaculo);
@@ -193,7 +195,25 @@
             <div class="col-6">
                 <input class="h-700 form-control" type="text" readonly placeholder="<% out.println(cant_favs); %>">
             </div>
-        </div>    
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col-6">
+                <h4>Descripcion del premio</h4>
+            </div>
+            <div class="col-6">
+                <input class="h-700 form-control" type="text" readonly placeholder="<% out.println(desc_premio); %>">
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col-6">
+                <h4>Cantidad de premios</h4>
+            </div>
+            <div class="col-6">
+                <input class="h-700 form-control" type="text" readonly placeholder="<% out.println(cant_premios); %>">
+            </div>
+        </div>      
             
          <div class="row mt-3">
             <div class="col-6">

@@ -71,7 +71,7 @@
                                         for(Object x: lista){
                                             Espectaculo e = (Espectaculo) x;
                                             if(e != null){
-                                                if(e.getEstado() == 1){
+                                                if(e.getEstado() == 1 && e.getFinalizado() == false){
                                                    %>
                                                    <option  id="<% out.print(i); %>" value="<% out.print(e.getNombre()); %>"  > <% out.print(e.getNombre()); %></option>
                                                    <%

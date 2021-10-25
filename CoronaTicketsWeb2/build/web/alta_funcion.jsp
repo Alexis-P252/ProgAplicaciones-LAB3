@@ -87,7 +87,7 @@
                                         for(Object x: listaespectaculos){
                                             Espectaculo e = (Espectaculo) x;
                                             if(e != null){
-                                                if(e.getEstado() == 1){
+                                                if(e.getEstado() == 1 && e.getFinalizado() == false){
                                                    %>
                                                    <option  id="<% out.print(i); %>" value="<% out.print(e.getNombre()); %>"  > <% out.print(e.getNombre()); %></option>
                                                    <%
@@ -185,7 +185,7 @@
                         <div class="col-5">
                         </div>
                         <div class="col-4">
-                                <button type="submit" class="btn btn-secondary btn-lg btn-block">Crear Funcion de Espectaculo</button>
+                                <button type="submit" id="crear_funcion" class="btn btn-secondary btn-lg btn-block">Crear Funcion de Espectaculo</button>
                         </div>
                         <div class="col-4">
                         </div>
@@ -209,6 +209,8 @@
                 <a class="list-group-item list-group-item-action" href="agregar_espectaculo.jsp">Agregar Espectaculo a Paquete</a>
                 <a class="list-group-item list-group-item-action" href="seguir_usuario_art.jsp">Seguir a un Usuario</a>
                 <a class="list-group-item list-group-item-action" href="dejar_seguir_art.jsp">Dejar de seguir a un Usuario</a>
+                <a class="list-group-item list-group-item-action" href="finalizar_espectaculo.jsp">Finalizar espectaculo</a>
+                <a class="list-group-item list-group-item-action" href="consulta_espectaculo_finalizado.jsp">Consulta de Espectaculo finalizado</a>
         </div>
     </div>
 
@@ -217,11 +219,11 @@
 </body>
 <script>
      var listaEspectaculos = document.getElementById("listaEspectaculos");
-     var btn_mostrar_espectaculo = document.getElementById("btn_mostrar_espectaculo");
-     btn_mostrar_espectaculo.style.display = 'none';
+     var crear_funcion = document.getElementById("crear_funcion");
+     crear_funcion.style.display = 'none';
                          
      listaEspectaculos.addEventListener('change',function(){
-     btn_mostrar_espectaculo.style.display = 'inline';
+     crear_funcion.style.display = 'inline';
      })
                          
 </script>

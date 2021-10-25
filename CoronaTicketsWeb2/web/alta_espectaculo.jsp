@@ -196,6 +196,25 @@
                                 <input class="form-control" type="text" name="costo"  placeholder="">
                             </div>
                         </div>
+                         
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Descripcion del premio</h4>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="desc_premio"  placeholder="">
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h4>Cantidad de premios</h4>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="cant_premios"  placeholder="">
+                            </div>
+                        </div>     
+                             
 
                          <div class="row mt-3">
                             <div class="col-6">
@@ -248,6 +267,8 @@
                 <a class="list-group-item list-group-item-action" href="agregar_espectaculo.jsp">Agregar Espectaculo a Paquete</a>
                 <a class="list-group-item list-group-item-action" href="seguir_usuario_art.jsp">Seguir a un Usuario</a>
                 <a class="list-group-item list-group-item-action" href="dejar_seguir_art.jsp">Dejar de seguir a un Usuario</a>
+                <a class="list-group-item list-group-item-action" href="finalizar_espectaculo.jsp">Finalizar espectaculo</a>
+                <a class="list-group-item list-group-item-action" href="consulta_espectaculo_finalizado.jsp">Consulta de Espectaculo finalizado</a>
         </div>
     </div>
 

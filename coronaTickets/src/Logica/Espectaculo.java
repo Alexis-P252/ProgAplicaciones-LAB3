@@ -33,6 +33,9 @@ public class Espectaculo {
     private int estado;
     private String imagen;
     private String URL_video;
+    private String desc_premio;
+    private int cant_premios;
+    private boolean finalizado;
     @OneToMany
     private Map<String,Funcion> Funciones;
     @OneToMany 
@@ -41,7 +44,7 @@ public class Espectaculo {
     public Espectaculo (){
     }
 
-    public Espectaculo(String nombre, Date fecha_registro, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String Plataforma, List categorias, int estado, String imagen, String video) {
+    public Espectaculo(String nombre, Date fecha_registro, float costo, String url, int cant_max_espec, int cant_min_espec, int duracion, String descripcion, String Plataforma, List categorias, int estado, String imagen, String video, String desc_premio, int cant_premios) {
         this.nombre = nombre;
         this.fecha_registro = fecha_registro;
         this.costo = costo;
@@ -54,6 +57,9 @@ public class Espectaculo {
         this.estado = estado;
         this.imagen = imagen;
         this.URL_video = video;
+        this.desc_premio = desc_premio;
+        this.cant_premios = cant_premios;
+        this.finalizado = false;
         this.Funciones = new HashMap();
         
         this.categorias = new HashMap();
@@ -99,6 +105,10 @@ public class Espectaculo {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public void FinalizarEspectaculo(){
+        this.finalizado = true;
     }
 
     public String getNombre() {
@@ -149,8 +159,20 @@ public class Espectaculo {
         return URL_video;
     }
     
+    public String getDesc_premio(){
+        return this.desc_premio;
+    }
+    
+    public int getCant_premios(){
+        return this.cant_premios;
+    }
+    
+    public boolean getFinalizado(){
+        return this.finalizado;
+    }
+    
     public DtEspectaculo crearDtEspectaculo (){
-        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen, this.URL_video);
+        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen, this.URL_video, this.desc_premio, this.cant_premios, this.finalizado);
         return dt;   
     }
     

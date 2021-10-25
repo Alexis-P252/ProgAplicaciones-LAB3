@@ -189,7 +189,7 @@ public class main extends javax.swing.JFrame {
         LabelNombre4 = new javax.swing.JLabel();
         FieldEspMin4 = new javax.swing.JTextField();
         LabelEsp_Min4 = new javax.swing.JLabel();
-        FieldURL4 = new javax.swing.JTextField();
+        FieldCant_Premios4 = new javax.swing.JTextField();
         LabelDescripcion4 = new javax.swing.JLabel();
         FieldDescripcion4 = new javax.swing.JTextField();
         LabelDuracion4 = new javax.swing.JLabel();
@@ -209,15 +209,17 @@ public class main extends javax.swing.JFrame {
         FieldVideo4 = new javax.swing.JTextField();
         LabelImagen5 = new javax.swing.JLabel();
         FieldImagen4 = new javax.swing.JTextField();
+        LabelDuracion7 = new javax.swing.JLabel();
+        LabelDuracion9 = new javax.swing.JLabel();
+        FieldURL4 = new javax.swing.JTextField();
+        FieldDesc_Premio4 = new javax.swing.JTextField();
         FrameConsultaEspectaculo = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         FieldEspMin5 = new javax.swing.JTextField();
         LabelEsp_Min5 = new javax.swing.JLabel();
-        FieldURL5 = new javax.swing.JTextField();
         FieldDescripcion5 = new javax.swing.JTextField();
         LabelDuracion5 = new javax.swing.JLabel();
         FieldNombre5 = new javax.swing.JTextField();
-        LabelURL5 = new javax.swing.JLabel();
         FieldCosto5 = new javax.swing.JTextField();
         LabelCosto5 = new javax.swing.JLabel();
         FieldDuracion5 = new javax.swing.JTextField();
@@ -228,7 +230,7 @@ public class main extends javax.swing.JFrame {
         LabelNombre6 = new javax.swing.JLabel();
         FieldEspMin6 = new javax.swing.JTextField();
         LabelEsp_Min6 = new javax.swing.JLabel();
-        FieldURL6 = new javax.swing.JTextField();
+        FieldCant_Premios5 = new javax.swing.JTextField();
         LabelDescripcion6 = new javax.swing.JLabel();
         FieldDescripcion7 = new javax.swing.JTextField();
         LabelDuracion6 = new javax.swing.JLabel();
@@ -254,6 +256,12 @@ public class main extends javax.swing.JFrame {
         LabelSeleccioneEspectaculo6 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
         ListaCategoria5 = new javax.swing.JList<>();
+        LabelURL5 = new javax.swing.JLabel();
+        FieldDesc_Premio5 = new javax.swing.JTextField();
+        LabelURL11 = new javax.swing.JLabel();
+        FieldURL5 = new javax.swing.JTextField();
+        LabelURL7 = new javax.swing.JLabel();
+        FieldURL7 = new javax.swing.JTextField();
         FrameAltaPaquete = new javax.swing.JInternalFrame();
         jPanel7 = new javax.swing.JPanel();
         LabelIngreseDatos8 = new javax.swing.JLabel();
@@ -1186,14 +1194,14 @@ public class main extends javax.swing.JFrame {
         jPanel5.add(LabelEsp_Min4);
         LabelEsp_Min4.setBounds(290, 200, 130, 15);
 
-        FieldURL4.setBackground(new java.awt.Color(204, 204, 204));
-        FieldURL4.addActionListener(new java.awt.event.ActionListener() {
+        FieldCant_Premios4.setBackground(new java.awt.Color(204, 204, 204));
+        FieldCant_Premios4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldURL4ActionPerformed(evt);
+                FieldCant_Premios4ActionPerformed(evt);
             }
         });
-        jPanel5.add(FieldURL4);
-        FieldURL4.setBounds(120, 350, 160, 30);
+        jPanel5.add(FieldCant_Premios4);
+        FieldCant_Premios4.setBounds(120, 450, 160, 30);
 
         LabelDescripcion4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelDescripcion4.setForeground(new java.awt.Color(255, 255, 255));
@@ -1212,9 +1220,9 @@ public class main extends javax.swing.JFrame {
 
         LabelDuracion4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelDuracion4.setForeground(new java.awt.Color(255, 255, 255));
-        LabelDuracion4.setText("Duracion (min) ");
+        LabelDuracion4.setText("Cant Premios");
         jPanel5.add(LabelDuracion4);
-        LabelDuracion4.setBounds(20, 300, 90, 15);
+        LabelDuracion4.setBounds(10, 440, 120, 15);
 
         FieldNombre4.setBackground(new java.awt.Color(204, 204, 204));
         FieldNombre4.addActionListener(new java.awt.event.ActionListener() {
@@ -1347,6 +1355,36 @@ public class main extends javax.swing.JFrame {
         jPanel5.add(FieldImagen4);
         FieldImagen4.setBounds(440, 350, 160, 30);
 
+        LabelDuracion7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelDuracion7.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDuracion7.setText("Duracion (min) ");
+        jPanel5.add(LabelDuracion7);
+        LabelDuracion7.setBounds(20, 300, 90, 15);
+
+        LabelDuracion9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelDuracion9.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDuracion9.setText("Descripcion premio");
+        jPanel5.add(LabelDuracion9);
+        LabelDuracion9.setBounds(10, 400, 120, 15);
+
+        FieldURL4.setBackground(new java.awt.Color(204, 204, 204));
+        FieldURL4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldURL4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(FieldURL4);
+        FieldURL4.setBounds(120, 350, 160, 30);
+
+        FieldDesc_Premio4.setBackground(new java.awt.Color(204, 204, 204));
+        FieldDesc_Premio4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldDesc_Premio4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(FieldDesc_Premio4);
+        FieldDesc_Premio4.setBounds(120, 400, 160, 30);
+
         FrameAltaEspectaculo.getContentPane().add(jPanel5);
         jPanel5.setBounds(0, 0, 620, 540);
 
@@ -1373,16 +1411,6 @@ public class main extends javax.swing.JFrame {
         jPanel6.add(LabelEsp_Min5);
         LabelEsp_Min5.setBounds(290, 200, 130, 15);
 
-        FieldURL5.setEditable(false);
-        FieldURL5.setBackground(new java.awt.Color(204, 204, 204));
-        FieldURL5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldURL5ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(FieldURL5);
-        FieldURL5.setBounds(120, 350, 160, 30);
-
         FieldDescripcion5.setEditable(false);
         FieldDescripcion5.setBackground(new java.awt.Color(204, 204, 204));
         FieldDescripcion5.addActionListener(new java.awt.event.ActionListener() {
@@ -1408,12 +1436,6 @@ public class main extends javax.swing.JFrame {
         });
         jPanel6.add(FieldNombre5);
         FieldNombre5.setBounds(120, 200, 160, 30);
-
-        LabelURL5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LabelURL5.setForeground(new java.awt.Color(255, 255, 255));
-        LabelURL5.setText("URL");
-        jPanel6.add(LabelURL5);
-        LabelURL5.setBounds(20, 350, 50, 15);
 
         FieldCosto5.setEditable(false);
         FieldCosto5.setBackground(new java.awt.Color(204, 204, 204));
@@ -1488,15 +1510,15 @@ public class main extends javax.swing.JFrame {
         jPanel8.add(LabelEsp_Min6);
         LabelEsp_Min6.setBounds(290, 200, 130, 15);
 
-        FieldURL6.setEditable(false);
-        FieldURL6.setBackground(new java.awt.Color(204, 204, 204));
-        FieldURL6.addActionListener(new java.awt.event.ActionListener() {
+        FieldCant_Premios5.setEditable(false);
+        FieldCant_Premios5.setBackground(new java.awt.Color(204, 204, 204));
+        FieldCant_Premios5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldURL6ActionPerformed(evt);
+                FieldCant_Premios5ActionPerformed(evt);
             }
         });
-        jPanel8.add(FieldURL6);
-        FieldURL6.setBounds(120, 350, 160, 30);
+        jPanel8.add(FieldCant_Premios5);
+        FieldCant_Premios5.setBounds(120, 400, 160, 30);
 
         LabelDescripcion6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LabelDescripcion6.setForeground(new java.awt.Color(255, 255, 255));
@@ -1662,8 +1684,56 @@ public class main extends javax.swing.JFrame {
         jPanel8.add(jScrollPane14);
         jScrollPane14.setBounds(620, 30, 120, 140);
 
+        LabelURL5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelURL5.setForeground(new java.awt.Color(255, 255, 255));
+        LabelURL5.setText("Cant Premios");
+        jPanel8.add(LabelURL5);
+        LabelURL5.setBounds(10, 400, 100, 15);
+
+        FieldDesc_Premio5.setEditable(false);
+        FieldDesc_Premio5.setBackground(new java.awt.Color(204, 204, 204));
+        FieldDesc_Premio5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldDesc_Premio5ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(FieldDesc_Premio5);
+        FieldDesc_Premio5.setBounds(440, 350, 160, 30);
+
+        LabelURL11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelURL11.setForeground(new java.awt.Color(255, 255, 255));
+        LabelURL11.setText("Descripcion premio");
+        jPanel8.add(LabelURL11);
+        LabelURL11.setBounds(290, 360, 140, 10);
+
+        FieldURL5.setEditable(false);
+        FieldURL5.setBackground(new java.awt.Color(204, 204, 204));
+        FieldURL5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldURL5ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(FieldURL5);
+        FieldURL5.setBounds(120, 350, 160, 30);
+
         jPanel6.add(jPanel8);
         jPanel8.setBounds(0, 0, 810, 470);
+
+        LabelURL7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelURL7.setForeground(new java.awt.Color(255, 255, 255));
+        LabelURL7.setText("URL");
+        jPanel6.add(LabelURL7);
+        LabelURL7.setBounds(20, 350, 50, 15);
+
+        FieldURL7.setEditable(false);
+        FieldURL7.setBackground(new java.awt.Color(204, 204, 204));
+        FieldURL7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldURL7ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(FieldURL7);
+        FieldURL7.setBounds(120, 350, 160, 30);
 
         FrameConsultaEspectaculo.getContentPane().add(jPanel6);
         jPanel6.setBounds(0, 0, 760, 540);
@@ -3711,9 +3781,9 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldEspMin4ActionPerformed
 
-    private void FieldURL4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL4ActionPerformed
+    private void FieldCant_Premios4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCant_Premios4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldURL4ActionPerformed
+    }//GEN-LAST:event_FieldCant_Premios4ActionPerformed
 
     private void FieldDescripcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldDescripcion4ActionPerformed
         // TODO add your handling code here:
@@ -3741,7 +3811,7 @@ public class main extends javax.swing.JFrame {
         this.FieldNombre4.setText("");
         this.FieldDescripcion4.setText("");
         this.FieldDuracion4.setText("");
-        this.FieldURL4.setText("");
+        this.FieldCant_Premios4.setText("");
         this.FieldEspMin4.setText("");
         this.FieldEspMax4.setText("");
         this.FieldCosto4.setText("");
@@ -3753,21 +3823,23 @@ public class main extends javax.swing.JFrame {
         // OBTENEMOS LOS VALORES DE LOS JTextField y preparamos variables intermedias para obtener los resultados
         String Scosto = this.FieldCosto4.getText();
         String nombre = this.FieldNombre4.getText();
-        String url = this.FieldURL4.getText();
+        String url = this.FieldCant_Premios4.getText();
         String descripcion = this.FieldDescripcion4.getText();
         String imagen = this.FieldVideo4.getText();
         String video = this.FieldVideo4.getText();
+        String desc_premio = this.FieldDesc_Premio4.getText();
+        String S_Cant_Premios = this.FieldCant_Premios4.getText();
         if(imagen.equals("")){
             imagen = "https://www.logolynx.com/images/logolynx/e2/e2b8ce1d51e62a370d7f91fef04f8e17.png";
         }
         
-        int espMin = 0,espMax = 0,duracion = 0;
+        int espMin = 0,espMax = 0,duracion = 0, cant_premios = 0;
         float costo = 0;
         
         
         // VERIFICAMOS QUE EN NINGUN CAMPO NO SE HAYA INTRODUCIDO NINGUN CARACTER, EN CASO DE QUE ASI SEA, SE DA UN MENSAJE DE ERROR.
         if(nombre.isEmpty() || descripcion.isEmpty() || this.FieldDuracion4.getText().isEmpty() || url.isEmpty() ||
-           this.FieldEspMin4.getText().isEmpty() || this.FieldEspMax4.getText().isEmpty() || this.FieldCosto4.getText().isEmpty()){
+           this.FieldEspMin4.getText().isEmpty() || this.FieldEspMax4.getText().isEmpty() || this.FieldCosto4.getText().isEmpty() || this.FieldDesc_Premio4.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"Complete todos los campos","Alta Espectaculo",JOptionPane.ERROR_MESSAGE);       
         }
         
@@ -3781,6 +3853,15 @@ public class main extends javax.swing.JFrame {
         
         // AHORA VERIFICAMOS QUE LOS VALORES INTRODUCIDOS EN LOS CAMPOS SEAN CORRECTOS Y COHERENTES.
         else{
+            // VERIFICAMOS QUE EL VALOR INTRODUCIDO EN EL CAMPO CANTIDAD DE PREMIOS SEA UN NUMERO
+            try{
+                cant_premios =  Integer.parseInt(S_Cant_Premios);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(this,"Cantidad de premios debe ser un valor numerico mayor a 0","Alta Espectaculo",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             // VERIFICAMOS QUE EL VALOR INTRODUCIDO EN EL CAMPO COSTO SEA UN NUMERO
             try{
                 costo =  Float.parseFloat(Scosto);
@@ -3811,6 +3892,12 @@ public class main extends javax.swing.JFrame {
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(this,"Duracion debe ser un valor numerico mayor a 0","Alta Espectaculo",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // VERIFICAMOS QUE EL NUMERO INTRODUCIDO EN CANTIDAD DE PREMIOS SEA MAYOR A 0
+            if(cant_premios <= 0){
+                JOptionPane.showMessageDialog(this,"Cantidad de premios debe ser mayor a 0","Alta Espectaculo",JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -3867,18 +3954,20 @@ public class main extends javax.swing.JFrame {
             
             
             // FINALMENTE TRAS COMPROBAR QUE NO HAY ERRORES, CREAMOS EL ESPECTACULO
-            sis.crearEspectaculo(Plataforma, nombre ,fecha_registro,costo,url,espMax,espMin,duracion,descripcion, artista,categoriasSeleccionadas,1, imagen, video);
+            sis.crearEspectaculo(Plataforma, nombre ,fecha_registro,costo,url,espMax,espMin,duracion,descripcion, artista,categoriasSeleccionadas,1, imagen, video, desc_premio, cant_premios);
             JOptionPane.showMessageDialog(this,"Espectaculo creado correctamente","Alta Espectaculo",JOptionPane.INFORMATION_MESSAGE);
             
             this.FrameAltaEspectaculo.setVisible(false);
             this.FieldNombre4.setText("");
             this.FieldDescripcion4.setText("");
             this.FieldDuracion4.setText("");
-            this.FieldURL4.setText("");
+            this.FieldCant_Premios4.setText("");
             this.FieldEspMin4.setText("");
             this.FieldEspMax4.setText("");
             this.FieldCosto4.setText("");
             this.FieldVideo4.setText("");
+            this.FieldDesc_Premio4.setText("");
+            this.FieldCant_Premios4.setText("");
             
         }
     }//GEN-LAST:event_ButtonConfirmar4ActionPerformed
@@ -3891,9 +3980,9 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldEspMin5ActionPerformed
 
-    private void FieldURL5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL5ActionPerformed
+    private void FieldDesc_Premio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldDesc_Premio5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldURL5ActionPerformed
+    }//GEN-LAST:event_FieldDesc_Premio5ActionPerformed
 
     private void FieldDescripcion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldDescripcion5ActionPerformed
         // TODO add your handling code here:
@@ -3957,6 +4046,8 @@ public class main extends javax.swing.JFrame {
         String URL = Dt.GetUrl();
         String duracion = ""+Dt.GetDuracion();
         String costo = ""+Dt.GetCosto();
+        String desc_premio = Dt.getDesc_premio();
+        String cant_premios = ""+Dt.getCant_premios();
 
         this.FieldNombre5.setText(nombre);
         this.FieldEspMin5.setText(cant_mint);
@@ -3965,6 +4056,8 @@ public class main extends javax.swing.JFrame {
         this.FieldURL5.setText(URL);
         this.FieldDuracion5.setText(duracion);
         this.FieldCosto5.setText(costo);
+        this.FieldDesc_Premio5.setText(desc_premio);
+        this.FieldCant_Premios5.setText(cant_premios);
         
         String[] paquetes = sis.listarPaquetesdeEsp(espectaculo);
         this.ListaPaquetes5.setListData(paquetes);
@@ -4213,7 +4306,7 @@ public class main extends javax.swing.JFrame {
             this.FieldEspMin5.setText(cant_mint);
             this.FieldEspMax5.setText(cant_maxt);
             this.FieldDescripcion5.setText (descripcion);
-            this.FieldURL5.setText(URL);
+            this.FieldDesc_Premio5.setText(URL);
             this.FieldDuracion5.setText(duracion);
             this.FieldCosto5.setText(costo);
             
@@ -4827,10 +4920,12 @@ public class main extends javax.swing.JFrame {
         this.FieldNombre5.setText("");
         this.FieldDescripcion5.setText("");
         this.FieldDuracion5.setText("");
-        this.FieldURL5.setText("");
+        this.FieldDesc_Premio5.setText("");
         this.FieldEspMin5.setText("");
         this.FieldEspMax5.setText("");
         this.FieldCosto5.setText("");
+        this.FieldDesc_Premio5.setText("");
+        this.FieldCant_Premios5.setText("");
         this.ListaEspectaculos5.setSelectedIndex(-1);
         this.ListaPlataforma5.setSelectedIndex(-1);
     }//GEN-LAST:event_ButtonCerrar5ActionPerformed
@@ -4855,9 +4950,9 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldDescripcion7ActionPerformed
 
-    private void FieldURL6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL6ActionPerformed
+    private void FieldCant_Premios5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCant_Premios5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FieldURL6ActionPerformed
+    }//GEN-LAST:event_FieldCant_Premios5ActionPerformed
 
     private void FieldEspMin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldEspMin6ActionPerformed
         // TODO add your handling code here:
@@ -4885,7 +4980,7 @@ public class main extends javax.swing.JFrame {
             this.FieldEspMin5.setText(cant_mint);
             this.FieldEspMax5.setText(cant_maxt);
             this.FieldDescripcion5.setText (descripcion);
-            this.FieldURL5.setText(URL);
+            this.FieldDesc_Premio5.setText(URL);
             this.FieldDuracion5.setText(duracion);
             this.FieldCosto5.setText(costo);
 
@@ -4978,6 +5073,22 @@ public class main extends javax.swing.JFrame {
     private void FieldVideo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldVideo4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldVideo4ActionPerformed
+
+    private void FieldURL4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldURL4ActionPerformed
+
+    private void FieldDesc_Premio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldDesc_Premio4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldDesc_Premio4ActionPerformed
+
+    private void FieldURL7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldURL7ActionPerformed
+
+    private void FieldURL5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldURL5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldURL5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -5165,12 +5276,16 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField FieldBiografia;
     private javax.swing.JTextField FieldBiografia2;
     private javax.swing.JTextField FieldBiografia3;
+    private javax.swing.JTextField FieldCant_Premios4;
+    private javax.swing.JTextField FieldCant_Premios5;
     private javax.swing.JPasswordField FieldConfPassword1;
     private javax.swing.JTextField FieldCorreo2;
     private javax.swing.JTextField FieldCosto4;
     private javax.swing.JTextField FieldCosto5;
     private javax.swing.JTextField FieldCosto6;
     private javax.swing.JTextField FieldCostoTotal22;
+    private javax.swing.JTextField FieldDesc_Premio4;
+    private javax.swing.JTextField FieldDesc_Premio5;
     private javax.swing.JTextField FieldDescripcion;
     private javax.swing.JTextField FieldDescripcion11;
     private javax.swing.JTextField FieldDescripcion2;
@@ -5221,7 +5336,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField FieldSitioWeb;
     private javax.swing.JTextField FieldURL4;
     private javax.swing.JTextField FieldURL5;
-    private javax.swing.JTextField FieldURL6;
+    private javax.swing.JTextField FieldURL7;
     private javax.swing.JTextField FieldVideo4;
     private javax.swing.JInternalFrame FrameAceptarEspectaculo;
     private javax.swing.JInternalFrame FrameAddEspectaculo;
@@ -5270,7 +5385,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel LabelDuracion4;
     private javax.swing.JLabel LabelDuracion5;
     private javax.swing.JLabel LabelDuracion6;
+    private javax.swing.JLabel LabelDuracion7;
     private javax.swing.JLabel LabelDuracion8;
+    private javax.swing.JLabel LabelDuracion9;
     private javax.swing.JLabel LabelEmail;
     private javax.swing.JLabel LabelEmail1;
     private javax.swing.JLabel LabelEmail2;
@@ -5350,9 +5467,11 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel LabelSeleccionePlataforma9;
     private javax.swing.JLabel LabelSitioWeb;
     private javax.swing.JLabel LabelURL10;
+    private javax.swing.JLabel LabelURL11;
     private javax.swing.JLabel LabelURL4;
     private javax.swing.JLabel LabelURL5;
     private javax.swing.JLabel LabelURL6;
+    private javax.swing.JLabel LabelURL7;
     private javax.swing.JLabel LabelURL8;
     private javax.swing.JLabel LabelURL9;
     private javax.swing.JList<String> ListaArtista4;

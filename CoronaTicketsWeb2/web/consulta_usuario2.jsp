@@ -192,11 +192,12 @@
                         if(listaEspectaculos[0] != null){
                             j = 1;
                             for(String s: listaEspectaculos){
-        
-                            %>
-                            <option  id="<% out.print(j); %>" value="<% out.print(s); %>"> <% out.print(s); %></option>
-                            <%
-                            j++; 
+                                if(s != null){
+                                    %>
+                                    <option  id="<% out.print(j); %>" value="<% out.print(s); %>"> <% out.print(s); %></option>
+                                    <%
+                                    j++;     
+                                }    
                             }
                         }else{
                             %>
