@@ -1724,6 +1724,9 @@ public class Sistema implements ISistema {
         
         em.getTransaction().begin();
         Espectaculo e = em.find(Espectaculo.class, espectaculo);
+        Query q = em.createQuery("UPDATE Espectaculo e SET e.finalizado = true WHERE e.nombre = :espectaculo");
+        q.setParameter("espectaculo", espectaculo);
+        q.executeUpdate();
         e.FinalizarEspectaculo();
         em.refresh(e);
         em.getTransaction().commit();

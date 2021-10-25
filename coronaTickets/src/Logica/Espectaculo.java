@@ -172,7 +172,7 @@ public class Espectaculo {
     }
     
     public DtEspectaculo crearDtEspectaculo (){
-        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen, this.URL_video, this.desc_premio, this.cant_premios);
+        DtEspectaculo dt = new DtEspectaculo(this.nombre,this.fecha_registro,this.costo,this.url, this.cant_max_espec, this.cant_min_espec, this.duracion, this.descripcion, this.imagen, this.URL_video, this.desc_premio, this.cant_premios, this.finalizado);
         return dt;   
     }
     

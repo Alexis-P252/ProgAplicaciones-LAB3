@@ -264,6 +264,7 @@
                 <a class="list-group-item list-group-item-action" href="seguir_usuario_art.jsp">Seguir a un Usuario</a>
                 <a class="list-group-item list-group-item-action" href="dejar_seguir_art.jsp">Dejar de seguir a un Usuario</a>
                 <a class="list-group-item list-group-item-action" href="finalizar_espectaculo.jsp">Finalizar espectaculo</a>
+                <a class="list-group-item list-group-item-action" href="consulta_espectaculo_finalizado.jsp">Consulta de Espectaculo finalizado</a>
         </div>
     </div>
 
