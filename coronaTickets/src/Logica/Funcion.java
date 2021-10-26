@@ -82,6 +82,10 @@ public class Funcion {
         return this.sorteado;
     }
     
+    public void Sortear(){
+        this.sorteado = true;
+    }
+    
     public DtFuncion crearDtFuncion (){
         DtFuncion dt = new DtFuncion (this.nombre, this.fecha_registro,this.fecha_hora, this.imagen, this.sorteado, this.espectaculo);
         return dt;

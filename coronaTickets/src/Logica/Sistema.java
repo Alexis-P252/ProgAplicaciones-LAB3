@@ -16,6 +16,7 @@ import Logica.DtEspectaculo;
 import Logica.DtUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -35,11 +36,11 @@ public class Sistema implements ISistema {
     private EntityManager em;
     
     public Sistema(){
-      
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("coronaTicketsPU");
         this.em = emf.createEntityManager();
-        
  
+        
     }
    
     
@@ -1746,26 +1747,29 @@ public class Sistema implements ISistema {
             String [] ret = new String [premios];
             for (int j=0;j<premios;j++){
                 ret[j] = "";
-                num[j]=-1;
+                num[j] = -1;
             }
             boolean ok;
             for (int i=0;i<premios;i++){
                 ok = true;
-                int numero = (int)(Math.random()*premios);
-                for (int k=0;k<premios;i++){
+                int numero = (int)(Math.random()*espectadores.length -1);
+                for (int k=0;k<premios;k++){
                     if (num[k] == numero){
                         i--;
                         ok=false;
                         break;
-                    }
-                    if(ok){
-                        ret[i]=espectadores[numero];
-                    }
+                    }   
+                }
+                if(ok){
+                    ret[i]=espectadores[numero];
+                    num[i] = numero;
                 }
             }
             return ret;
         }
     }
+    
+    
     
     public String [] listarEspectadoresxFuncion(String funcion){
 
@@ -1796,6 +1800,53 @@ public class Sistema implements ISistema {
         }
     }
     
+    public void SortearFuncion(String funcion, String espectaculo, String desc_premio, int cant_premios, Date actual, Date fecha_vencimiento, String[] ganadores){
+   
+        Funcion f = em.find(Funcion.class, funcion);
+        
+        for(String s: ganadores){
+            Espectador e = em.find(Espectador.class, s);
+            
+            Premio p = new Premio(actual, fecha_vencimiento, desc_premio, espectaculo,f);
+            em.getTransaction().begin();
+            em.persist(p);
+            e.AgregarPremio(p);
+            em.getTransaction().commit();
+            em.refresh(e);
+        }
+        em.getTransaction().begin();
+        f.Sortear();
+        em.getTransaction().commit();
+        em.refresh(f);
+        
+    }
+    
+    public List GanadoresdeSorteo(String funcion){
+        Query q = em.createNativeQuery("SELECT ep.espectador_nickname FROM espectador_premio ep JOIN premio pr ON ep.premios_id = pr.id WHERE pr.funcion_nombre = '"+funcion+"'");
+        
+        return q.getResultList();
+    }
+    
+    public List<DtPremio> SorteosGanadosxEspectador (String espectador){
+        
+        Query q = em.createQuery("SELECT e.premios FROM Espectador e WHERE e.nickname = :nickname");
+        q.setParameter("nickname", espectador);
+        
+        try{
+            List lista = q.getResultList();
+            List res = new ArrayList();
+            for(Object object: lista){
+                Premio p = (Premio) object;
+                DtPremio dtP = p.ArmarDT();
+                res.add(dtP);
+
+            }
+            return res;
+        }catch(Exception e){
+            return new ArrayList();
+        }
+
+    }
     
         
        

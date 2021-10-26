@@ -110,6 +110,7 @@ public interface ISistema {
     public abstract void EliminarFavorito(String nickname, String espectaculo);
     public abstract void FinalizarEspectaculo(String espectaculo);
     public abstract String [] SortearPremios(String[] espectadores,int premios);
+    public abstract void SortearFuncion(String funcion, String espectaculo, String desc_premio, int cant_premios, Date actual, Date fecha_vencimiento, String[] ganadores);
     
 }
 

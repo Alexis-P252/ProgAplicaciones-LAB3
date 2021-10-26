@@ -8,7 +8,7 @@ import javax.persistence.metamodel.MapAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-25T11:36:45")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2021-10-26T11:31:48")
 @StaticMetamodel(Paquete.class)
 public class Paquete_ { 
 
