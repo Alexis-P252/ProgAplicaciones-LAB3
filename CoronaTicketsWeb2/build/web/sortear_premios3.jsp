@@ -7,6 +7,8 @@
 <%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -131,7 +133,10 @@
             <h3 class="text-center"> Esta funcion todavia no se ha realizado,no se pueden sortear premios</h3> 
         <% } 
         else{ 
-            if(sorteado){ %>
+            if(sorteado){
+
+            List ganadores = sis.GanadoresdeSorteo(funcion);
+            %>
                 <h3 class="text-center"> Ya se realizo el sorteo de esta funcion.</h3>
                 
                 <div class="row mt-3">
@@ -139,7 +144,26 @@
                         <h4>Ganadores</h4>
                     </div>
                     <div class="col-6">
-                         
+                         <select name= "selector" id="listaPaquete" class="form-select" multiple aria-label="multiple select example">
+                        <% // CARGAMOS LA LISTA DE PAQUETES DEL ESPECTACULO
+                        int k = 1;
+                        if(ganadores != null){
+                            k = 1;
+                            for(Object o: ganadores){
+                                String s = (String) o;
+                            %>
+                            <option  id="<% out.print(k); %>" value="<% out.print(o); %>"> <% out.print(o); %></option>
+                            <%
+                            k++;
+                            }
+                        }else{
+                            %>
+                            <option  id="MensajeError" > <% out.print("Al parecer no hubo ganadores..."); %></option>
+                            <%
+                        }
+                        
+                         %>
+                    </select>
                     </div>
                 </div>
             <%}

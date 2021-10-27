@@ -40,7 +40,6 @@ public class Sistema implements ISistema {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("coronaTicketsPU");
         this.em = emf.createEntityManager();
  
-        
     }
    
     

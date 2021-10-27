@@ -50,6 +50,8 @@ public interface ISistema {
     public abstract int[] CantEstrellasEspectaculo(String espectaculo);
     public abstract String[] listarEspectaculosFavoritos(String nickname);
     public abstract String [] listarEspectadoresxFuncion(String funcion);
+    public abstract List GanadoresdeSorteo(String funcion);
+    public abstract List<DtPremio> SorteosGanadosxEspectador (String espectador);
     
     // INGRESAR DATOS
     

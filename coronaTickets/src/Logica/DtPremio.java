@@ -29,6 +29,14 @@ public class DtPremio {
         this.funcion = funcion;
     }
 
+    public int GetID(){
+        return id;
+    }
+    
+    public Date getFecha_sorteo() {
+        return fecha_sorteo;
+    }
+    
     public Date getFecha_caduca() {
         return fecha_caduca;
     }
