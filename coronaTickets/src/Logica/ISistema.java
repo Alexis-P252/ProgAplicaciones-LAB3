@@ -49,6 +49,9 @@ public interface ISistema {
     public abstract List BuscadorPaquete(String texto, int orden);
     public abstract int[] CantEstrellasEspectaculo(String espectaculo);
     public abstract String[] listarEspectaculosFavoritos(String nickname);
+    public abstract String [] listarEspectadoresxFuncion(String funcion);
+    public abstract List GanadoresdeSorteo(String funcion);
+    public abstract List<DtPremio> SorteosGanadosxEspectador (String espectador);
     
     // INGRESAR DATOS
     
@@ -108,6 +111,8 @@ public interface ISistema {
     public abstract void AgregarFavorito(String nickname, String espectaculo);
     public abstract void EliminarFavorito(String nickname, String espectaculo);
     public abstract void FinalizarEspectaculo(String espectaculo);
+    public abstract String [] SortearPremios(String[] espectadores,int premios);
+    public abstract void SortearFuncion(String funcion, String espectaculo, String desc_premio, int cant_premios, Date actual, Date fecha_vencimiento, String[] ganadores);
     
 }
 

@@ -26,6 +26,7 @@ public class Funcion {
     private Date fecha_hora;
     private String espectaculo;
     private String imagen;
+    private boolean sorteado;
     //private Map Registros;
     @OneToMany
     private Map<String,Artista> Artistas;
@@ -42,6 +43,7 @@ public class Funcion {
         this.Artistas = new HashMap();
         this.espectaculo = espectaculo;
         this.imagen = imagen;
+        this.sorteado = false;
     }      
     
     public void setNombre(String nombre) {
@@ -76,8 +78,16 @@ public class Funcion {
         return imagen;
     }
     
+    public boolean getSorteado(){
+        return this.sorteado;
+    }
+    
+    public void Sortear(){
+        this.sorteado = true;
+    }
+    
     public DtFuncion crearDtFuncion (){
-        DtFuncion dt = new DtFuncion (this.nombre, this.fecha_registro,this.fecha_hora, this.imagen);
+        DtFuncion dt = new DtFuncion (this.nombre, this.fecha_registro,this.fecha_hora, this.imagen, this.sorteado, this.espectaculo);
         return dt;
     }
     

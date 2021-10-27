@@ -73,4 +73,8 @@ public class Espectador extends Usuario {
         this.favoritos.remove(esp);
     }
     
+    public void AgregarPremio(Premio p){
+        this.premios.add(p);
+    }
+    
 }

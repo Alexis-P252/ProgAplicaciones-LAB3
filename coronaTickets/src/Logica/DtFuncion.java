@@ -17,15 +17,19 @@ public class DtFuncion {
     private Date fecha_registro;
     private Date fecha_hora;
     private String imagen;
+    private boolean sorteado;
+    private String espectaculo;
 
     public DtFuncion() {
     }
 
-    public DtFuncion(String nombre, Date fecha_registro, Date fecha_hora, String imagen) {
+    public DtFuncion(String nombre, Date fecha_registro, Date fecha_hora, String imagen, boolean sorteado, String espectaculo) {
         this.nombre = nombre;
         this.fecha_registro = fecha_registro;
         this.fecha_hora = fecha_hora;
         this.imagen = imagen;
+        this.sorteado = sorteado;
+        this.espectaculo = espectaculo;
     }
 
     public String getNombre() {
@@ -42,6 +46,14 @@ public class DtFuncion {
     
     public String getImagen(){
         return imagen;
+    }
+    
+    public boolean getSorteado(){
+        return sorteado;
+    }
+    
+    public String getEspectaculo(){
+        return this.espectaculo;
     }
     
        
