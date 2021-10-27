@@ -1847,6 +1847,13 @@ public class Sistema implements ISistema {
 
     }
     
+    public DtPremio GetDtPremio(int id){
+        Premio p = em.find(Premio.class, id);
+        DtPremio res = p.ArmarDT();
+        return res;
+        
+     }
+    
         
        
 }

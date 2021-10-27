@@ -27,6 +27,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
+import java.io.FileOutputStream;
  
 /**
  *
@@ -48,6 +49,7 @@ public class main extends javax.swing.JFrame {
     public main(){
         
         initComponents();
+        
         
         //Inicialización
         SistemaFactory fabrica = SistemaFactory.getInstance();
