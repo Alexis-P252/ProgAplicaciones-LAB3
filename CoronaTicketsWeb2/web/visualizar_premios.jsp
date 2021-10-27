@@ -80,7 +80,8 @@
                  %>
                 <div class="container"> <%
                  for(DtPremio dtP: premios){ %>
-                 <form method="post" action="visualizar_premios2.jsp">
+                 <form method="post" action="ComprobantePremio.jsp">
+                     <input class="form-control" hidden type="text" id="invisible" name="id" value="<% out.println(dtP.GetID()); %>"  readonly placeholder="">
                        <div class="row mt-3">
                            <div class="col-6">
                                <h4 name="premio">Premio N° <% out.println(dtP.GetID()); %></h4>
