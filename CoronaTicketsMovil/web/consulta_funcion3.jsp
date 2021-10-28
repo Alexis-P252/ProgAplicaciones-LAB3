@@ -1,13 +1,13 @@
 <%-- 
-    Document   : pagina_principal
-    Created on : 27/10/2021, 05:22:19 PM
+    Document   : consulta_espectaculo
+    Created on : 28/10/2021, 09:41:07 AM
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <% String nickname = (String) session.getAttribute("user");
+     <% String nickname = (String) session.getAttribute("user");
         if(nickname == null){
             %><jsp:include page="error_identidad.jsp"/> <%
         }
@@ -37,9 +37,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="pagina_principal.jsp">Pagina Principal</a></li>
+                        <li><a href="pagina_principal.jsp">Pagina Principal</a></li>
                         <li><a href="consulta_espectaculo.jsp">Consulta de Espectaculo</a></li>
-                        <li><a href="consulta_funcion.jsp">Consulta de Funcion de Espectaculo</a></li>
+                        <li class="active"><a href="consulta_funcion.jsp">Consulta de Funcion de Espectaculo</a></li>
                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -47,12 +47,7 @@
                     </ul>
               </div>
             </div>
-        </nav>
-        <h3 class="text-center">Pagina principal</h5>
-        <br> <bR>
-        
-        <h2></h2>
-        
+      </nav>
     </body>
     <% } %>
 </html>
