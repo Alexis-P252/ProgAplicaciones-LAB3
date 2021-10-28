@@ -15,6 +15,9 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles-form.css" rel="stylesheet" />
+        
+        <script src="ajax-formulario.js"></script>
     </head>
     
     <% 
@@ -33,7 +36,7 @@
                         <%
                         if(session.getAttribute("user") == null){ %>
                             <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#modalLogin">Ingresar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrarse</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#modalRegistro" id="registro">Registrarse</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.jsp">Sesion invitado</a></li> <%
                         }else{ 
                             String user = (String) session.getAttribute("user"); %>
@@ -58,7 +61,7 @@
                         <input type="text" name="user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nickname" />
                     </div>
                     <div class="mb-3">
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Contrasena" />
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="Contrasena" />
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" value="Artista" id="flexRadioDefault1" checked>
@@ -98,7 +101,7 @@
                             <input type="text" name="user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nickname" />
                         </div>
                         <div class="mb-3">
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Contrasena" />
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="Contrasena" />
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" value="Artista" id="flexRadioDefault1" checked>
@@ -132,52 +135,90 @@
                     <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="registro.jsp">
+                <form action="registro.jsp"  id="formulario" name="mi_formulario">
                 <div class="modal-body">
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <input name="campoNombre" type="text" class="form-control" placeholder="Nombre" />
+                                <input name="campoNombre" type="text" class="form-control" placeholder="Nombre" id='grupo_nombre'/>
+                                <div id="error-nombre" class="alert alert-danger" style="display: none;">
+                                    ERROR , INGRESE UN NOMBRE VALIDO
+                                </div>
+                                
                             </div>
                             <div class="mb-3 col-6">
-                                <input name="campoApellido" type="text" class="form-control" placeholder="Apellido" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-6">
-                                <input name="campoEmail" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" />
-                            </div>
-                            <div class="mb-3 col-6">
-                                <input name="campoNickname" type="text" class="form-control" placeholder="Nickname" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-6">
-                                <input name="campoPass" type="password" class="form-control" id="exampleInputPassword1" placeholder="ContraseÃ±a" />
-                            </div>
-                            <div class="mb-3 col-6">
-                                <input name="campoConfirmPass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmar contraseÃ±a" />
+                                <input name="campoApellido" type="text" class="form-control" placeholder="Apellido" id='grupo_apellido'/>
+                                <div id="error-apellido" class="alert alert-danger" style="display: none;">
+                                    ERROR , INGRESE UN APELLIDO VALIDO
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
-                                <input name="campoFecha" class="form-control" type="date" name="fecha" />
+                                <input name="campoEmail" type="text" class="form-control" id="grupo_correo" aria-describedby="emailHelp" placeholder="Email"/>
+                                <div id="error-correo" class="alert alert-danger" style="display: none;">
+                                    ERROR , INGRESE UN EMAIL VALIDO
+                                </div>
+                                <div id="error-email-2" class="alert alert-danger" style="display: none;">
+                                    ERROR , ESE EMAIL YA ESTA EN USO
+                                </div>
                             </div>
                             <div class="mb-3 col-6">
-                                <input name="campoImagen" type="text" class="form-control" placeholder="Imagen (link, no obligatorio)" />
+                                <input name="campoNickname" type="text" class="form-control" placeholder="Nickname" id="grupo_nickname"/>
+                                <div id="error-nickname" class="alert alert-danger"  style="display: none;">
+                                    ERROR , INGRESE UN NICKNAME VALIDO
+                                </div>
+                                <div id="error-nickname-2" class="alert alert-danger"  style="display: none;">
+                                    ERROR , ESE NICKNAME YA ESTA EN USO
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input name="campoPass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"/>
+                                <div id="error-password" class="alert alert-danger" style="display: none;">
+                                    ERROR , INGRESE UNA CONTRASENA VALIDA
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input name="campoConfirmPass" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirmar contraseña"/>
+                                <div id="error-password2" class="alert alert-danger" style="display: none;">
+                                    LAS CONTRASENAS NO COINCIDEN
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input name="campoFecha" id="fecha" class="form-control" type="date"/>
+                                <div id="error-fecha" class="alert alert-danger" style="display: none;">
+                                    INGRESE UNA FECHA CORRECTA
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input name="campoImagen" type="text" class="form-control" placeholder="Imagen (link, no obligatorio)"  />
                             </div>
                             
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <input name="campoDescripcion" type="text" class="form-control descripcion" placeholder="Descpripcion" id='descripcion'/>
+                                <div id="error-descripcion" class="alert alert-danger" style="display: none;">
+                                    LA DESCRIPCION ES OBLIGATORIA
+                                </div>
                             </div>
                             <div class="mb-3 col-6">
                                 <input name="campoBiografia" type="text" class="form-control" placeholder="Biografia" id='biografia'/>
+                                <div id="error-biografia" class="alert alert-danger" style="display: none;">
+                                    LA BIOGRAFIA ES OBLIGATORIA
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <input name="campoWeb" type="text" class="form-control" placeholder="Sitio web" id='web'/>
+                                <div id="error-web" class="alert alert-danger" style="display: none;">
+                                    EL SITIO WEB ES OBLIGATORIO
+                                </div>
                             </div>
                             
                         </div>
@@ -190,7 +231,7 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault2" value="Espectador" id="btn_espectador" />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault2" value="Espectador" id="btn_espectador"/>
                                     <label class="form-check-label" for="flexRadioDefault2">
                                       Espectador
                                     </label>
@@ -200,7 +241,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn btn-outline-dark me-2 mt-5" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary btn btn-outline-dark me-2 mt-5">Registrarse</button>
+                        <button type="submit" onclick="valores()" value="Submit" class="btn btn-primary btn btn-outline-dark me-2 mt-5" id='registrarse'>Registrarse</button>
                 </div>
                     
                 </form>
@@ -270,14 +311,19 @@
                 document.getElementById('descripcion').style.display ='none';
                 document.getElementById('biografia').style.display ='none';
                 document.getElementById('web').style.display ='none';
+                document.getElementById('error-web').style.display="none";
+                document.getElementById('error-biografia').style.display="none";
+                document.getElementById('error-descripcion').style.display="none";
             })
         
             btn_artista.addEventListener('click', function(){
                 document.getElementById('descripcion').style.display ='inline';
                 document.getElementById('biografia').style.display ='inline';
                 document.getElementById('web').style.display ='inline';
-            })
-        
+            })       
+
         </script>
+        <script src="form-validation.js"></script>
     </body>
+    
 </html>
