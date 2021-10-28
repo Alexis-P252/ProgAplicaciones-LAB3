@@ -48,11 +48,21 @@
               </div>
             </div>
         </nav>
-        <h3 class="text-center">Pagina principal</h5>
-        <br> <bR>
+        <h3 class="text-center">Pagina principal</h3>
+        <br> <br> <br> <br> <br> <br>
+        <div class="col-auto p-5 text-center">
+            <img src="assets/img/virus.png" class="responsive" width="200" height="200" alt="alt"/>
+        </div>
         
-        <h2></h2>
         
     </body>
     <% } %>
 </html>
+ 
+<style> 
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+</style>
