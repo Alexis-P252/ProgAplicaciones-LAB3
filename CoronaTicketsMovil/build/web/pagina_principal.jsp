@@ -47,7 +47,11 @@
                     </ul>
               </div>
             </div>
-      </nav>
+        </nav>
+        <h3 class="text-center">Pagina principal</h5>
+        <br> <bR>
+        
+        <h2></h2>
         
     </body>
     <% } %>
