@@ -1,13 +1,13 @@
 <%-- 
-    Document   : pagina_principal
-    Created on : 27/10/2021, 05:22:19 PM
+    Document   : consulta_espectaculo2
+    Created on : 28/10/2021, 09:41:20 AM
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <% String nickname = (String) session.getAttribute("user");
+     <% String nickname = (String) session.getAttribute("user");
         if(nickname == null){
             %><jsp:include page="error_identidad.jsp"/> <%
         }
@@ -25,7 +25,7 @@
         <title>CoronaTickets</title>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+       <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -37,8 +37,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="pagina_principal.jsp">Pagina Principal</a></li>
-                        <li><a href="consulta_espectaculo.jsp">Consulta de Espectaculo</a></li>
+                        <li><a href="pagina_principal.jsp">Pagina Principal</a></li>
+                        <li class="active"><a href="consulta_espectaculo.jsp">Consulta de Espectaculo</a></li>
                         <li><a href="consulta_funcion.jsp">Consulta de Funcion de Espectaculo</a></li>
                        
                     </ul>
@@ -48,7 +48,6 @@
               </div>
             </div>
       </nav>
-        
     </body>
     <% } %>
 </html>

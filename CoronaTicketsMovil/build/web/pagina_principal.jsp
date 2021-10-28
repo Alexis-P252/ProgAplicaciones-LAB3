@@ -37,9 +37,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Pagina Principal</a></li>
-                        <li><a href="#">Consulta de Espectaculo</a></li>
-                        <li><a href="#">Consulta de Funcion de Espectaculo</a></li>
+                        <li class="active"><a href="pagina_principal.jsp">Pagina Principal</a></li>
+                        <li><a href="consulta_espectaculo.jsp">Consulta de Espectaculo</a></li>
+                        <li><a href="consulta_funcion.jsp">Consulta de Funcion de Espectaculo</a></li>
                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
