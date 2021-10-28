@@ -3,7 +3,7 @@
     Created on : 28/10/2021, 09:41:07 AM
     Author     : User
 --%>
-
+<%@page import="Logica.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +47,85 @@
                     </ul>
               </div>
             </div>
-      </nav>
+        </nav>
+        <h3 class="text-center">Consulta de Espectaculo</h3>
+        
+        <% 
+        
+        ISistema sis;
+        SistemaFactory fabrica = SistemaFactory.getInstance();
+        sis = fabrica.getISistema();
+        String[] lista = sis.listarPlataformas();    
+        int i = 1;    
+        %>
+        <form action="consulta_espectaculo.jsp" method="get" id="form_lista_plataformas" name="form_lista_plataformas">
+            <select name="plataforma" id="selectorPlataforma" class="form-select form-control" aria-label="Default select example">
+                <option>Seleccione una plataforma</option>
+                <% 
+                    for(String s: lista){
+                        String plataforma = (String) request.getParameter("plataforma");
+                        if(plataforma != null){
+                            if(plataforma.equals(s)){ %>
+                                <option selected  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option> <%
+                            }
+                            else{ %>
+                             <option  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option> <%
+                            }
+                        }
+                        else{ %>
+                            <option  id="<% out.print(i); %>" value="<% out.print(s); %>"  > <% out.print(s); %></option> <%
+                        }
+                        i++;  
+                    }
+     
+                %>
+            </select>
+        </form> <br> <br>  
+            
+        <% 
+        String plataforma = (String) request.getParameter("plataforma");
+        if(plataforma != null){
+            if(plataforma.equals("Seleccione una plataforma") == true){
+                
+            }
+            else{
+                String[] listaespectaculos = sis.listarEspectaculosAceptadosxPlataforma(plataforma);
+                for(String s: listaespectaculos){
+                    DtEspectaculo dtEsp = sis.mostrarEspectaculo(s);
+                    String imagen = dtEsp.GetImagen();
+                    String nombre = dtEsp.GetNombre(); %>
+                    
+                    <figure class="figure">
+                        <img src="<% out.println(imagen);%>" class="rounded img-responsive center-block" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption"><%out.println(nombre);%></figcaption>
+                    </figure>
+                    
+                <%    
+                }
+            }
+        }
+        
+        
+        %>    
+       
     </body>
-    <% } %>
 </html>
+
+<script>
+    var selectorPlataforma = document.getElementById("selectorPlataforma");
+    
+    selectorPlataforma.addEventListener('change', function(){
+        document.form_lista_plataformas.submit()
+        
+    });
+</script>
+<% } %>
+
+<style> 
+.responsive {
+  max-width: 250px;
+  max-height: 250px;
+  height: auto;
+}
+
+</style>

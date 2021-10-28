@@ -16,11 +16,10 @@
         String nickname  = (String) request.getParameter("nickname"); 
         String password = (String) request.getParameter("password");
         
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
         
-        if(sis.ComprobarLogin(nickname, password, "Espectador") == false){ 
+        if(port.comprobarLogin(nickname, password, "Espectador") == false){ 
         out.println("COSO");%>
         <form action="login.jsp" method="post" id="form" name="formulario">
             <input hidden class="form-control" type="text" id="invisible" name="error" value="si"  readonly placeholder="">      

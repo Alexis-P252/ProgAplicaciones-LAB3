@@ -28,6 +28,7 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
+import publicador.publicador;
  
 /**
  *
@@ -50,6 +51,8 @@ public class main extends javax.swing.JFrame {
         
         initComponents();
         
+        publicador p = new publicador();
+        p.publicar();
         
         //Inicialización
         SistemaFactory fabrica = SistemaFactory.getInstance();
