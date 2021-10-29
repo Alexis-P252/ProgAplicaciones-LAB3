@@ -13,9 +13,9 @@ import java.util.List;
 public class DtLista {
     private List lista;
     
-    DtLista(){}
+    public DtLista(){}
     
-    DtLista(List lista){
+    public DtLista(List lista){
         this.lista = lista;
     }
     
@@ -23,4 +23,3 @@ public class DtLista {
         return this.lista;
     }
 }
-

@@ -3,7 +3,10 @@
     Created on : 28/10/2021, 09:41:07 AM
     Author     : User
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="Logica.*" %>
+<%@page import="pkgWS.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,17 +55,19 @@
         
         <% 
         
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
-        String[] lista = sis.listarPlataformas();    
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
+        List<String> prelista = port.listarPlataformas().getItem();
+        Object[] lista = prelista.toArray();
+        
         int i = 1;    
         %>
         <form action="consulta_espectaculo.jsp" method="get" id="form_lista_plataformas" name="form_lista_plataformas">
             <select name="plataforma" id="selectorPlataforma" class="form-select form-control" aria-label="Default select example">
                 <option>Seleccione una plataforma</option>
                 <% 
-                    for(String s: lista){
+                    for(Object x: lista){
+                        String s = (String) x;
                         String plataforma = (String) request.getParameter("plataforma");
                         if(plataforma != null){
                             if(plataforma.equals(s)){ %>
@@ -81,7 +86,7 @@
                 %>
             </select>
         </form> <br> <br>  
-            
+         
         <% 
         String plataforma = (String) request.getParameter("plataforma");
         if(plataforma != null){
@@ -89,13 +94,18 @@
                 
             }
             else{
-                String[] listaespectaculos = sis.listarEspectaculosAceptadosxPlataforma(plataforma);
-                for(String s: listaespectaculos){
-                    DtEspectaculo dtEsp = sis.mostrarEspectaculo(s);
+                List<String> prelista_espectaculos = port.listarEspectaculosAceptadosxPlataforma(plataforma).getItem();
+                Object[] listaespectaculos = prelista_espectaculos.toArray();
+                for(Object x: listaespectaculos){
+                    String s = (String)x; 
+                    pkgWS.DtEspectaculo dtEsp = port.mostrarEspectaculo(s);
                     String imagen = dtEsp.GetImagen();
                     String nombre = dtEsp.GetNombre(); %>
                     
-                  
+                    <figure class="figure">
+                        <img src="<% out.println(imagen);%>" class="rounded img-responsive center-block" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption"><%out.println(nombre);%></figcaption>
+                    </figure>
                     
                 <%    
                 }
@@ -104,7 +114,7 @@
         
         
         %>    
-       
+      
     </body>
 </html>
 
