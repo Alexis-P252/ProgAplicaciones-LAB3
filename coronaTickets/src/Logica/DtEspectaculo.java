@@ -6,11 +6,16 @@
 package Logica;
 
 import java.util.Date;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
  *
  * @author Nicolás Guillén
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtEspectaculo {
     private String nombre;
     private Date fecha_registro;
@@ -45,7 +50,7 @@ public class DtEspectaculo {
         this.finalizado = finalizado;
         
     }
-    
+     
     public String GetNombre(){
         return this.nombre;
     }
@@ -57,11 +62,11 @@ public class DtEspectaculo {
     public float GetCosto(){
         return this.costo;
     }
-    
+     
     public String GetUrl(){
         return this.url;
     }
-    
+     
     public int GetCant_max_espec(){
         return this.cant_max_espec;
     }
@@ -73,7 +78,7 @@ public class DtEspectaculo {
     public int GetDuracion(){
         return this.duracion;
     }
-    
+     
     public String GetDescripcion(){
         return this.descripcion;
     }
@@ -81,7 +86,7 @@ public class DtEspectaculo {
      public String GetImagen(){
         return this.imagen;
     }
-    
+     
      public String GetVideo(){
          return this.video;
     }
@@ -89,7 +94,7 @@ public class DtEspectaculo {
     public String getDesc_premio(){
         return this.desc_premio;
     }
-    
+     
     public int getCant_premios(){
         return this.cant_premios;
     } 

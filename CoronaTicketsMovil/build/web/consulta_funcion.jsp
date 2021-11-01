@@ -48,6 +48,7 @@
               </div>
             </div>
       </nav>
+      <h3 class="text-center">Consulta de Funcion de Espectaculo</h3>           
     </body>
     <% } %>
 </html>
