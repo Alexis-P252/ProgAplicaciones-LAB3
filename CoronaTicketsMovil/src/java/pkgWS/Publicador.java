@@ -27,6 +27,435 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "ComprobarLogin")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/ComprobarLoginRequest", output = "http://publicador/publicador/ComprobarLoginResponse")
+    public boolean comprobarLogin(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "DejardeSeguir")
+    @Action(input = "http://publicador/publicador/DejardeSeguirRequest", output = "http://publicador/publicador/DejardeSeguirResponse")
+    public void dejardeSeguir(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://publicador/publicador/comprarPaqueteRequest", output = "http://publicador/publicador/comprarPaqueteResponse")
+    public void comprarPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.DtPremio
+     */
+    @WebMethod(operationName = "GetDtPremio")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/GetDtPremioRequest", output = "http://publicador/publicador/GetDtPremioResponse")
+    public DtPremio getDtPremio(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "TieneFavorito")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/TieneFavoritoRequest", output = "http://publicador/publicador/TieneFavoritoResponse")
+    public boolean tieneFavorito(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarSeguidoresRequest", output = "http://publicador/publicador/listarSeguidoresResponse")
+    public StringArray listarSeguidores(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "EliminarFavorito")
+    @Action(input = "http://publicador/publicador/EliminarFavoritoRequest", output = "http://publicador/publicador/EliminarFavoritoResponse")
+    public void eliminarFavorito(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarSeguidosRequest", output = "http://publicador/publicador/listarSeguidosResponse")
+    public StringArray listarSeguidos(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "EsSeguidor")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/EsSeguidorRequest", output = "http://publicador/publicador/EsSeguidorResponse")
+    public boolean esSeguidor(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "AgregarPuntaje")
+    @Action(input = "http://publicador/publicador/AgregarPuntajeRequest", output = "http://publicador/publicador/AgregarPuntajeResponse")
+    public void agregarPuntaje(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        int arg2);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "AddSeguidor")
+    @Action(input = "http://publicador/publicador/AddSeguidorRequest", output = "http://publicador/publicador/AddSeguidorResponse")
+    public void addSeguidor(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "AgregarFavorito")
+    @Action(input = "http://publicador/publicador/AgregarFavoritoRequest", output = "http://publicador/publicador/AgregarFavoritoResponse")
+    public void agregarFavorito(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "Pertenecea")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/PerteneceaRequest", output = "http://publicador/publicador/PerteneceaResponse")
+    public boolean pertenecea(
+        @WebParam(name = "arg0", partName = "arg0")
+        StringArray arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod(operationName = "SortearPremios")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/SortearPremiosRequest", output = "http://publicador/publicador/SortearPremiosResponse")
+    public StringArray sortearPremios(
+        @WebParam(name = "arg0", partName = "arg0")
+        StringArray arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        int arg1);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg6
+     */
+    @WebMethod(operationName = "SortearFuncion")
+    @Action(input = "http://publicador/publicador/SortearFuncionRequest", output = "http://publicador/publicador/SortearFuncionResponse")
+    public void sortearFuncion(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        int arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        XMLGregorianCalendar arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        XMLGregorianCalendar arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        StringArray arg6);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectaculosRequest", output = "http://publicador/publicador/listarEspectaculosResponse")
+    public StringArray listarEspectaculos(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "EspectaculoenPaqWeb")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/EspectaculoenPaqWebRequest", output = "http://publicador/publicador/EspectaculoenPaqWebResponse")
+    public int espectaculoenPaqWeb(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarPaquetesVigentesRequest", output = "http://publicador/publicador/listarPaquetesVigentesResponse")
+    public StringArray listarPaquetesVigentes();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectaculosxCategoriaRequest", output = "http://publicador/publicador/listarEspectaculosxCategoriaResponse")
+    public StringArray listarEspectaculosxCategoria(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.IntArray
+     */
+    @WebMethod(operationName = "CantEstrellasEspectaculo")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/CantEstrellasEspectaculoRequest", output = "http://publicador/publicador/CantEstrellasEspectaculoResponse")
+    public IntArray cantEstrellasEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod(operationName = "PuntajedeEspectador")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/PuntajedeEspectadorRequest", output = "http://publicador/publicador/PuntajedeEspectadorResponse")
+    public int puntajedeEspectador(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod(operationName = "FinalizarEspectaculo")
+    @Action(input = "http://publicador/publicador/FinalizarEspectaculoRequest", output = "http://publicador/publicador/FinalizarEspectaculoResponse")
+    public void finalizarEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectadoresxFuncionRequest", output = "http://publicador/publicador/listarEspectadoresxFuncionResponse")
+    public StringArray listarEspectadoresxFuncion(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectaculosAceptadosRequest", output = "http://publicador/publicador/listarEspectaculosAceptadosResponse")
+    public StringArray listarEspectaculosAceptados();
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/espectadorComproPaqueteRequest", output = "http://publicador/publicador/espectadorComproPaqueteResponse")
+    public boolean espectadorComproPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns float
+     */
+    @WebMethod(operationName = "PuntajePromedioEspectaculo")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/PuntajePromedioEspectaculoRequest", output = "http://publicador/publicador/PuntajePromedioEspectaculoResponse")
+    public float puntajePromedioEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns long
+     */
+    @WebMethod(operationName = "CantFavxEspectaculo")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/CantFavxEspectaculoRequest", output = "http://publicador/publicador/CantFavxEspectaculoResponse")
+    public long cantFavxEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "EspectadorValoroEspectaculo")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/EspectadorValoroEspectaculoRequest", output = "http://publicador/publicador/EspectadorValoroEspectaculoResponse")
+    public boolean espectadorValoroEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectaculosFavoritosRequest", output = "http://publicador/publicador/listarEspectaculosFavoritosResponse")
+    public StringArray listarEspectaculosFavoritos(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarPaquetesCompradosRequest", output = "http://publicador/publicador/listarPaquetesCompradosResponse")
+    public StringArray listarPaquetesComprados(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns pkgWS.StringArray
@@ -40,120 +469,14 @@ public interface Publicador {
 
     /**
      * 
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectadoresRequest", output = "http://publicador/publicador/listarEspectadoresResponse")
-    public StringArray listarEspectadores();
-
-    /**
-     * 
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarPlataformasRequest", output = "http://publicador/publicador/listarPlataformasResponse")
-    public StringArray listarPlataformas();
-
-    /**
-     * 
-     * @param arg1
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns pkgWS.DtFuncion
      */
-    @WebMethod(operationName = "EspectaculoenPaq")
+    @WebMethod(operationName = "MostrarFuncion")
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/EspectaculoenPaqRequest", output = "http://publicador/publicador/EspectaculoenPaqResponse")
-    public boolean espectaculoenPaq(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     * @param arg7
-     * @param arg6
-     */
-    @WebMethod(operationName = "ModificarArtista")
-    @Action(input = "http://publicador/publicador/ModificarArtistaRequest", output = "http://publicador/publicador/ModificarArtistaResponse")
-    public void modificarArtista(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        XMLGregorianCalendar arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        String arg5,
-        @WebParam(name = "arg6", partName = "arg6")
-        String arg6,
-        @WebParam(name = "arg7", partName = "arg7")
-        String arg7);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "ExisteFuncion")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/ExisteFuncionRequest", output = "http://publicador/publicador/ExisteFuncionResponse")
-    public boolean existeFuncion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.DtPaquete
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/mostrarPaqueteRequest", output = "http://publicador/publicador/mostrarPaqueteResponse")
-    public DtPaquete mostrarPaquete(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.DtUsuario
-     */
-    @WebMethod(operationName = "GetDtUsuario")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/GetDtUsuarioRequest", output = "http://publicador/publicador/GetDtUsuarioResponse")
-    public DtUsuario getDtUsuario(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "ExistePaquete")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/ExistePaqueteRequest", output = "http://publicador/publicador/ExistePaqueteResponse")
-    public boolean existePaquete(
+    @Action(input = "http://publicador/publicador/MostrarFuncionRequest", output = "http://publicador/publicador/MostrarFuncionResponse")
+    public DtFuncion mostrarFuncion(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -173,43 +496,25 @@ public interface Publicador {
     /**
      * 
      * @param arg0
-     * @return
-     *     returns pkgWS.DtFuncion
      */
-    @WebMethod(operationName = "MostrarFuncion")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/MostrarFuncionRequest", output = "http://publicador/publicador/MostrarFuncionResponse")
-    public DtFuncion mostrarFuncion(
+    @WebMethod(operationName = "AgregarCategoria")
+    @Action(input = "http://publicador/publicador/AgregarCategoriaRequest", output = "http://publicador/publicador/AgregarCategoriaResponse")
+    public void agregarCategoria(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
     /**
      * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
      * @param arg0
-     * @param arg6
+     * @return
+     *     returns boolean
      */
-    @WebMethod(operationName = "AgregarPaquete")
-    @Action(input = "http://publicador/publicador/AgregarPaqueteRequest", output = "http://publicador/publicador/AgregarPaqueteResponse")
-    public void agregarPaquete(
+    @WebMethod(operationName = "ExisteFuncion")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/ExisteFuncionRequest", output = "http://publicador/publicador/ExisteFuncionResponse")
+    public boolean existeFuncion(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        float arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        XMLGregorianCalendar arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        XMLGregorianCalendar arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        XMLGregorianCalendar arg5,
-        @WebParam(name = "arg6", partName = "arg6")
-        String arg6);
+        String arg0);
 
     /**
      * 
@@ -232,39 +537,6 @@ public interface Publicador {
         XMLGregorianCalendar arg3,
         @WebParam(name = "arg4", partName = "arg4")
         int arg4);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod(operationName = "AgregarCategoria")
-    @Action(input = "http://publicador/publicador/AgregarCategoriaRequest", output = "http://publicador/publicador/AgregarCategoriaResponse")
-    public void agregarCategoria(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarArtistasRequest", output = "http://publicador/publicador/listarArtistasResponse")
-    public StringArray listarArtistas();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "UsuarioxEmail")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/UsuarioxEmailRequest", output = "http://publicador/publicador/UsuarioxEmailResponse")
-    public boolean usuarioxEmail(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
 
     /**
      * 
@@ -305,13 +577,19 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
      * @return
-     *     returns pkgWS.StringArray
+     *     returns boolean
      */
-    @WebMethod(operationName = "ColNickname")
+    @WebMethod(operationName = "EspectaculoenPaq")
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/ColNicknameRequest", output = "http://publicador/publicador/ColNicknameResponse")
-    public StringArray colNickname();
+    @Action(input = "http://publicador/publicador/EspectaculoenPaqRequest", output = "http://publicador/publicador/EspectaculoenPaqResponse")
+    public boolean espectaculoenPaq(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
     /**
      * 
@@ -328,6 +606,114 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.DtUsuario
+     */
+    @WebMethod(operationName = "GetDtUsuario")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/GetDtUsuarioRequest", output = "http://publicador/publicador/GetDtUsuarioResponse")
+    public DtUsuario getDtUsuario(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg6
+     */
+    @WebMethod(operationName = "AgregarPaquete")
+    @Action(input = "http://publicador/publicador/AgregarPaqueteRequest", output = "http://publicador/publicador/AgregarPaqueteResponse")
+    public void agregarPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        float arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        XMLGregorianCalendar arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        XMLGregorianCalendar arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        XMLGregorianCalendar arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        String arg6);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.DtPaquete
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/mostrarPaqueteRequest", output = "http://publicador/publicador/mostrarPaqueteResponse")
+    public DtPaquete mostrarPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarArtistasRequest", output = "http://publicador/publicador/listarArtistasResponse")
+    public StringArray listarArtistas();
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg7
+     * @param arg6
+     */
+    @WebMethod(operationName = "ModificarArtista")
+    @Action(input = "http://publicador/publicador/ModificarArtistaRequest", output = "http://publicador/publicador/ModificarArtistaResponse")
+    public void modificarArtista(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        XMLGregorianCalendar arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        String arg6,
+        @WebParam(name = "arg7", partName = "arg7")
+        String arg7);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "UsuarioxEmail")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/UsuarioxEmailRequest", output = "http://publicador/publicador/UsuarioxEmailResponse")
+    public boolean usuarioxEmail(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
      * @return
      *     returns pkgWS.StringArray
      */
@@ -338,6 +724,29 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "ExistePaquete")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/ExistePaqueteRequest", output = "http://publicador/publicador/ExistePaqueteResponse")
+    public boolean existePaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod(operationName = "ColNickname")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/ColNicknameRequest", output = "http://publicador/publicador/ColNicknameResponse")
+    public StringArray colNickname();
+
+    /**
+     * 
      * @return
      *     returns pkgWS.StringArray
      */
@@ -345,19 +754,6 @@ public interface Publicador {
     @WebResult(partName = "return")
     @Action(input = "http://publicador/publicador/listarPaquetesRequest", output = "http://publicador/publicador/listarPaquetesResponse")
     public StringArray listarPaquetes();
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "CambiarEstadoEspectaculo")
-    @Action(input = "http://publicador/publicador/CambiarEstadoEspectaculoRequest", output = "http://publicador/publicador/CambiarEstadoEspectaculoResponse")
-    public void cambiarEstadoEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        int arg1);
 
     /**
      * 
@@ -379,160 +775,18 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectaculosSinAceptarRequest", output = "http://publicador/publicador/listarEspectaculosSinAceptarResponse")
-    public StringArray listarEspectaculosSinAceptar();
+    @Action(input = "http://publicador/publicador/listarEspectadoresRequest", output = "http://publicador/publicador/listarEspectadoresResponse")
+    public StringArray listarEspectadores();
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/verificarEspectaculoRequest", output = "http://publicador/publicador/verificarEspectaculoResponse")
-    public boolean verificarEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
      * @return
      *     returns pkgWS.StringArray
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarArtistasmenosOrganizadorRequest", output = "http://publicador/publicador/listarArtistasmenosOrganizadorResponse")
-    public StringArray listarArtistasmenosOrganizador(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarespectaculosXArtistaRequest", output = "http://publicador/publicador/listarespectaculosXArtistaResponse")
-    public StringArray listarespectaculosXArtista(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns float
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/darPrecioEspectaculoRequest", output = "http://publicador/publicador/darPrecioEspectaculoResponse")
-    public float darPrecioEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarfuncionesxEspectadorRequest", output = "http://publicador/publicador/listarfuncionesxEspectadorResponse")
-    public StringArray listarfuncionesxEspectador(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/alMenos3RegistrosRequest", output = "http://publicador/publicador/alMenos3RegistrosResponse")
-    public boolean alMenos3Registros(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://publicador/publicador/modificarEspectadorRequest", output = "http://publicador/publicador/modificarEspectadorResponse")
-    public void modificarEspectador(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        XMLGregorianCalendar arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        String arg4);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.DtEspectaculo
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/mostrarEspectaculoRequest", output = "http://publicador/publicador/mostrarEspectaculoResponse")
-    public DtEspectaculo mostrarEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "AddEspectaculoaPaquete")
-    @Action(input = "http://publicador/publicador/AddEspectaculoaPaqueteRequest", output = "http://publicador/publicador/AddEspectaculoaPaqueteResponse")
-    public void addEspectaculoaPaquete(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarCategoriasxEspectaculoRequest", output = "http://publicador/publicador/listarCategoriasxEspectaculoResponse")
-    public StringArray listarCategoriasxEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod(operationName = "Artistasinvitados")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/ArtistasinvitadosRequest", output = "http://publicador/publicador/ArtistasinvitadosResponse")
-    public StringArray artistasinvitados(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+    @Action(input = "http://publicador/publicador/listarPlataformasRequest", output = "http://publicador/publicador/listarPlataformasResponse")
+    public StringArray listarPlataformas();
 
     /**
      * 
@@ -570,10 +824,185 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarespectaculosXArtistaRequest", output = "http://publicador/publicador/listarespectaculosXArtistaResponse")
+    public StringArray listarespectaculosXArtista(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.DtEspectaculo
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/mostrarEspectaculoRequest", output = "http://publicador/publicador/mostrarEspectaculoResponse")
+    public DtEspectaculo mostrarEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarfuncionesxEspectadorRequest", output = "http://publicador/publicador/listarfuncionesxEspectadorResponse")
+    public StringArray listarfuncionesxEspectador(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarPaquetesdeEspRequest", output = "http://publicador/publicador/listarPaquetesdeEspResponse")
+    public StringArray listarPaquetesdeEsp(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://publicador/publicador/modificarEspectadorRequest", output = "http://publicador/publicador/modificarEspectadorResponse")
+    public void modificarEspectador(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        XMLGregorianCalendar arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarCategoriasxEspectaculoRequest", output = "http://publicador/publicador/listarCategoriasxEspectaculoResponse")
+    public StringArray listarCategoriasxEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarFuncionesxEspectaculoRequest", output = "http://publicador/publicador/listarFuncionesxEspectaculoResponse")
+    public StringArray listarFuncionesxEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
     @Action(input = "http://publicador/publicador/listarCategoriasxPaqueteRequest", output = "http://publicador/publicador/listarCategoriasxPaqueteResponse")
     public StringArray listarCategoriasxPaquete(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/verificarEspectaculoRequest", output = "http://publicador/publicador/verificarEspectaculoResponse")
+    public boolean verificarEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "AddEspectaculoaPaquete")
+    @Action(input = "http://publicador/publicador/AddEspectaculoaPaqueteRequest", output = "http://publicador/publicador/AddEspectaculoaPaqueteResponse")
+    public void addEspectaculoaPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns float
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/darPrecioEspectaculoRequest", output = "http://publicador/publicador/darPrecioEspectaculoResponse")
+    public float darPrecioEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod(operationName = "CambiarEstadoEspectaculo")
+    @Action(input = "http://publicador/publicador/CambiarEstadoEspectaculoRequest", output = "http://publicador/publicador/CambiarEstadoEspectaculoResponse")
+    public void cambiarEstadoEspectaculo(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        int arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod(operationName = "Artistasinvitados")
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/ArtistasinvitadosRequest", output = "http://publicador/publicador/ArtistasinvitadosResponse")
+    public StringArray artistasinvitados(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns pkgWS.StringArray
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://publicador/publicador/listarEspectaculosSinAceptarRequest", output = "http://publicador/publicador/listarEspectaculosSinAceptarResponse")
+    public StringArray listarEspectaculosSinAceptar();
 
     /**
      * 
@@ -595,12 +1024,12 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns pkgWS.StringArray
+     *     returns boolean
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarPaquetesdeEspRequest", output = "http://publicador/publicador/listarPaquetesdeEspResponse")
-    public StringArray listarPaquetesdeEsp(
+    @Action(input = "http://publicador/publicador/alMenos3RegistrosRequest", output = "http://publicador/publicador/alMenos3RegistrosResponse")
+    public boolean alMenos3Registros(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -612,8 +1041,8 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarFuncionesxEspectaculoRequest", output = "http://publicador/publicador/listarFuncionesxEspectaculoResponse")
-    public StringArray listarFuncionesxEspectaculo(
+    @Action(input = "http://publicador/publicador/listarArtistasmenosOrganizadorRequest", output = "http://publicador/publicador/listarArtistasmenosOrganizadorResponse")
+    public StringArray listarArtistasmenosOrganizador(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -635,432 +1064,16 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://publicador/publicador/comprarPaqueteRequest", output = "http://publicador/publicador/comprarPaqueteResponse")
-    public void comprarPaquete(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "ComprobarLogin")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/ComprobarLoginRequest", output = "http://publicador/publicador/ComprobarLoginResponse")
-    public boolean comprobarLogin(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod(operationName = "EspectaculoenPaqWeb")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/EspectaculoenPaqWebRequest", output = "http://publicador/publicador/EspectaculoenPaqWebResponse")
-    public int espectaculoenPaqWeb(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "EspectadorValoroEspectaculo")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/EspectadorValoroEspectaculoRequest", output = "http://publicador/publicador/EspectadorValoroEspectaculoResponse")
-    public boolean espectadorValoroEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod(operationName = "PuntajedeEspectador")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/PuntajedeEspectadorRequest", output = "http://publicador/publicador/PuntajedeEspectadorResponse")
-    public int puntajedeEspectador(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns pkgWS.StringArray
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectaculosRequest", output = "http://publicador/publicador/listarEspectaculosResponse")
-    public StringArray listarEspectaculos(
+    @Action(input = "http://publicador/publicador/listarespectaculosAceptadosXArtistaRequest", output = "http://publicador/publicador/listarespectaculosAceptadosXArtistaResponse")
+    public StringArray listarespectaculosAceptadosXArtista(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectaculosxCategoriaRequest", output = "http://publicador/publicador/listarEspectaculosxCategoriaResponse")
-    public StringArray listarEspectaculosxCategoria(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarPaquetesCompradosRequest", output = "http://publicador/publicador/listarPaquetesCompradosResponse")
-    public StringArray listarPaquetesComprados(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectaculosAceptadosRequest", output = "http://publicador/publicador/listarEspectaculosAceptadosResponse")
-    public StringArray listarEspectaculosAceptados();
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/espectadorComproPaqueteRequest", output = "http://publicador/publicador/espectadorComproPaqueteResponse")
-    public boolean espectadorComproPaquete(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.IntArray
-     */
-    @WebMethod(operationName = "CantEstrellasEspectaculo")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/CantEstrellasEspectaculoRequest", output = "http://publicador/publicador/CantEstrellasEspectaculoResponse")
-    public IntArray cantEstrellasEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarPaquetesVigentesRequest", output = "http://publicador/publicador/listarPaquetesVigentesResponse")
-    public StringArray listarPaquetesVigentes();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectaculosFavoritosRequest", output = "http://publicador/publicador/listarEspectaculosFavoritosResponse")
-    public StringArray listarEspectaculosFavoritos(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns long
-     */
-    @WebMethod(operationName = "CantFavxEspectaculo")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/CantFavxEspectaculoRequest", output = "http://publicador/publicador/CantFavxEspectaculoResponse")
-    public long cantFavxEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod(operationName = "FinalizarEspectaculo")
-    @Action(input = "http://publicador/publicador/FinalizarEspectaculoRequest", output = "http://publicador/publicador/FinalizarEspectaculoResponse")
-    public void finalizarEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns float
-     */
-    @WebMethod(operationName = "PuntajePromedioEspectaculo")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/PuntajePromedioEspectaculoRequest", output = "http://publicador/publicador/PuntajePromedioEspectaculoResponse")
-    public float puntajePromedioEspectaculo(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarEspectadoresxFuncionRequest", output = "http://publicador/publicador/listarEspectadoresxFuncionResponse")
-    public StringArray listarEspectadoresxFuncion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "AgregarPuntaje")
-    @Action(input = "http://publicador/publicador/AgregarPuntajeRequest", output = "http://publicador/publicador/AgregarPuntajeResponse")
-    public void agregarPuntaje(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        int arg2);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "TieneFavorito")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/TieneFavoritoRequest", output = "http://publicador/publicador/TieneFavoritoResponse")
-    public boolean tieneFavorito(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     * @param arg6
-     */
-    @WebMethod(operationName = "SortearFuncion")
-    @Action(input = "http://publicador/publicador/SortearFuncionRequest", output = "http://publicador/publicador/SortearFuncionResponse")
-    public void sortearFuncion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        int arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        XMLGregorianCalendar arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        XMLGregorianCalendar arg5,
-        @WebParam(name = "arg6", partName = "arg6")
-        StringArray arg6);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "AddSeguidor")
-    @Action(input = "http://publicador/publicador/AddSeguidorRequest", output = "http://publicador/publicador/AddSeguidorResponse")
-    public void addSeguidor(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod(operationName = "SortearPremios")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/SortearPremiosRequest", output = "http://publicador/publicador/SortearPremiosResponse")
-    public StringArray sortearPremios(
-        @WebParam(name = "arg0", partName = "arg0")
-        StringArray arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        int arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarSeguidosRequest", output = "http://publicador/publicador/listarSeguidosResponse")
-    public StringArray listarSeguidos(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "DejardeSeguir")
-    @Action(input = "http://publicador/publicador/DejardeSeguirRequest", output = "http://publicador/publicador/DejardeSeguirResponse")
-    public void dejardeSeguir(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.DtPremio
-     */
-    @WebMethod(operationName = "GetDtPremio")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/GetDtPremioRequest", output = "http://publicador/publicador/GetDtPremioResponse")
-    public DtPremio getDtPremio(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "EsSeguidor")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/EsSeguidorRequest", output = "http://publicador/publicador/EsSeguidorResponse")
-    public boolean esSeguidor(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarSeguidoresRequest", output = "http://publicador/publicador/listarSeguidoresResponse")
-    public StringArray listarSeguidores(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "AgregarFavorito")
-    @Action(input = "http://publicador/publicador/AgregarFavoritoRequest", output = "http://publicador/publicador/AgregarFavoritoResponse")
-    public void agregarFavorito(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod(operationName = "EliminarFavorito")
-    @Action(input = "http://publicador/publicador/EliminarFavoritoRequest", output = "http://publicador/publicador/EliminarFavoritoResponse")
-    public void eliminarFavorito(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod(operationName = "Pertenecea")
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/PerteneceaRequest", output = "http://publicador/publicador/PerteneceaResponse")
-    public boolean pertenecea(
-        @WebParam(name = "arg0", partName = "arg0")
-        StringArray arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
 
     /**
      * 
@@ -1077,18 +1090,5 @@ public interface Publicador {
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns pkgWS.StringArray
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://publicador/publicador/listarespectaculosAceptadosXArtistaRequest", output = "http://publicador/publicador/listarespectaculosAceptadosXArtistaResponse")
-    public StringArray listarespectaculosAceptadosXArtista(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
 
 }

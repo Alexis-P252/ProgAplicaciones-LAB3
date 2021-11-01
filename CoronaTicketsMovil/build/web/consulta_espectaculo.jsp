@@ -6,7 +6,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.*" %>
-<%@page import="pkgWS.*" %>
+<%--<%@page import="pkgWS.*" %>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -55,10 +55,15 @@
         
         <% 
         
-        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
-        pkgWS.Publicador port = service.getPublicadorPort();
-        List<String> prelista = port.listarPlataformas().getItem();
-        Object[] lista = prelista.toArray();
+//        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+//        pkgWS.Publicador port = service.getPublicadorPort();
+        
+        ISistema sis;
+        SistemaFactory fabrica = SistemaFactory.getInstance();
+        sis = fabrica.getISistema();
+        
+        String[] lista = sis.listarPlataformas();
+        
         
         int i = 1;    
         %>
@@ -66,8 +71,7 @@
             <select name="plataforma" id="selectorPlataforma" class="form-select form-control" aria-label="Default select example">
                 <option>Seleccione una plataforma</option>
                 <% 
-                    for(Object x: lista){
-                        String s = (String) x;
+                    for(String s: lista){
                         String plataforma = (String) request.getParameter("plataforma");
                         if(plataforma != null){
                             if(plataforma.equals(s)){ %>
@@ -94,17 +98,17 @@
                 
             }
             else{
-                List<String> prelista_espectaculos = port.listarEspectaculosAceptadosxPlataforma(plataforma).getItem();
-                Object[] listaespectaculos = prelista_espectaculos.toArray();
-                for(Object x: listaespectaculos){
-                    String s = (String)x; 
-                    pkgWS.DtEspectaculo dtEsp = port.mostrarEspectaculo(s);
+                String[] listaespectaculos = sis.listarEspectaculosAceptadosxPlataforma(plataforma);
+               
+                for(String s: listaespectaculos){
+     
+                    DtEspectaculo dtEsp = sis.mostrarEspectaculo(s);
                     String imagen = dtEsp.GetImagen();
                     String nombre = dtEsp.GetNombre(); %>
                     
                     <figure class="figure">
-                        <img src="<% out.println(imagen);%>" class="rounded img-responsive center-block" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption"><%out.println(nombre);%></figcaption>
+                        <img src="<% out.println(imagen);%>" class="rounded img responsive center-block" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption name="espectaculo" value="<%out.println(nombre);%>" class="figure-caption"><%out.println(nombre);%></figcaption>
                     </figure>
                     
                 <%    
@@ -133,6 +137,26 @@
   max-width: 250px;
   max-height: 250px;
   height: auto;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+.bg-dark {
+  background-color: #105469 !important;
+}
+
+.nav-item:hover {
+  color: #E2B842 !important;
+}
+
+h1 {
+  color: #105469;
+  font-weight: 700;
+}
+
+footer, footer .container .col{
+  height: 200px;
 }
 
 </style>

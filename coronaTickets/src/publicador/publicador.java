@@ -61,6 +61,7 @@ public class publicador {
      return s.ComprobarLogin(user,password,tipo);
     }
     
+    
     @WebMethod
     public boolean verificarEspectaculo(String espectaculo){
      SistemaFactory fabrica = SistemaFactory.getInstance();
