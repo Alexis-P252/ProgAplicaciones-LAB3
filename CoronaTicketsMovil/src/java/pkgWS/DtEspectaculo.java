@@ -28,5 +28,4 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "dtEspectaculo")
 public class DtEspectaculo {
 
-
 }

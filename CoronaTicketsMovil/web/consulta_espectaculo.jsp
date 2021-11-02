@@ -25,6 +25,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
         <title>CoronaTickets</title>
     </head>
     <body>
@@ -104,19 +107,22 @@
      
                     DtEspectaculo dtEsp = sis.mostrarEspectaculo(s);
                     String imagen = dtEsp.GetImagen();
-                    String nombre = dtEsp.GetNombre(); %>
-                    
-                    <figure class="figure">
-                        <img src="<% out.println(imagen);%>" class="rounded img responsive center-block" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption name="espectaculo" value="<%out.println(nombre);%>" class="figure-caption"><%out.println(nombre);%></figcaption>
-                    </figure>
+                    String nombre = dtEsp.GetNombre();
+                    %>
+                   
+                    <div class="divimg center-block ">
+                        <figure class="figure">
+                            <a href="consulta_espectaculo2.jsp?espectaculo=<%out.println(nombre);%>">
+                                <img src="<% out.println(imagen);%>" class="rounded img responsive center-block" id="img_espectaculo">
+                            </a>
+                            <figcaption name="espectaculo" value="<%out.println(nombre);%>" class="figure-caption txtimg"><%out.println(nombre);%></figcaption>
+                        </figure> 
+                    </div>
                     
                 <%    
                 }
             }
         }
-        
-        
         %>    
       
     </body>
@@ -127,17 +133,31 @@
     
     selectorPlataforma.addEventListener('change', function(){
         document.form_lista_plataformas.submit()
-        
+ 
     });
+
 </script>
 <% } %>
 
 <style> 
 .responsive {
-  max-width: 250px;
-  max-height: 250px;
-  height: auto;
+     width: 100%;  
+     border-radius: 15px;
+     border-image: black 3px;
 }
+
+.divimg {
+    width: 80%;
+    padding: 10px;    
+      
+}
+
+.txtimg {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;    
+}
+
+
 
 body {
   font-family: 'Raleway', sans-serif;
