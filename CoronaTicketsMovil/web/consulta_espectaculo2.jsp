@@ -119,7 +119,14 @@
               <li class="list-group-item text-muted"><strong>Funciones</strong> <i class="fa fa-dashboard fa-1x"></i></li>
             <% 
                 for(String fun: funciones){ %>
-                    <li class="list-group-item text-right"><span class="pull-left"><%out.println(fun);%></span></li> <%
+              
+                  <li class="list-group-item text-right">
+                      <span class="pull-left">
+                          <a href="consulta_funcion3.jsp?funcion=<%out.println(fun);%>"> <%out.println(fun);%> </a>
+                      </span>
+                  </li>
+              
+                     <%
                 }
             %>
           </ul>

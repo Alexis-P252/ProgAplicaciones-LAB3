@@ -254,8 +254,8 @@
         <header class="masthead text-center text-white">
             <div class="masthead-content">
                 <div class="container px-5">
-                    <h1 class="masthead-heading mb-0">CoronaTickets</h1>
-                    <h2 class="masthead-subheading mb-0">Los mejores espectaculos, desde la comodidad de tu hogar</h2>
+                    <h1 class="masthead-heading mb-0" >CoronaTickets</h1>
+                    <h2 class="masthead-subheading mb-0" >Los mejores espectaculos, desde la comodidad de tu hogar</h2>
                     <a class="btn btn-outline-dark me-2 mt-5" href="#scroll">Sobre Nosotros</a>
                 </div>
             </div>
