@@ -611,6 +611,7 @@ progress {
 
 .figure {
   display: inline-block;
+  width: 100% !important
 }
 
 .figure-img {

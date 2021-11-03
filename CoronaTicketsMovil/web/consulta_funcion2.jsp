@@ -3,7 +3,9 @@
     Created on : 28/10/2021, 09:41:07 AM
     Author     : User
 --%>
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,6 +50,107 @@
               </div>
             </div>
       </nav>
+         <h3 class="text-center" id="msg_seleccionar">Seleccione una funcion</h3>
+      
+      <% 
+        
+//        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+//        pkgWS.Publicador port = service.getPublicadorPort();
+        
+        ISistema sis;
+        SistemaFactory fabrica = SistemaFactory.getInstance();
+        sis = fabrica.getISistema();
+        
+        String espectaculo = (String) request.getParameter("espectaculo");
+        
+        String[] listafunciones = sis.listarFuncionesxEspectaculo(espectaculo);
+        
+ 
+        for(String s: listafunciones){
+
+            if(s == null){ %>
+                <h4 class="text-center">Este espectaculo no tiene ninguna funcion</h4>
+                <script>
+                    var msg_seleccionar = document.getElementById("msg_seleccionar");
+                    msg_seleccionar.style.display = 'none';
+                </script>
+                
+                <%
+            }
+            else{
+                DtFuncion dtF = sis.MostrarFuncion(s);
+                String imagen = dtF.getImagen();
+                String nombre = dtF.getNombre();
+                %>
+
+                <div class="divimg center-block ">
+                    <figure class="figure">
+                        <a href="consulta_funcion3.jsp?funcion=<%out.println(nombre);%>">
+                            <img src="<% out.println(imagen);%>" class="rounded img responsive center-block" id="img_espectaculo">
+                        </a>
+                        <figcaption name="espectaculo" value="<%out.println(nombre);%>" class="figure-caption txtimg"><%out.println(nombre);%></figcaption>
+                    </figure> 
+                </div> <%
+            }      
+        }
+        %>
+        <form method="post" action="consulta_funcion.jsp">
+            <div class="form-group">
+               <div class="col-xs-12">
+                   <br>
+                   <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Volver</button>
+               </div>
+           </div> 
+        </form>    
+          
+        <br> <br> <br> <br> <br> <br> 
+        
     </body>
-    <% } %>
+   
 </html>
+
+
+<style> 
+.responsive {
+     width: 100%;  
+     border-radius: 15px;
+     border-image: black 3px;
+}
+
+.divimg {
+    width: 80%;
+    padding: 10px;    
+      
+}
+
+.txtimg {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;    
+}
+
+
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+.bg-dark {
+  background-color: #105469 !important;
+}
+
+.nav-item:hover {
+  color: #E2B842 !important;
+}
+
+h1 {
+  color: #105469;
+  font-weight: 700;
+}
+
+footer, footer .container .col{
+  height: 200px;
+}
+
+</style>
+
+
+ <% } %>

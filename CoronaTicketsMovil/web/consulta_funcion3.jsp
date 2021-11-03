@@ -1,9 +1,11 @@
 <%-- 
-    Document   : consulta_espectaculo
-    Created on : 28/10/2021, 09:41:07 AM
+    Document   : consulta_espectaculo2
+    Created on : 28/10/2021, 09:41:20 AM
     Author     : User
 --%>
-
+<%@page import="Logica.*" %>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,35 +21,159 @@
         <link rel="icon" type="image/x-icon" href="assets/img/virus.png" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>CoronaTickets</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">CoronaTickets  &nbsp&nbsp&nbsp&nbsp Bienvenido <%out.println(nickname); %></a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="pagina_principal.jsp">Pagina Principal</a></li>
-                        <li><a href="consulta_espectaculo.jsp">Consulta de Espectaculo</a></li>
-                        <li class="active"><a href="consulta_funcion.jsp">Consulta de Funcion de Espectaculo</a></li>
-                       
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.jsp?cerrar=si"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesion</a></li>
-                    </ul>
-              </div>
+        <% 
+        ISistema sis;
+        SistemaFactory fabrica = SistemaFactory.getInstance();
+        sis = fabrica.getISistema();
+
+        SimpleDateFormat ft = new SimpleDateFormat ("dd.MM.yyyy '-' HH:mm:ss");
+        SimpleDateFormat ft2 = new SimpleDateFormat ("dd.MM.yyyy");
+
+        String funcion = (String) request.getParameter("funcion");
+        
+        DtFuncion dtF = sis.MostrarFuncion(funcion);
+        String imagen = dtF.getImagen();
+        String nombre = dtF.getNombre();
+        Date fecha_registro = dtF.getFecha_registro();
+        Date fecha_hora = dtF.getFecha_hora();
+        String[] artistas = sis.Artistasinvitados(funcion);
+
+       
+%>
+        
+        <hr>
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="pagina_principal.jsp" class>
+                    <img title="profile image" class="img-circle img-responsive" width='100px' src="assets/img/virus.png">
+                </a>
+                <div > </div>
             </div>
-      </nav>
+            <div class="col-sm-10"><h1><%out.println(nombre);%></h1></div>
+        </div>
+        
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+
+      <div class="text-center">
+        <img src="<%out.println(imagen);%>" class="avatar img-thumbnail" alt="Imagen">
+
+      </div></hr><br>
+
+           <ul class="list-group">
+            <li class="list-group-item text-muted"><strong>Artistas invitados</strong> <i class="fa fa-dashboard fa-1x"></i></li>
+            <% 
+                for(String art: artistas){
+                    if(art == null){ %>
+                         <li class="list-group-item text-right"><span class="pull-left">No hay artistas invitados</span></li> <%
+                    }
+                    else{ %>
+                         <li class="list-group-item text-right"><span class="pull-left"><%out.println(art);%></span></li> <%
+                    }
+                }
+            %>
+          </ul>
+          
+          
+               
+
+          
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Datos </a></li>
+            </ul>
+
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form" action="consulta_funcion.jsp" method="post" id="volver">
+                        
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4 class='texto'>Fecha y hora</h4></label>
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="<%out.println(ft2.format(fecha_hora));%>" title="enter your last name if any." readonly>
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h4 class='texto'>Fecha de alta</h4></label>
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="<%out.println(ft2.format(fecha_registro));%>" title="enter your phone number if any." readonly>
+                          </div>
+                      </div>
+      
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Volver</button>
+                            </div>
+                      </div>
+              	</form>
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+             
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+    <br><br>
+
+        
     </body>
     <% } %>
 </html>
+
+<script>
+    $(document).ready(function() {
+
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+});
+</script>
+
+<style>
+    .texto{
+        font-size: 15px
+    }   
+    
+</style>
