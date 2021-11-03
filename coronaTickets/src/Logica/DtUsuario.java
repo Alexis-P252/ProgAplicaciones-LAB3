@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package Logica;
+
+import java.beans.*;
+import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
  *
  * @author User
  */
-public class DtUsuario {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtUsuario implements Serializable {
     
     protected String nombre;
     protected String apellido;
@@ -52,4 +58,6 @@ public class DtUsuario {
     public String GetImagen(){
         return this.imagen;
     }
+    
+    
 }

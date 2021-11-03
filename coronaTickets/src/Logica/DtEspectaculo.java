@@ -5,6 +5,8 @@
  */
 package Logica;
 
+import java.beans.*;
+import java.io.Serializable;
 import java.util.Date;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -13,11 +15,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
  *
- * @author Nicolás Guillén
+ * @author User
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtEspectaculo {
-    private String nombre;
+public class DtEspectaculo implements Serializable {
+    
+     private String nombre;
     private Date fecha_registro;
     private float costo;
     private String url;
@@ -98,4 +101,5 @@ public class DtEspectaculo {
     public int getCant_premios(){
         return this.cant_premios;
     } 
+    
 }
