@@ -65,7 +65,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="registro_a_funcion_de_espectaculo2.jsp">
+                <form action="registro_a_funcion_de_espectaculo2.jsp" method="post">
                 <select name= "selector"id="listaPlataforma" class="form-select w-25" aria-label="Default select example">
                     <option selected>Seleccione una plataforma</option>
                     <% // CARGAMOS LA LISTA DE NICKNAMES EN EL SELECT

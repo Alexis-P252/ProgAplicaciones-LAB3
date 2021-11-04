@@ -49,7 +49,7 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="div-lista ml-2">
-                    <form action="sortear_premios3.jsp">
+                    <form action="sortear_premios3.jsp" method="post">
                     <select name= "selector"id="listaFunciones" class="form-select" multiple aria-label="multiple select example">
                         <% // CARGAMOS LA LISTA DE FUNCIONES DEL ESPECTACULO EN EL SELECT
                         int i = 1;
@@ -72,7 +72,7 @@
                             <button type="submit" class="btn btn-secondary btn-lg" id="elegir_funcion">Elegir Funcion</button>
                          <%} %>     
                     </form>
-                    <form action="sortear_premios.jsp">
+                    <form action="sortear_premios.jsp" method="post">
                         <button type="submit" class="btn btn-secondary btn-lg">Volver</button>
                     </form>
             </div>

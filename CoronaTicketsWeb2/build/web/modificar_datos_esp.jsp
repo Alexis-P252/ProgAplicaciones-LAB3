@@ -69,7 +69,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="modificar_datos2.jsp" id='form'>
+                <form action="modificar_datos2.jsp" method="post" id='form'>
                     <div class="container">
        
                         <div class="row mt-3">

@@ -73,7 +73,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="sortear_premios2.jsp">
+                <form action="sortear_premios2.jsp" method="post">
                     <div class="container">
        
                         <div class="row mt-3">

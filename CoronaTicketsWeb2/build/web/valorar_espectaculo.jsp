@@ -77,7 +77,7 @@
             else{ %>
                 
                 <div class="div-lista ml-2">
-                    <form action="valorar_espectaculo2.jsp">
+                    <form action="valorar_espectaculo2.jsp" method="post">
                         <select name= "selector"id="listaEspectaculos" class="form-select w-25" aria-label="Default select example">
                             <option selected>Seleccione un espectaculo </option>
                             <% // CARGAMOS LA LISTA DE ESPECTACULOS EN EL SELECT

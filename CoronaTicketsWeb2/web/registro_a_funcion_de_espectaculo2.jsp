@@ -77,7 +77,7 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="div-lista ml-2">
-                    <form action="registro_a_funcion_de_espectaculo3.jsp">
+                    <form action="registro_a_funcion_de_espectaculo3.jsp" method="post">
                         <select name= "selector"id="listaEspectaculo" class="form-select" multiple aria-label="multiple select example">
                              <% // CARGAMOS LA LISTA DE ESPECTACULOS EN EL SELECT
 
@@ -100,7 +100,7 @@
                             </select>
                         <button type="submit" class="mt-2 btn btn-secondary btn-lg" id="btn_espectaculo">Elegir Espectaculo</button>
                     </form>
-                        <form action="registro_a_funcion_de_espectaculo.jsp">
+                        <form action="registro_a_funcion_de_espectaculo.jsp" method="post">
                             <button type="submit" class="mt-2 btn btn-secondary btn-lg">Elegir otra plataforma</button>
                         </form>
             </div>

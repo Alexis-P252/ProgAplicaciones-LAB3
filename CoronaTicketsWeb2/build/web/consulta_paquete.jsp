@@ -141,7 +141,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="registro.jsp"  id="formulario" name="mi_formulario">
+                <form action="registro.jsp"  id="formulario" name="mi_formulario" method="post">
                 <div class="modal-body">
                         <div class="row">
                             <div class="mb-3 col-6">

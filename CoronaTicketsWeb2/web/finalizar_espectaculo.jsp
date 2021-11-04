@@ -73,7 +73,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="finalizar_espectaculo2.jsp">
+                <form action="finalizar_espectaculo2.jsp" method="post">
                     <div class="container">
        
                         <div class="row mt-3">

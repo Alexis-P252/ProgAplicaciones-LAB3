@@ -4,13 +4,20 @@
  * and open the template in the editor.
  */
 package Logica;
+
+import java.beans.*;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.List;
 
 /**
  *
  * @author User
  */
-public class DtLista {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtLista implements Serializable {
+    
     private List lista;
     
     public DtLista(){}
@@ -22,4 +29,5 @@ public class DtLista {
     public List getLista(){
         return this.lista;
     }
+    
 }
