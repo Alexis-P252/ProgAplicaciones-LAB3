@@ -7,6 +7,8 @@
 <%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -58,9 +60,9 @@
             </div>
         </nav>
         <%
-            ISistema sis;
-            SistemaFactory fabrica = SistemaFactory.getInstance();
-            sis = fabrica.getISistema();
+            
+            pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+            pkgWS.Publicador port = service.getPublicadorPort();
             
             String nickname = (String) session.getAttribute("user");
             
@@ -78,15 +80,18 @@
             <%}
             else{
                 
-            DtEspectaculo dtEsp = sis.mostrarEspectaculo(espectaculo);
-            String nombre = dtEsp.GetNombre();
-            String descripcion = dtEsp.GetDescripcion();
-            String imagen = dtEsp.GetImagen();
-            float puntaje_prom = sis.PuntajePromedioEspectaculo(espectaculo);
-            int[] cant_estrellas = sis.CantEstrellasEspectaculo(espectaculo);
+            pkgWS.DtEspectaculo dtEsp = port.mostrarEspectaculo(espectaculo);
+            String nombre = dtEsp.getNombre();
+            String descripcion = dtEsp.getDescripcion();
+            String imagen = dtEsp.getImagen();
+            float puntaje_prom = port.puntajePromedioEspectaculo(espectaculo);
+
+            List<Integer> precant_estrellas = port.cantEstrellasEspectaculo(espectaculo).getItem();
+            Object[] cant_estrellas = precant_estrellas.toArray();
+         
             int total_estrellas = 0;
             for(int i = 0; i < cant_estrellas.length;i++){
-                total_estrellas = total_estrellas + cant_estrellas[i];
+                total_estrellas = total_estrellas + (int ) cant_estrellas[i];
             }
             
     
@@ -195,8 +200,8 @@
         </div>
         
         <%
-        if(sis.EspectadorValoroEspectaculo(nickname, espectaculo)){
-            int miPuntaje = sis.PuntajedeEspectador(nickname, espectaculo);
+        if(port.espectadorValoroEspectaculo(nickname, espectaculo)){
+            int miPuntaje = port.puntajedeEspectador(nickname, espectaculo);
         %>
             <div class="row mt-3">
                 <div class="col-6">

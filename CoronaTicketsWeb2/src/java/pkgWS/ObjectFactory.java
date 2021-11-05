@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtPremio }
-     * 
-     */
-    public DtPremio createDtPremio() {
-        return new DtPremio();
-    }
-
-    /**
      * Create an instance of {@link DtLista }
      * 
      */
     public DtLista createDtLista() {
         return new DtLista();
+    }
+
+    /**
+     * Create an instance of {@link DtPremio }
+     * 
+     */
+    public DtPremio createDtPremio() {
+        return new DtPremio();
     }
 
     /**

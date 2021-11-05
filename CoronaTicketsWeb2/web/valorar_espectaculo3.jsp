@@ -40,9 +40,9 @@
     </svg>
     <%  
         
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
+       pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+       pkgWS.Publicador port = service.getPublicadorPort();
+
         
         String nickname = (String) session.getAttribute("user");
         String estrellas =  (String) request.getParameter("estrellas"); 
@@ -60,7 +60,7 @@
         }
         else{
             int stars = Integer.parseInt(estrellas);
-            sis.AgregarPuntaje(nickname, espectaculo, stars); %>
+            port.agregarPuntaje(nickname, espectaculo, stars); %>
                 <div class="alert alert-success d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                     <div>

@@ -3,7 +3,6 @@
     Created on : 30/09/2021, 10:17:52 AM
     Author     : User
 --%>
-<%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,14 +36,14 @@
         </svg>
         <% 
         
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();    
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
+    
                     
         String logued = (String) session.getAttribute("user");
         String seguido = (String) request.getParameter("selector");
         
-        sis.DejardeSeguir(seguido,logued); %>
+        port.dejardeSeguir(seguido,logued); %>
         
         <div class="alert alert-success d-flex align-items-center" role="alert">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>

@@ -376,20 +376,23 @@ public class publicador {
      return s.listarfuncionesxEspectador(nickname);
     }
     
-//    @WebMethod
-//    public List listarfuncionesRealizadasxEspectador(String nickname){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.listarfuncionesRealizadasxEspectador(nickname);
-//    
-//    }
+    @WebMethod
+    public DtLista listarfuncionesRealizadasxEspectador(String nickname){
+    SistemaFactory fabrica = SistemaFactory.getInstance();
+    ISistema s = fabrica.getISistema();
+    DtLista lista = new DtLista(s.listarfuncionesRealizadasxEspectador(nickname));
+    return lista;
     
-//    @WebMethod
-//    public List listaEspectaculosSegunFunciones(List funciones){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.listaEspectaculosSegunFunciones(funciones);
-//    }
+    }
+    
+    //@WebMethod
+    //public DtLista listaEspectaculosSegunFunciones(List funciones){
+    //    SistemaFactory fabrica = SistemaFactory.getInstance();
+    //    ISistema s = fabrica.getISistema();
+    //    DtLista lista = new DtLista(s.listaEspectaculosSegunFunciones(funciones));
+    //    return lista;
+    // }
+    
     @WebMethod
     public void AgregarCategoria(String categoria){
     SistemaFactory fabrica = SistemaFactory.getInstance();
