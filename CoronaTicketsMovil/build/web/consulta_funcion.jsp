@@ -5,7 +5,6 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="Logica.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -54,14 +53,12 @@
       
       <% 
         
-//        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
-//        pkgWS.Publicador port = service.getPublicadorPort();
-        
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
-        
-        String[] lista = sis.listarPlataformas();
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
+
+                
+        List<String> prelista = port.listarPlataformas().getItem();
+        Object[] lista = prelista.toArray();
         String plataforma = (String) request.getParameter("plataforma");
         
         
@@ -71,7 +68,8 @@
             <select name="plataforma" id="selectorPlataforma" class="form-select form-control" aria-label="Default select example">
                 <option>Seleccione una plataforma</option>
                 <% 
-                    for(String s: lista){
+                    for(Object x: lista){
+                        String s = (String)x;
                         
                         if(plataforma != null){
                             if(plataforma.equals(s)){ %>
@@ -99,13 +97,14 @@
                 
             }
             else{
-                String[] listaespectaculos = sis.listarEspectaculosAceptadosxPlataforma(plataforma);
+                List<String> prelistaespectaculos = port.listarEspectaculosAceptadosxPlataforma(plataforma).getItem();
+                Object[] listaespectaculos = prelistaespectaculos.toArray();
                
-                for(String s: listaespectaculos){
-     
-                    DtEspectaculo dtEsp = sis.mostrarEspectaculo(s);
-                    String imagen = dtEsp.GetImagen();
-                    String nombre = dtEsp.GetNombre();
+                for(Object x: listaespectaculos){
+                    String s = (String) x;
+                    pkgWS.DtEspectaculo dtEsp = port.mostrarEspectaculo(s);
+                    String imagen = dtEsp.getImagen();
+                    String nombre = dtEsp.getNombre();
                     %>
                    
                     <div class="divimg center-block ">

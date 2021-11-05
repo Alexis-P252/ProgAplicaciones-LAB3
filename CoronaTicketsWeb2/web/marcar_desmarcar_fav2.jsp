@@ -59,7 +59,7 @@
         String nombre = dtEsp.GetNombre();
         String descripcion = dtEsp.GetDescripcion();
         String imagen = dtEsp.GetImagen(); %>
-        <form action="marcar_desmarcar_fav3.jsp">
+        <form action="marcar_desmarcar_fav3.jsp" method="post">
         <div class="container">
             <div class="row mt-3">
                 <div class="col-6">

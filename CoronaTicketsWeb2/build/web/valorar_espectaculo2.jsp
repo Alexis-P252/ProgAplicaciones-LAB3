@@ -22,6 +22,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </head>
     <body>
+        <%
+        if(session.getAttribute("tipo") == null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else if(session.getAttribute("tipo").equals("Artista")){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else{        %>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 
@@ -64,7 +72,7 @@
              if(espectaculo.equals("Seleccione un espectaculo") || espectaculo == null){
                 out.print("OPCION INVALIDA"); 
                 
-               %> <form action="valorar_espectaculo.jsp"> <%  %>
+%>              <form action="valorar_espectaculo.jsp" method="post"> <%  %>
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Volver</button>
                 </form>
             <%}
@@ -200,7 +208,7 @@
             </div> <%
         } 
         else{ %>
-            <form action="valorar_espectaculo3.jsp">
+            <form action="valorar_espectaculo3.jsp" method="post">
                  <input class="form-control" type="text" id="invisible" name="espectaculo" value="<% out.println(espectaculo); %>"  readonly placeholder="">
                 <div class="row mt-3">
                     <div class="col-6">
@@ -274,3 +282,4 @@
 
     </script>
 </html>
+<% } %>

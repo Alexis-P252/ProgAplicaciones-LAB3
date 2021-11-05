@@ -4,16 +4,21 @@
  * and open the template in the editor.
  */
 package Logica;
-import Logica.Espectaculo;
-import java.util.Date;
 
+import java.beans.*;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import java.util.Date;
 
 /**
  *
- * @author usuario
+ * @author User
  */
-public class DtFuncion {
-    private String nombre;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtFuncion implements Serializable {
+    
+     private String nombre;
     private Date fecha_registro;
     private Date fecha_hora;
     private String imagen;
@@ -56,5 +61,5 @@ public class DtFuncion {
         return this.espectaculo;
     }
     
-       
+    
 }

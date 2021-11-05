@@ -3,9 +3,12 @@
     Created on : 28/10/2021, 09:41:20 AM
     Author     : User
 --%>
-<%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="javax.xml.datatype.XMLGregorianCalendar"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,21 +40,29 @@
     </head>
     <body>
         <% 
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
 
         SimpleDateFormat ft = new SimpleDateFormat ("dd.MM.yyyy '-' HH:mm:ss");
         SimpleDateFormat ft2 = new SimpleDateFormat ("dd.MM.yyyy");
 
         String funcion = (String) request.getParameter("funcion");
         
-        DtFuncion dtF = sis.MostrarFuncion(funcion);
+        pkgWS.DtFuncion dtF = port.mostrarFuncion(funcion);
         String imagen = dtF.getImagen();
         String nombre = dtF.getNombre();
-        Date fecha_registro = dtF.getFecha_registro();
-        Date fecha_hora = dtF.getFecha_hora();
-        String[] artistas = sis.Artistasinvitados(funcion);
+        XMLGregorianCalendar  fecha_registroXML = dtF.getFechaRegistro();
+        Date fecha_registro = fecha_registroXML.toGregorianCalendar().getTime();
+        
+        XMLGregorianCalendar fecha_horaXML = dtF.getFechaHora();
+        Date fecha_hora = fecha_horaXML.toGregorianCalendar().getTime();
+      
+        List<String> preartistas = port.artistasinvitados(funcion).getItem();
+        Object[] artistas = preartistas.toArray();
+       
+       
+        
+        
 
        
 %>
@@ -80,7 +91,7 @@
            <ul class="list-group">
             <li class="list-group-item text-muted"><strong>Artistas invitados</strong> <i class="fa fa-dashboard fa-1x"></i></li>
             <% 
-                for(String art: artistas){
+                for(Object x: artistas){ String art = (String)x;
                     if(art == null){ %>
                          <li class="list-group-item text-right"><span class="pull-left">No hay artistas invitados</span></li> <%
                     }

@@ -41,7 +41,7 @@
                 </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="index_art.jsp">CoronaTickets.uy</a>
-                <form action="buscador_art.jsp" class="d-flex justify-content-between">
+                <form action="buscador_art.jsp"  class="d-flex justify-content-between">
                     <div class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Espectaculo, Paquete" aria-label="Search" name="busqueda" />
                         <button class="btn btn-outline-dark" type="submit">Buscar</button>
@@ -71,7 +71,7 @@
             <!--Div contenido principal-->
  
             <div class="div-lista ml-2">
-                <form action="agregar_espectaculo2.jsp">
+                <form action="agregar_espectaculo2.jsp" method="post">
                 <select name= "selector"id="listaPlataforma" class="form-select w-25" aria-label="Default select example">
                     <option selected>Seleccione una plataforma</option>
                     <% // CARGAMOS LA LISTA DE NICKNAMES EN EL SELECT

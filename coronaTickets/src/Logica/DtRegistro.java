@@ -5,18 +5,28 @@
  */
 package Logica;
 
+import java.beans.*;
+import java.io.Serializable;
 import java.util.Date;
-
-
-public class DtRegistro {
-    private int id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+/**
+ *
+ * @author usuario
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtRegistro implements Serializable {
+        private int id;
     private String funcion;
     private String espectaculo;
     private Date fecha;
     private boolean canjeado;
     private float costo;
 
-    DtRegistro(){}
+    
+    
+
+            
     DtRegistro (int id,String funcion,String espectaculo,Date fecha,boolean canjeado,float costo){
         this.id=id;
         this.funcion= funcion;
@@ -46,4 +56,5 @@ public class DtRegistro {
     public Date getFecha (){
         return this.fecha;
     }
+    
 }

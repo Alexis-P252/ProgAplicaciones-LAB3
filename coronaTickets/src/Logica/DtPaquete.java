@@ -5,14 +5,20 @@
  */
 package Logica;
 
+import java.beans.*;
+import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
  *
- * @author Nicolás Guillén
+ * @author User
  */
-public class DtPaquete {
-    private String nombre;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtPaquete implements Serializable {
+    
+   private String nombre;
     private String descripcion;
     private float descuento;
     private Date fecha_alta;

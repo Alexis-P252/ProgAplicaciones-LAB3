@@ -65,7 +65,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="marcar_desmarcar_fav2.jsp">
+                <form action="marcar_desmarcar_fav2.jsp" method="post">
                 <select name= "selector"id="listaEspectaculos" class="form-select w-25" aria-label="Default select example">
                     <option selected>Seleccione un espectaculo</option>
                     <% // CARGAMOS LA LISTA DE ESPECTACULOS EN EL SELECT

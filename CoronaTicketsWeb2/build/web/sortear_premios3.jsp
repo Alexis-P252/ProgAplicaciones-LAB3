@@ -21,6 +21,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </head>
     <body>
+        <%
+        if(session.getAttribute("tipo") == null){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else if(session.getAttribute("tipo").equals("Espectador")){
+            %> <jsp:include page="error_identidad.jsp"/> <%
+        }
+        else{       %>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -173,7 +181,7 @@
                     <h3 class="text-center"> Ningun espectador se registro a esta funcion.</h3> <%
                 }
                 else{ %>
-                <form action="sortear_premios4.jsp">
+                <form action="sortear_premios4.jsp" method="post">
                     <input hidden class="form-control" type="text" id="invisible" name="funcion" value="<% out.println(funcion); %>"  readonly placeholder="">
                     <div class="row mt-3">
                         <div class="col-6">
@@ -214,7 +222,7 @@
     
 <br>
             <div class="mt-2 col d-flex justify-content-center">
-                <form action="sortear_premios.jsp"> 
+                <form action="sortear_premios.jsp" method="post"> 
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Volver</button>
                 </form>
             </div>     
@@ -242,3 +250,4 @@
         });
     </script>
 </html>
+<% } %>

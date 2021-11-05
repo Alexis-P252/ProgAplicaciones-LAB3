@@ -34,7 +34,7 @@
     
     if(plataforma.equals("Seleccione una plataforma")){
         out.print("OPCION INVALIDA");%>
-        <form action="agregar_espectaculo.jsp">
+        <form action="agregar_espectaculo.jsp" method="post">
             <button type="submit" class="mt-2 btn btn-outline-dark">Volver</button>
         </form>     
     <%}
@@ -57,7 +57,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="agregar_espectaculo3.jsp">
+                <form action="agregar_espectaculo3.jsp" method="post">
                     <div class="container">
        
                         <div class="row mt-3">
@@ -133,7 +133,7 @@
                     </div>
                     <br> <br>
                 </form>
-                <form action="agregar_espectaculo.jsp">
+                <form action="agregar_espectaculo.jsp" method="post">
                     <div class="row mt-6">
             
                         <div class="col-5">

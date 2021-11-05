@@ -5,7 +5,6 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="Logica.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -54,20 +53,19 @@
       
       <% 
         
-//        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
-//        pkgWS.Publicador port = service.getPublicadorPort();
+       pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+       pkgWS.Publicador port = service.getPublicadorPort();
         
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
+     
         
         String espectaculo = (String) request.getParameter("espectaculo");
         
-        String[] listafunciones = sis.listarFuncionesxEspectaculo(espectaculo);
+        List<String> prelistafunciones = port.listarFuncionesxEspectaculo(espectaculo).getItem();
+        Object[] listafunciones = prelistafunciones.toArray();
         
  
-        for(String s: listafunciones){
-
+        for(Object x: listafunciones){
+            String s = (String)x;
             if(s == null){ %>
                 <h4 class="text-center">Este espectaculo no tiene ninguna funcion</h4>
                 <script>
@@ -78,7 +76,7 @@
                 <%
             }
             else{
-                DtFuncion dtF = sis.MostrarFuncion(s);
+                pkgWS.DtFuncion dtF = port.mostrarFuncion(s);
                 String imagen = dtF.getImagen();
                 String nombre = dtF.getNombre();
                 %>

@@ -65,7 +65,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="seguir_usuario_2.jsp">
+                <form action="seguir_usuario_2.jsp" method="post">
                 <select name= "selector"id="listaSeguir" class="form-select w-25" aria-label="Default select example">
                     <option selected>Seleccione un usuario</option>
                     <% // CARGAMOS LA LISTA DE NICKNAMES EN EL SELECT

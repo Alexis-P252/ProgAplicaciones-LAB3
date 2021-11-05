@@ -6,6 +6,8 @@
 <%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,40 +39,50 @@
     </head>
     <body>
         <% 
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
-
+            
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
+            
         SimpleDateFormat ft = new SimpleDateFormat ("dd.MM.yyyy '-' HH:mm:ss");
         SimpleDateFormat ft2 = new SimpleDateFormat ("dd.MM.yyyy");
 
         String espectaculo = (String) request.getParameter("espectaculo");
 
-        DtEspectaculo dtEsp = sis.mostrarEspectaculo(espectaculo);
-        String nombre = dtEsp.GetNombre();
-        String cant_mint = ""+dtEsp.GetCant_min_espec();;
-        String cant_maxt =""+dtEsp.GetCant_max_espec();
-        String descripcion = dtEsp.GetDescripcion();
-        String URL = dtEsp.GetUrl();
-        String duracion = ""+dtEsp.GetDuracion();
-        String costo = ""+dtEsp.GetCosto();
-        String imagen = dtEsp.GetImagen();
-        String video = dtEsp.GetVideo();
-        String desc_premio = dtEsp.getDesc_premio();
-        String cant_premios = ""+dtEsp.getCant_premios();
+        pkgWS. DtEspectaculo dtEsp = port.mostrarEspectaculo(espectaculo);
+        String nombre = dtEsp.getNombre();
+        String cant_mint = ""+dtEsp.getCantMinEspec();;
+        String cant_maxt =""+dtEsp.getCantMaxEspec();
+        String descripcion = dtEsp.getDescripcion();
+        String URL = dtEsp.getUrl();
+        String duracion = ""+dtEsp.getDuracion();
+        String costo = ""+dtEsp.getCosto();
+        String imagen = dtEsp.getImagen();
+        String video = dtEsp.getVideo();
+        String desc_premio = dtEsp.getDescPremio();
+        String cant_premios = ""+dtEsp.getCantPremios();
 
-        float puntaje_prom = sis.PuntajePromedioEspectaculo(espectaculo);
-        int[] cant_estrellas = sis.CantEstrellasEspectaculo(espectaculo);
+        float puntaje_prom = port.puntajePromedioEspectaculo(espectaculo);
+        
+        List<Integer> precant_estrellas = port.cantEstrellasEspectaculo(espectaculo).getItem();
+        Object[] cant_estrellas = precant_estrellas.toArray();
+        
+        
         int total_estrellas = 0;
         for(int i = 0; i < cant_estrellas.length;i++){
-            total_estrellas = total_estrellas + cant_estrellas[i];
+            total_estrellas = total_estrellas + (int ) cant_estrellas[i];
         }
 
-        long cant_favs = sis.CantFavxEspectaculo(espectaculo);
+        long cant_favs = port.cantFavxEspectaculo(espectaculo);
 
-        String[] categorias = sis.listarCategoriasxEspectaculo(espectaculo);
-        String[] funciones = sis.listarFuncionesxEspectaculo(espectaculo);
-        String[] paquetes = sis.listarPaquetesdeEsp(espectaculo); %>
+        List<String> precategorias = port.listarCategoriasxEspectaculo(espectaculo).getItem();
+        Object[] categorias = precategorias.toArray();
+        
+        List<String> prefunciones = port.listarFuncionesxEspectaculo(espectaculo).getItem();
+        Object[] funciones = prefunciones.toArray();
+        
+        List <String> prepaquetes = port.listarPaquetesdeEsp(espectaculo).getItem();
+        Object[] paquetes = prepaquetes.toArray();
+        %>
         
         <hr>
     <div class="container bootstrap snippet">
@@ -96,7 +108,7 @@
                
           <div class="panel panel-default">
             <div class="panel-heading">Marcado como favorito?<i class="fa fa-link fa-1x"></i></div>
-            <%  if(sis.TieneFavorito(nickname, espectaculo)){ %>
+            <%  if(port.tieneFavorito(nickname, espectaculo)){ %>
                     <div class="panel-body" style='color:green' >SI</div> <%
                 }
                 else{ %>
@@ -109,7 +121,7 @@
            <ul class="list-group">
             <li class="list-group-item text-muted"><strong>Categorias</strong> <i class="fa fa-dashboard fa-1x"></i></li>
             <% 
-                for(String cat: categorias){ %>
+                for(Object x: categorias){ String cat = (String)x; %>
                     <li class="list-group-item text-right"><span class="pull-left"><%out.println(cat);%></span></li> <%
                 }
             %>
@@ -118,7 +130,7 @@
           <ul class="list-group">
               <li class="list-group-item text-muted"><strong>Funciones</strong> <i class="fa fa-dashboard fa-1x"></i></li>
             <% 
-                for(String fun: funciones){ %>
+                for(Object x2: funciones){ String fun = (String)x2; %>
               
                   <li class="list-group-item text-right">
                       <span class="pull-left">
@@ -134,7 +146,7 @@
           <ul class="list-group">
               <li class="list-group-item text-muted"> <strong>Paquetes</strong> <i class="fa fa-dashboard fa-1x"></i></li>
             <% 
-                for(String paq: paquetes){ %>
+                for(Object x3: paquetes){ String paq = (String)x3; %>
                     <li class="list-group-item text-right"><span class="pull-left"><%out.println(paq);%></span></li> <%
                 }
             %>

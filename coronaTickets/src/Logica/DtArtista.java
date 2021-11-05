@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package Logica;
-import Logica.DtUsuario;
+
+import java.beans.*;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.Date;
 
 /**
  *
  * @author User
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtArtista extends DtUsuario {
     
     private String descripcion;
@@ -39,4 +44,6 @@ public class DtArtista extends DtUsuario {
      public String GetLink(){
         return this.link;
     }
+    
+    
 }

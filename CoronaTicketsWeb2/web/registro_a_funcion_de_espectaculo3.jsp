@@ -82,7 +82,7 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="div-lista ml-2">
-                    <form action="registro_a_funcion_de_espectaculo4.jsp">
+                    <form action="registro_a_funcion_de_espectaculo4.jsp" method="post">
                     <select name= "selector"id="listaEspectaculo" class="form-select" multiple aria-label="multiple select example">
                         <% // CARGAMOS LA LISTA DE FUNCIONES DEL ESPECTACULO EN EL SELECT
                        

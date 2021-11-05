@@ -65,7 +65,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="alta_paquete2.jsp">
+                <form action="alta_paquete2.jsp" method="post">
                     <div class="container">
        
                         <div class="row mt-3">

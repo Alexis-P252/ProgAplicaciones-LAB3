@@ -4,14 +4,21 @@
  * and open the template in the editor.
  */
 package Logica;
+
+import java.beans.*;
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.Date;
 
 /**
  *
  * @author User
  */
-public class DtPremio {
-    private int id;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtPremio implements Serializable {
+    
+   private int id;
     private Date fecha_sorteo;
     private Date fecha_caduca;
     private String desc_premio;
@@ -52,9 +59,5 @@ public class DtPremio {
     public String getFuncion() {
         return funcion;
     }
-    
-    
-    
-    
     
 }

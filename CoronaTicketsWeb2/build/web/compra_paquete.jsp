@@ -69,7 +69,7 @@
         <div class="col-10">
             <!--Div contenido principal-->
             <div class="div-lista ml-2">
-                <form action="compra_paquete2.jsp">
+                <form action="compra_paquete2.jsp" method="post">
                     <select name= "selector" id="listaPaquetes" class="form-select" multiple aria-label="multiple select example" >
                         <% // CARGAMOS LA LISTA DE PAQUETES
                             int i = 1;
