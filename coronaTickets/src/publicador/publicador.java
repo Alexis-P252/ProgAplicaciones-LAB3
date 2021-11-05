@@ -22,6 +22,7 @@ import Logica.ISistema;
 import Logica.Sistema;
 import Logica.SistemaFactory;
 import Logica.*;
+import java.util.List;
 
 /**
  *
@@ -652,12 +653,13 @@ public class publicador {
 //     return s.GanadoresdeSorteo(funcion);
 //    }
     
-//    @WebMethod
-//    public List<DtPremio> SorteosGanadosxEspectador (String espectador){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.SorteosGanadosxEspectador(espectador);
-//    }
+    @WebMethod
+    public DtLista SorteosGanadosxEspectador (String espectador){
+    SistemaFactory fabrica = SistemaFactory.getInstance();
+    ISistema s = fabrica.getISistema();
+    DtLista lista = new DtLista(s.SorteosGanadosxEspectador(espectador));
+    return lista;
+    }
     
     @WebMethod
     public DtPremio GetDtPremio(int id){

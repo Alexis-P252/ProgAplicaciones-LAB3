@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="javax.xml.datatype.XMLGregorianCalendar"%>
 <html lang="en">
     
 <head>
@@ -25,11 +25,11 @@
     else if(session.getAttribute("tipo").equals("Artista")){
         %> <jsp:include page="error_identidad.jsp"/> <%
     }
-    else{        
+    else{    
+
     // INICIALIZAMOS EL SISTEMA
-    ISistema sis;
-    SistemaFactory fabrica = SistemaFactory.getInstance();
-    sis = fabrica.getISistema();
+    pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+    pkgWS.Publicador port = service.getPublicadorPort();
 
     SimpleDateFormat ft2 = new SimpleDateFormat ("dd.MM.yyyy");
     
@@ -71,7 +71,9 @@
             <!--Div contenido principal-->
             <%
             String nickname = (String) session.getAttribute("user");
-            List<DtPremio> premios  = sis.SorteosGanadosxEspectador(nickname); 
+            
+            pkgWS.DtLista lista = port.sorteosGanadosxEspectador(nickname);
+            List<Object> premios  = lista.getLista();
            
             if(premios.size() == 0){ %>
                   <h3 class="text-center"> No has ganado ni un premio</h3>  <%
@@ -79,19 +81,28 @@
             else{
                  %>
                 <div class="container"> <%
-                 for(DtPremio dtP: premios){ %>
+                 for(Object x: premios){ 
+                 pkgWS.DtPremio dtP = (pkgWS.DtPremio)x;   %>
                  <form method="post" action="ComprobantePremio.jsp">
-                     <input class="form-control" hidden type="text" id="invisible" name="id" value="<% out.println(dtP.GetID()); %>"  readonly placeholder="">
+                     <input class="form-control" hidden type="text" id="invisible" name="id" value="<% out.println(dtP.getId()); %>"  readonly placeholder="">
                        <div class="row mt-3">
                            <div class="col-6">
-                               <h4 name="premio">Premio N° <% out.println(dtP.GetID()); %></h4>
+                               <h4 name="premio">Premio N° <% out.println(dtP.getId()); %></h4>
                            </div>
                            <div class="col-6">
                                <h5>Espectaculo:  <b><% out.println(dtP.getEspectaculo()); %></b></h5>
                                <h5>Funcion:  <b><% out.println(dtP.getFuncion()); %></b></h5>  
-                               <h5>Descripcion del premio:  <b><% out.println(dtP.getDesc_premio()); %></b></h5>  
-                               <h5>Fecha de Sorteo:  <b><% out.println(ft2.format(dtP.getFecha_sorteo())); %></b></h5>
-                               <h5>Fecha maxima para reclame:  <b><% out.println(ft2.format(dtP.getFecha_caduca())); %></b></h5>
+                               <h5>Descripcion del premio:  <b><% out.println(dtP.getDescPremio()); %></b></h5>
+                               <% 
+                               XMLGregorianCalendar  fecha_sorteoXML = dtP.getFechaSorteo();
+                               Date fecha_sorteo = fecha_sorteoXML.toGregorianCalendar().getTime();
+                               %>
+                               <h5>Fecha de Sorteo:  <b><% out.println(ft2.format(fecha_sorteo)); %></b></h5>
+                               <% 
+                               XMLGregorianCalendar  fecha_caducaXML = dtP.getFechaCaduca();
+                               Date fecha_caduca = fecha_caducaXML.toGregorianCalendar().getTime();
+                               %>
+                               <h5>Fecha maxima para reclame:  <b><% out.println(ft2.format(fecha_caduca)); %></b></h5>
                                <button type="submit" class="btn btn-secondary btn-lg btn-block" id="btn_datos_fun">Descargar comprobante</button>
                            </div>
                        </div>
