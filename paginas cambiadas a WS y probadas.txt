@@ -1,2 +1,0 @@
-ComprobantePremio.jsp
-Visualizar_premios.jsp
