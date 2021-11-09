@@ -22,6 +22,7 @@ import Logica.ISistema;
 import Logica.Sistema;
 import Logica.SistemaFactory;
 import Logica.*;
+import java.util.List;
 
 /**
  *
@@ -375,20 +376,23 @@ public class publicador {
      return s.listarfuncionesxEspectador(nickname);
     }
     
-//    @WebMethod
-//    public List listarfuncionesRealizadasxEspectador(String nickname){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.listarfuncionesRealizadasxEspectador(nickname);
-//    
-//    }
+    @WebMethod
+    public DtLista listarfuncionesRealizadasxEspectador(String nickname){
+    SistemaFactory fabrica = SistemaFactory.getInstance();
+    ISistema s = fabrica.getISistema();
+    DtLista lista = new DtLista(s.listarfuncionesRealizadasxEspectador(nickname));
+    return lista;
     
-//    @WebMethod
-//    public List listaEspectaculosSegunFunciones(List funciones){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.listaEspectaculosSegunFunciones(funciones);
-//    }
+    }
+    
+    //@WebMethod
+    //public DtLista listaEspectaculosSegunFunciones(List funciones){
+    //    SistemaFactory fabrica = SistemaFactory.getInstance();
+    //    ISistema s = fabrica.getISistema();
+    //    DtLista lista = new DtLista(s.listaEspectaculosSegunFunciones(funciones));
+    //    return lista;
+    // }
+    
     @WebMethod
     public void AgregarCategoria(String categoria){
     SistemaFactory fabrica = SistemaFactory.getInstance();
@@ -652,12 +656,13 @@ public class publicador {
 //     return s.GanadoresdeSorteo(funcion);
 //    }
     
-//    @WebMethod
-//    public List<DtPremio> SorteosGanadosxEspectador (String espectador){
-//    SistemaFactory fabrica = SistemaFactory.getInstance();
-//     ISistema s = fabrica.getISistema();
-//     return s.SorteosGanadosxEspectador(espectador);
-//    }
+    @WebMethod
+    public DtLista SorteosGanadosxEspectador (String espectador){
+    SistemaFactory fabrica = SistemaFactory.getInstance();
+    ISistema s = fabrica.getISistema();
+    DtLista lista = new DtLista(s.SorteosGanadosxEspectador(espectador));
+    return lista;
+    }
     
     @WebMethod
     public DtPremio GetDtPremio(int id){

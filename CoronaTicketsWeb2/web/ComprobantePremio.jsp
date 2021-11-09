@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +16,7 @@
 <%@page import="com.itextpdf.text.BaseColor"%>
 <%@page import="com.itextpdf.text.Image"%>
 <%@page import="com.itextpdf.text.Chunk"%>
+<%@page import="javax.xml.datatype.XMLGregorianCalendar"%>
 
 
 <html lang="en">
@@ -43,14 +43,22 @@
     else{       
         response.setContentType("application/pdf");
         String fileName = "Comprobante de premio CoronaTickets";
-        ISistema sis;
-        SistemaFactory fabrica = SistemaFactory.getInstance();
-        sis = fabrica.getISistema();
+
+        pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+        pkgWS.Publicador port = service.getPublicadorPort();
         
         String nickname = (String) session.getAttribute("user");
         String s_id = (String) request.getParameter("id");
         int id = Integer.parseInt(s_id);
-        DtPremio dtP = sis.GetDtPremio(id);
+        pkgWS.DtPremio dtP = port.getDtPremio(id);
+
+     
+
+        XMLGregorianCalendar  fecha_sorteoXML = dtP.getFechaSorteo();
+        Date fecha_sorteo = fecha_sorteoXML.toGregorianCalendar().getTime();
+
+        XMLGregorianCalendar  fecha_caducaXML = dtP.getFechaCaduca();
+        Date fecha_caduca = fecha_caducaXML.toGregorianCalendar().getTime();
 
         SimpleDateFormat ft2 = new SimpleDateFormat ("dd.MM.yyyy");
         
@@ -84,10 +92,10 @@
                 documento.add(new Paragraph("Espectador: " + nickname));
                 documento.add(new Paragraph("Funcion: " + dtP.getFuncion()));
                 documento.add(new Paragraph("Espectaculo: " + dtP.getEspectaculo()));
-                documento.add(new Paragraph("Descripcion del premio: " + dtP.getDesc_premio()));
-                documento.add(new Paragraph("Fecha del sorteo: " + ft2.format(dtP.getFecha_sorteo())));
+                documento.add(new Paragraph("Descripcion del premio: " + dtP.getDescPremio()));
+                documento.add(new Paragraph("Fecha del sorteo: " + ft2.format(fecha_sorteo)));
                 documento.add(new Paragraph("\n \n "));
-                documento.add(new Paragraph("ATENCION: Este premio solo podra ser reclamado hasta 30 dias despues de la fecha del sorteo, es decir, hasta el " + ft2.format(dtP.getFecha_caduca())));
+                documento.add(new Paragraph("ATENCION: Este premio solo podra ser reclamado hasta 30 dias despues de la fecha del sorteo, es decir, hasta el " + ft2.format(fecha_caduca)));
                 
               
                 

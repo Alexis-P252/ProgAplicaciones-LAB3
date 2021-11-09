@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<%@page import="Logica.*" %>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <html lang="en">
     
 <head>
@@ -24,9 +25,8 @@
     }
     else{           
     // INICIALIZAMOS EL SISTEMA
-    ISistema sis;
-    SistemaFactory fabrica = SistemaFactory.getInstance();
-    sis = fabrica.getISistema();
+    pkgWS.PublicadorService service = new pkgWS.PublicadorService();
+    pkgWS.Publicador port = service.getPublicadorPort();
     
     %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -70,15 +70,22 @@
                     <option selected>Seleccione un usuario</option>
                     <% // CARGAMOS LA LISTA DE NICKNAMES EN EL SELECT
                     String nickname = (String) session.getAttribute("user");
-                    String [] usuarios = sis.ColNickname();
-                    String[] seguidos = sis.listarSeguidos(nickname);
+                    
+                    List<String> preusuarios = port.colNickname().getItem();
+                    Object[] usuarios = preusuarios.toArray();
+                    
+                    List<String> preseguidos = port.listarSeguidos(nickname).getItem();
+                    Object[] seguidos = preseguidos.toArray();
+                    
                     int i = 1;    
-                    for(String s: usuarios){
+                    for(Object x: usuarios){
+                        String s = (String)x;
                         boolean yaSigue = false;
                         s = s.replace(" (E)", "");
                         s = s.replace(" (A)", "");
                         if( s.equals(nickname) == false){
-                            for (String s2: seguidos){
+                            for (Object x2: seguidos){
+                                String s2 = (String)x2;
                                 if(s.equals(s2) ){
                                     yaSigue = true;
                                 } 
